@@ -18,7 +18,8 @@
 10. **声音对应动作**：先实测 BGM 的 BPM 与小节，再让接触、开启、通过、受阻、加速、落定和转场对准拍点，动作与音效同帧；标题、机制转折和结尾对准小节线。声像跟随主体，音效放在旋律空隙并按力度调增益，通过短促 sidechain 给 BGM 让位；不给每行文字机械配音，不持续叮当，不盖主旋律。
 11. **每期必须包含**：账号标识「医学科普漫画」、关注引导、医疗免责声明（"本内容仅供科普，不能替代医生诊疗"）。
 12. **参考《奈特解剖涂色书》保证解剖准确性，但不得描图、扫描或抠图使用**（版权原因，见 `reference/netter/README.md`）。真实器官细节只可引入 `reference/anatomy/MANIFEST.json` 已登记、允许商用的原创或开放许可 2D/3D 素材。
-13. **医学论断先过事实核查**：按 `pipeline/factcheck.md` 做知识卡、缺口命名和单源取舍；未经核查的说法不进 `beats`。知识卡随 `script.json` 的 `sources` 留档，`beats` 里每条医学论断都要能回溯到一条 `sources`。
+13. **医学论断先过事实核查**：按 `pipeline/factcheck.md` 做知识卡、缺口命名和单源取舍；未经核查的说法不进 `beats`。知识卡随 `script.json` 的 `sources` 留档，`beats` 里每条医学论断都要能回溯到一条 `sources`。**AI 只能核到「待核查」，判「通过」必须有人签字**（`reviewer` 非空）；签字可用 `factcheck_page.py` 逐条点，也可在对话里确认后一次落盘：`apply_signoff.py --episode <slug> --by 用户 --sign-all`。没签字不算通过，`qacheck` 会一直报待签。
+14. **口语化不得牺牲精度**：可以换句式、可以拆短句，但不许丢限定词（约/以上/部分/可能）、不许把专业词换成更含糊的单字（「逆转纤维化」不写成「纤维化也能退」）、不许把不同阈值并成一句。每条文案写完做一次**反推测试**：把它补成完整陈述，看对象、数值、方向、限定能不能逐个对回 `sources.conclusion`。机器关卡是 `audit.py` 的 `lint_copy()`，命中必须人看；`copy_ok` 只能写理由后显式豁免，不能当消音器。
 
 ## 技术流水线
 
@@ -47,13 +48,13 @@ episodes/ep012-xxx/
 └── out/            # frames/ 帧序列、成片 mp4、qa/ 抽检帧
 ```
 
-仓库根目录只留说明和这六个目录：`pipeline/`、`episodes/`、`brand/`、`queue/`、`assets/`、`reference/`。成片、封面、配乐、解剖参考都不放根目录。
+仓库根目录只留说明和这七个目录：`pipeline/`、`episodes/`、`brand/`、`queue/`、`assets/`、`reference/`、`review/`。成片、封面、配乐、解剖参考都不放根目录。`review/` 只放签字页这类生成物（`.html` 不入库，签字结果落在 `script.json` 与 `out/qa/`）。
 
 ## 选题队列
 
 `queue/topics.json` 是全系列唯一事实来源：每条含 `slug`、`title`、`hook`、`status`（queued/scripting/rendering/done/published）。
 
-**新一期开工流程**：取下一个 queued → 状态改 scripting → 写完 script.json 后按 `pipeline/factcheck.md` 核查通过 → 制作 → 渲染合成质检通过 → 记用量 → done。发布（用户手动发抖音/视频号）后改 published。核查不通过的知识点不进 `beats`，不进入制作。
+**新一期开工流程**：取下一个 queued → 状态改 scripting → 写完 script.json 后按 `pipeline/factcheck.md` 核查通过 → **人工签字清零（`qacheck` 报告里「待人工签字」必须是 0）** → 制作 → 渲染合成质检通过 → 记用量 → done。发布（用户手动发抖音/视频号）后改 published。核查不通过的知识点不进 `beats`，不进入制作。**待签不为 0 不得改 done**，这条和黑帧、响度一样是硬条件。
 
 **用量记录**：质检通过后立刻跑 `python3 pipeline/usage.py episodes/<slug>`，把本期模型和 token 写入 `episodes/<slug>/usage.json`。它读当前会话的 `wire.jsonl`，只把出现最多的模型计入本期，其余模型放 `other_models`。一个会话只做一期时数字最干净；同一会话做了多期，要在换期前先跑一次，否则后做的期会把前面的用量也算进去。
 
@@ -74,3 +75,4 @@ episodes/ep012-xxx/
 - [ ] 音乐卡点：动作音效落在拍点，标题、关键转折、结尾落在小节线
 - [ ] 从弱到强有情绪曲线，结尾有行动号召（关注+定期体检类建议）
 - [ ] qacheck 无黑帧/冻帧/音量异常
+- [ ] qacheck 事实核查行显示 0 条待签（每期发布前）

@@ -11,7 +11,7 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from audit import audit_text, validate_script
+from audit import SIGNOFF, audit_text, lint_copy, pending_signoff, validate_script
 
 
 def sh(cmd):
@@ -37,6 +37,20 @@ def main():
     fails = validate_script(s)
     if fails:
         report.append("- 脚本结构: " + "；".join(fails))
+    pending = pending_signoff(s)
+    legacy = s.get("factcheck_legacy")
+    if legacy:
+        report.append(f"- 事实核查: 已归档（{legacy.get('since', '')}）— {legacy.get('reason', '')}")
+    elif pending:
+        report.append(f"- 事实核查: {len(pending)} 条已核，{SIGNOFF}（逐条见 script.json 的 sources.reviewer）")
+    else:
+        report.append("- 事实核查: 已有签字或无需签字")
+    _, copy_soft = lint_copy(s)
+    if copy_soft:
+        report.append(f"- 文案精度: {len(copy_soft)} 处待确认（铁律 14，口语化不得降精度）")
+        report.extend(f"  - {item}" for item in copy_soft)
+    else:
+        report.append("- 文案精度: 无问题")
     music = s.get("music") or {}
     if music:
         report.append(f"- 音乐网格: {music['bpm']} BPM，每拍 {60/music['bpm']:.4f}s，offset {music.get('offset', 0):.4f}s，{music.get('beats_per_bar', 4)} 拍/小节")

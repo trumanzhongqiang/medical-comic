@@ -33,5 +33,19 @@
     {"id": "change", "start": 7, "end": 11, "purpose": "演示关键异常", "lines": [{"text": "关键变化", "start": 7, "end": 11}], "visuals": [], "actions": [{"t": 9.1519, "description": "同一主角改变状态", "sfx": "change"}], "transition": "镜头拉回现实"},
     {"id": "ending", "start": 11, "end": 15, "purpose": "行动与品牌", "lines": [{"text": "现在可以怎么做", "start": 11, "end": 15}], "visuals": [], "actions": [{"t": 12.2688, "description": "结论落定", "sfx": "end"}], "transition": "品牌收尾"}
   ],
-  "sources": []
+  "sources": [
+    {
+      "claim": "（本期要说的医学论点，一句话）",
+      "source": "（单一可核验来源：机构 + 文件名 + 年份/版本）",
+      "conclusion": "（一句话结论，即画面短句要表达的意思）",
+      "verdict": "待核查",
+      "quote": "（来源原文摘录，逐字不改写；判通过时必填）",
+      "url": "（能点开核对的链接；判通过时必填）",
+      "checked_at": "",
+      "reviewer": "（人工签字人；判通过时必填）",
+      "reviewed_at": "",
+      "analogy": "（可选：一句话类比，以及它在画面里怎么被看见）",
+      "conflict": "（可选：冲突了哪几家、取舍理由、或缺口是什么）"
+    }
+  ]
 }

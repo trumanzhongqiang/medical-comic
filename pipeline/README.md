@@ -5,8 +5,11 @@
 | 文件 | 作用 |
 |---|---|
 | `engine.js` | 确定性动画引擎：关键帧、路径、相机、剪纸层次、文字审计、品牌头像和既有图形 |
-| `factcheck.md` | 医学论断进 `beats` 前的核查关卡：知识卡、缺口命名、单源冲突、`sources` schema |
-| `audit.py` | 节拍结构、阅读时间、音效引用、字号、安全区、文字碰撞和禁则折行（闭标点不得在行首）检查 |
+| `factcheck.md` | 医学论断进 `beats` 前的核查关卡：知识卡、缺口命名、单源冲突、`sources` schema、AI 留证 + 人工签字两段式 |
+| `factcheck_report.py` | 打印签字单：逐条 claim / verdict / 原文摘录 / 签字人；`--pending` 只看待签与待核查 |
+| `factcheck_page.py` | 生成单文件签字页（可离线开、勾选有进度、导出 json），一条卡片=一条 sources |
+| `apply_signoff.py` | 把签字页导出的 json 回填进 `script.json`（写 reviewer / reviewed_at，改 verdict），并在 `out/qa` 留复核记录 |
+| `audit.py` | 节拍结构、阅读时间、音效引用、字号、安全区、文字碰撞、禁则折行、`sources` 结构与 verdict 枚举、文案精度（`lint_copy`：绝对承诺 / 术语压成单字 / 定量说成必然 / 一档并一句）检查 |
 | `render.py` | Playwright 逐帧截图：1080×1440 @2x，校验时长、字体和图片资源 |
 | `make_sfx.py` | 生成「空灵音阶」音高层素材（F 大调五声：铃/拨弦/跑动/闪烁/低频），自制无版权风险 |
 | `compose.py` | 帧序列 + BGM 包络 + 动作音效（含 `sfx/` 自制池与 `sfx_ext/` 外部素材池）；两阶段 loudnorm 出音频母线，按编码后真峰迭代限幅，再封视频 |
