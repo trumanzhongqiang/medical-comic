@@ -1,0 +1,15 @@
+{
+  "slug": "ep003-hypertension",
+  "title": "高血压：血管里的「水压」为什么会升高？",
+  "model": "grok/grok-4.7",
+  "session": "session_0c987175-f7e7-4a60-9d60-69ee7173c8c9",
+  "measured_at": "2026-10-26",
+  "turns": 171,
+  "tokens": {
+    "input_uncached": 449748,
+    "input_cache_read": 26690816,
+    "output": 79168,
+    "total": 27219732
+  },
+  "note": "来自本会话 wire.jsonl 的逐轮 usage 合计。缓存读取是重复送入的上下文，按缓存计费，不是新生成内容。"
+}

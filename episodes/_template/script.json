@@ -1,0 +1,37 @@
+{
+  "slug": "ep000-template",
+  "title": "模板",
+  "fps": 60,
+  "duration": 15,
+  "frame_format": "jpg",
+  "bgm": "bgm.mp3",
+  "bgm_start": 0,
+  "bgm_volume": 0.65,
+  "bgm_envelope": [[0, 0.45], [7, 0.7], [12, 0.55], [15, 0.4]],
+  "fade_in": 2,
+  "fade_out": 2.5,
+  "bgm_dips": [],
+  "music": {
+    "bpm": 77,
+    "offset": 0.5805,
+    "beats_per_bar": 4,
+    "sync_tolerance": 0.022,
+    "hard_cues": []
+  },
+  "sfx": [
+    {"id": "enter", "t": 1.3597, "name": "whoosh", "gain": 0.2, "pan": -0.4},
+    {"id": "move", "t": 6.035, "name": "latch", "gain": 0.22, "pan": 0.2},
+    {"id": "change", "t": 9.1519, "name": "click", "gain": 0.2, "pan": 0.4},
+    {"id": "end", "t": 12.2688, "name": "confirm", "gain": 0.18, "pan": 0}
+  ],
+  "output": "医学科普漫画_template_3x4.mp4",
+  "learning_objectives": ["用一个具体变化讲清一条因果"],
+  "script": ["0-3s 弱起提问", "3-7s 正常机制", "7-11s 关键变化", "11-15s 行动与品牌"],
+  "beats": [
+    {"id": "question", "start": 0, "end": 3, "purpose": "提出问题", "lines": [{"text": "本期问题", "start": 0, "end": 3}], "visuals": [{"name": "主角", "role": "承接全片变化", "label": "主角：本期要追踪的对象", "start": 0.8, "end": 3}], "actions": [{"t": 1.3597, "description": "主角进入画面", "sfx": "enter"}], "transition": "镜头跟随主角"},
+    {"id": "normal", "start": 3, "end": 7, "purpose": "演示正常过程", "lines": [{"text": "正常情况下", "start": 3, "end": 7}], "visuals": [], "actions": [{"t": 6.035, "description": "主角完成正常动作", "sfx": "move"}], "transition": "主角原位发生变化"},
+    {"id": "change", "start": 7, "end": 11, "purpose": "演示关键异常", "lines": [{"text": "关键变化", "start": 7, "end": 11}], "visuals": [], "actions": [{"t": 9.1519, "description": "同一主角改变状态", "sfx": "change"}], "transition": "镜头拉回现实"},
+    {"id": "ending", "start": 11, "end": 15, "purpose": "行动与品牌", "lines": [{"text": "现在可以怎么做", "start": 11, "end": 15}], "visuals": [], "actions": [{"t": 12.2688, "description": "结论落定", "sfx": "end"}], "transition": "品牌收尾"}
+  ],
+  "sources": []
+}

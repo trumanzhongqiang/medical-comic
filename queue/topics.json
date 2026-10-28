@@ -1,0 +1,77 @@
+{
+  "updated": "2026-10-28",
+  "current": "ep006-gout",
+  "topics": [
+    {
+      "slug": "ep001-diabetes",
+      "title": "糖尿病，只是糖吃多了吗？",
+      "hook": "跟着一颗葡萄糖，看懂胰岛素抵抗和胰腺代偿",
+      "status": "done",
+      "note": "2026-10-28 声音重构交付：77BPM 音乐网格、逐句阅读窗口、对象跟随名牌；音效改为 Mixkit 真声 whoosh/impact + 自制 F 大调音高层，49 条按 lead 对齐、反向气声做蓄力；6960 帧、qacheck 通过（-14.3 LUFS、-2.0 dBTP）"
+    },
+    {
+      "slug": "ep002-blood-sugar-report",
+      "title": "血糖报告怎么看？空腹、餐后、糖化血红蛋白各管什么",
+      "hook": "体检单上三个血糖指标，一个是瞬时照片，一个是阶段成绩单",
+      "status": "done",
+      "note": "2026-10-28 交付：116s / 16 拍 / 30 条音效；qacheck 通过（-14.3 LUFS、-2.3 dBTP、0 黑场、0 冻帧、节拍布局 0 异常）"
+    },
+    {
+      "slug": "ep003-hypertension",
+      "title": "高血压：血管里的「水压」为什么会升高？",
+      "hook": "把血压做成水压系统，讲清不是简单的「血太满」",
+      "status": "done",
+      "note": "2026-10-28 交付：116s / 16 拍 / 34 条音效；心电图相位取模修正；qacheck 通过（-14.3 LUFS、-3.1 dBTP）"
+    },
+    {
+      "slug": "ep004-lipid-report",
+      "title": "血脂报告：胆固醇也分不同「运输队」？",
+      "hook": "LDL/HDL/甘油三酯用车队讲，胆固醇不全坏",
+      "status": "done",
+      "note": "2026-10-28 交付：116s / 16 拍 / 32 条音效；分镜整体重做（报告单→细胞膜→脂蛋白→斑块→分层台阶→餐盘→药盒→清单）；qacheck 通过（-13.5 LUFS、-2.5 dBTP）"
+    },
+    {
+      "slug": "ep005-fatty-liver",
+      "title": "不喝酒，为什么也会得脂肪肝？",
+      "hook": "肝脏=仓库，脂肪合成运入运出失衡",
+      "status": "done",
+      "note": "2026-10-28 交付：116s / 16 拍 / 35 条音效；体检单→肝细胞→三条管道→5% 点阵→超声→腰围/久坐→减重三档→复查；qacheck 通过（-13.5 LUFS、-2.4 dBTP）"
+    },
+    {
+      "slug": "ep006-gout",
+      "title": "痛风：尿酸为什么会变成扎人的结晶？",
+      "hook": "从过饱和到结晶沉积，解释为何关节突然发作",
+      "status": "queued"
+    },
+    {
+      "slug": "ep007-thyroid",
+      "title": "甲亢和甲减：一个油门卡住，一个动力不足",
+      "hook": "身体发动机对照，强调不能凭症状自判",
+      "status": "queued"
+    },
+    {
+      "slug": "ep008-hpylori",
+      "title": "感染幽门螺杆菌，要不要治？会传染家人吗？",
+      "hook": "胃内生存环境+传播风险+规范检测，不制造恐慌",
+      "status": "queued"
+    },
+    {
+      "slug": "ep009-anemia",
+      "title": "贫血就补铁？可能一开始方向就错了",
+      "hook": "红细胞生产线，缺铁只是原因之一，先查病因",
+      "status": "queued"
+    },
+    {
+      "slug": "ep010-osteoporosis",
+      "title": "骨质疏松：骨头是怎么一点点变脆的？",
+      "hook": "骨重建=拆除队+建筑队，解释骨量流失",
+      "status": "queued"
+    },
+    {
+      "slug": "ep011-migraine",
+      "title": "偏头痛为什么不只是「头痛」？",
+      "hook": "异常兴奋+畏光畏声+先兆，区分普通头痛",
+      "status": "queued"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "ep005-fatty-liver",
+  "title": "脂肪肝：肝里的油是从哪来的？",
+  "model": "kimi-code/k3.1-pro",
+  "session": "session_6415191a-c534-4a4d-9040-ee5fab3ce998",
+  "measured_at": "2026-10-28",
+  "turns": 65,
+  "tokens": {
+    "input_uncached": 170482,
+    "input_cache_read": 6956806,
+    "output": 61154,
+    "total": 7188442
+  },
+  "note": "来自本会话 wire.jsonl 的逐轮 usage 合计。缓存读取是重复送入的上下文，按缓存计费，不是新生成内容。"
+}

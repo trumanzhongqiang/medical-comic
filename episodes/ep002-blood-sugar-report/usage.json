@@ -1,0 +1,27 @@
+{
+  "slug": "ep002-blood-sugar-report",
+  "title": "血糖报告怎么看？三个指标各管什么",
+  "model": "kimi-code/kimi-for-coding",
+  "session": "session_6020e223-74c2-48fd-99a7-a2b99cb08bb1",
+  "measured_at": "2026-10-26",
+  "turns": 154,
+  "tokens": {
+    "input_uncached": 598383,
+    "input_cache_read": 22926441,
+    "output": 126692,
+    "total": 23651516
+  },
+  "note": "来自本会话 wire.jsonl 的逐轮 usage 合计，主模型 kimi-code/kimi-for-coding。缓存读取是重复送入的上下文，按缓存计费，不是新生成内容。本会话主要做第 2 期（含流水线搭建），主模型用量归本期；同一会话里 grok/grok-4.7 的用量见 other_models，未计入本期合计。",
+  "other_models": [
+    {
+      "model": "grok/grok-4.7",
+      "turns": 24,
+      "tokens": {
+        "input_uncached": 399990,
+        "input_cache_read": 4239232,
+        "output": 8127,
+        "total": 4647349
+      }
+    }
+  ]
+}

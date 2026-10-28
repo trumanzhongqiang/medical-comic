@@ -1,0 +1,39 @@
+{
+  "slug": "ep001-diabetes",
+  "title": "糖尿病，只是糖吃多了吗？",
+  "fps": 60,
+  "duration": 78,
+  "frame_format": "jpg",
+  "bgm": "bgm.mp3",
+  "bgm_volume": 0.7,
+  "fade_in": 2.0,
+  "fade_out": 3.0,
+  "bgm_dips": [],
+  "sfx": [
+    {"t": 1.0, "name": "pop", "gain": 0.28},
+    {"t": 4.0, "name": "whoosh", "gain": 0.22},
+    {"t": 8.0, "name": "whoosh", "gain": 0.22},
+    {"t": 12.2, "name": "pop", "gain": 0.25},
+    {"t": 14.0, "name": "pop", "gain": 0.22},
+    {"t": 16.0, "name": "pop", "gain": 0.22},
+    {"t": 18.5, "name": "click", "gain": 0.2},
+    {"t": 24.0, "name": "click", "gain": 0.25},
+    {"t": 30.5, "name": "pop", "gain": 0.22},
+    {"t": 32.5, "name": "pop", "gain": 0.22},
+    {"t": 34.5, "name": "pop", "gain": 0.22},
+    {"t": 36.5, "name": "heartbeat", "gain": 0.22},
+    {"t": 42.0, "name": "alarm", "gain": 0.16},
+    {"t": 49.0, "name": "factory", "gain": 0.18},
+    {"t": 58.0, "name": "heartbeat", "gain": 0.24},
+    {"t": 64.0, "name": "sparkle", "gain": 0.24}
+  ],
+  "output": "医学科普漫画_糖尿病_3x4.mp4",
+  "script": [
+    "0-11 饭后血糖升高，原因不只有吃糖",
+    "11-23 糖进入细胞才变成能量",
+    "23-35 正常时一把胰岛素钥匙开门",
+    "35-49 钥匙变多但细胞反应变慢",
+    "49-63 胰腺持续加班，能力逐渐下降",
+    "63-78 早测、定量、饭后活动"
+  ]
+}

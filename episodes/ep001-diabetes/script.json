@@ -1,0 +1,388 @@
+{
+  "slug": "ep001-diabetes",
+  "title": "糖尿病，只是糖吃多了吗？",
+  "fps": 60,
+  "duration": 116,
+  "frame_format": "jpg",
+  "bgm": "bgm.mp3",
+  "bgm_start": 0,
+  "bgm_volume": 0.65,
+  "bgm_envelope": [[0, 0.32], [6.8143, 0.42], [22.3987, 0.55], [37.9831, 0.62], [44.2169, 0.72], [62.9182, 0.78], [72.2688, 0.55], [78.5026, 0.38], [84.7363, 0.58], [94.087, 0.66], [103.4376, 0.5], [109.6714, 0.4], [116, 0.3]],
+  "fade_in": 2.2,
+  "fade_out": 3.2,
+  "bgm_dips": [],
+  "music": {
+    "bpm": 77,
+    "offset": 0.5804988662,
+    "beats_per_bar": 4,
+    "sync_tolerance": 0.022,
+    "hard_cues": ["open", "signal-arrive", "weak-signal", "walk", "pull-back"],
+    "sfx_ducking": {"threshold": 0.1, "ratio": 2.5, "attack": 4, "release": 90},
+    "sfx_normalize": {"target_peak_db": -6.5, "intensity_curve": 0.4}
+  },
+  "sfx": [
+    {"id": "open", "t": 0.5805, "name": "air-wide", "gain": 0.13, "pan": -0.3, "lead": 0.66},
+    {"id": "open-bell", "t": 1.3597, "name": "air-8", "gain": 0.1, "pan": -0.1},
+    {"id": "sugar-in", "t": 3.697, "name": "pop", "gain": 0.12, "pan": 0.15},
+    {"id": "sugar-in-tone", "t": 4.4762, "name": "ping-4", "gain": 0.14, "pan": 0.15},
+    {"id": "meal", "t": 6.8143, "name": "air-quick", "gain": 0.1, "pan": -0.4, "lead": 0.24},
+    {"id": "digest", "t": 9.9312, "name": "run-down-a", "gain": 0.15, "pan": -0.1},
+    {"id": "to-blood", "t": 13.0481, "name": "air-fast", "gain": 0.12, "pan": 0.45, "lead": 0.42},
+    {"id": "to-blood-bell", "t": 13.8273, "name": "air-8", "gain": 0.09, "pan": 0.35},
+    {"id": "travel", "t": 14.6071, "name": "air-deep", "gain": 0.11, "pan": 0.25, "lead": 0.48},
+    {"id": "rbc", "t": 19.2823, "name": "ping-2", "gain": 0.1, "pan": -0.35},
+    {"id": "pancreas-in", "t": 22.3987, "name": "air-short", "gain": 0.11, "pan": 0.4, "lead": 0.3},
+    {"id": "insulin-made", "t": 25.5162, "name": "run-up-b", "gain": 0.13, "pan": 0.35},
+    {"id": "signal-arrive", "t": 28.632, "name": "air-slow", "gain": 0.12, "pan": 0.15, "lead": 2.1},
+    {"id": "signal-bell", "t": 29.4112, "name": "air-7", "gain": 0.1, "pan": 0.05},
+    {"id": "receptor-bind", "t": 31.7487, "name": "ping-5", "gain": 0.16, "pan": 0.25},
+    {"id": "channel-move", "t": 34.0869, "name": "air-quick", "gain": 0.11, "pan": 0.25, "lead": 0.24},
+    {"id": "channel-open", "t": 34.8662, "name": "tri-up", "gain": 0.15, "pan": 0.2},
+    {"id": "glucose-enter", "t": 36.4253, "name": "run-down-a", "gain": 0.14, "pan": 0.1},
+    {"id": "energy", "t": 37.9831, "name": "shimmer", "gain": 0.11, "pan": 0.2},
+    {"id": "energy-confirm", "t": 41.0996, "name": "air-fast", "gain": 0.12, "pan": 0.0, "lead": 0.42},
+    {"id": "energy-bell", "t": 41.8788, "name": "air-8", "gain": 0.1, "pan": 0.0},
+    {"id": "weak-signal", "t": 44.2169, "name": "tri-down", "gain": 0.12, "pan": 0.25},
+    {"id": "blocked", "t": 47.3337, "name": "impact-soft", "gain": 0.16, "pan": 0.2, "lead": 0.48},
+    {"id": "build-up", "t": 50.4506, "name": "rise-rev-bar", "gain": 0.12, "pan": -0.15, "duration": 3.117},
+    {"id": "compensate", "t": 53.5676, "name": "impact-soft", "gain": 0.16, "pan": 0.2, "lead": 0.48},
+    {"id": "compensate-tone", "t": 54.3468, "name": "run-up-b", "gain": 0.11, "pan": 0.35},
+    {"id": "more-insulin", "t": 56.6845, "name": "ping-7", "gain": 0.11, "pan": 0.25},
+    {"id": "insulin-high", "t": 59.8013, "name": "run-down-b", "gain": 0.1, "pan": -0.1},
+    {"id": "slow-down", "t": 62.9182, "name": "air-fall", "gain": 0.12, "pan": 0.3, "lead": 0.78},
+    {"id": "decompensate", "t": 66.0354, "name": "impact-deep", "gain": 0.16, "pan": 0.0, "lead": 0.06},
+    {"id": "immune-in", "t": 72.2688, "name": "air-deep", "gain": 0.11, "pan": -0.45, "lead": 0.48},
+    {"id": "immune-hit", "t": 73.8274, "name": "impact-soft", "gain": 0.16, "pan": 0.25, "lead": 0.48},
+    {"id": "insulin-low", "t": 75.3861, "name": "tri-down", "gain": 0.08, "pan": 0.15},
+    {"id": "quiet", "t": 78.5027, "name": "air-1", "gain": 0.08, "pan": 0.25},
+    {"id": "test", "t": 81.6199, "name": "ping-5", "gain": 0.14, "pan": 0.3},
+    {"id": "vessel-risk", "t": 84.7363, "name": "drop", "gain": 0.16, "pan": -0.2},
+    {"id": "nerve-risk", "t": 87.8533, "name": "tri-down", "gain": 0.09, "pan": 0.35},
+    {"id": "walk", "t": 94.087, "name": "rise-rev-short", "gain": 0.12, "pan": -0.3, "duration": 1.558},
+    {"id": "contract", "t": 95.6452, "name": "impact-soft", "gain": 0.16, "pan": 0.2, "lead": 0.48},
+    {"id": "contract-tone", "t": 96.4244, "name": "ping-4", "gain": 0.12, "pan": 0.25},
+    {"id": "exercise-uptake", "t": 97.2042, "name": "air-fast", "gain": 0.12, "pan": 0.2, "lead": 0.42},
+    {"id": "exercise-bell", "t": 97.9834, "name": "air-8", "gain": 0.09, "pan": 0.15},
+    {"id": "sensitivity", "t": 100.3212, "name": "air-7", "gain": 0.11, "pan": 0.0},
+    {"id": "plate", "t": 103.4376, "name": "air-quick", "gain": 0.1, "pan": 0.25, "lead": 0.24},
+    {"id": "balance", "t": 104.9966, "name": "tri-up", "gain": 0.13, "pan": -0.15},
+    {"id": "care", "t": 106.555, "name": "ping-6", "gain": 0.11, "pan": 0.2},
+    {"id": "pull-back", "t": 109.6714, "name": "air-fall", "gain": 0.12, "pan": 0.0, "lead": 0.78},
+    {"id": "follow", "t": 112.7877, "name": "air-wide", "gain": 0.13, "pan": 0.0, "lead": 0.66},
+    {"id": "follow-bell", "t": 113.5669, "name": "air-6", "gain": 0.1, "pan": 0.0}
+  ],
+  "output": "医学科普漫画_糖尿病_3x4.mp4",
+  "learning_objectives": [
+    "知道主食和甜食都可能成为葡萄糖来源",
+    "理解胰岛素是信号，胰岛素抵抗是细胞反应变弱",
+    "知道 2 型糖尿病早期可能胰岛素升高，随后代偿不足",
+    "区分 1 型的自身免疫性胰岛素缺乏",
+    "理解运动、均衡饮食、检测和遵医嘱在长期管理中的作用"
+  ],
+  "script": [
+    "0-6.814 从吃糖的问题进入身体怎样用糖",
+    "6.814-22.399 食物消化成葡萄糖，血液负责运输",
+    "22.399-44.217 胰岛素信号、受体、转运通道与能量利用",
+    "44.217-72.269 胰岛素抵抗、胰腺代偿和失代偿",
+    "72.269-94.087 1 型区别、无症状与长期风险",
+    "94.087-109.671 运动、饮食、检测与遵医嘱",
+    "109.671-116 总结和品牌"
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 6.8143,
+      "purpose": "从吃糖的直觉进入身体利用糖的问题",
+      "lines": [
+        {"text": "糖尿病，只是糖吃多了吗？", "start": 0, "end": 3.6974},
+        {"text": "关键还在身体怎样利用糖", "start": 3.6974, "end": 6.8143}
+      ],
+      "visuals": [
+        {"name": "葡萄糖", "role": "细胞常用的能量原料", "label": "葡萄糖：细胞常用的燃料", "start": 3.6974, "end": 6.8143}
+      ],
+      "actions": [
+        {"t": 0.5805, "description": "镜头轻推入问题", "sfx": "open"},
+        {"t": 3.6974, "description": "主角葡萄糖落进画面", "sfx": "sugar-in"}
+      ],
+      "transition": "葡萄糖落向饭碗，镜头跟随"
+    },
+    {
+      "id": "carbs",
+      "start": 6.8143,
+      "end": 13.048,
+      "purpose": "说明葡萄糖来源不只有甜食",
+      "lines": [
+        {"text": "米饭、面条、甜饮料", "start": 6.8143, "end": 9.9311},
+        {"text": "都可能消化成葡萄糖", "start": 9.9311, "end": 13.048}
+      ],
+      "visuals": [
+        {"name": "主食", "role": "米饭面条中的碳水化合物可分解成葡萄糖", "label": "主食：消化后成为葡萄糖", "start": 6.8143, "end": 9.9311},
+        {"name": "甜饮料", "role": "其中的糖可快速进入血液", "label": "甜饮料：糖分会快速进入血液", "start": 9.9311, "end": 13.048}
+      ],
+      "actions": [
+        {"t": 6.8143, "description": "饭碗与饮料进入同一构图", "sfx": "meal"},
+        {"t": 9.9311, "description": "食物拆解成相同葡萄糖", "sfx": "digest"},
+        {"t": 13.048, "description": "同一颗葡萄糖进入血液", "sfx": "to-blood"}
+      ],
+      "transition": "跟随葡萄糖穿过肠壁进入血管"
+    },
+    {
+      "id": "transport",
+      "start": 13.048,
+      "end": 22.3987,
+      "purpose": "区分血糖运输与细胞利用",
+      "lines": [
+        {"text": "葡萄糖是细胞的燃料", "start": 13.048, "end": 17.7234},
+        {"text": "血液负责把它送过去", "start": 17.7234, "end": 22.3987}
+      ],
+      "visuals": [
+        {"name": "血管", "role": "运输葡萄糖到组织", "label": "血管：把葡萄糖送往全身", "start": 13.048, "end": 16.1649},
+        {"name": "红细胞", "role": "在血液里运送氧气", "label": "红细胞：血液里负责运送氧气", "start": 19.2818, "end": 22.3987}
+      ],
+      "actions": [
+        {"t": 14.6065, "description": "镜头跟随葡萄糖在血管中前进", "sfx": "travel"},
+        {"t": 19.2818, "description": "红细胞从旁经过形成深度", "sfx": "rbc"}
+      ],
+      "transition": "沿血流方向平移到胰腺"
+    },
+    {
+      "id": "insulin",
+      "start": 22.3987,
+      "end": 28.6324,
+      "purpose": "说明胰岛素来自胰腺且是激素信号",
+      "lines": [
+        {"text": "胰腺制造并释放胰岛素", "start": 22.3987, "end": 25.5156},
+        {"text": "它是一种传递信号的激素", "start": 25.5156, "end": 28.6324}
+      ],
+      "visuals": [
+        {"name": "胰腺", "role": "制造并释放胰岛素", "label": "胰腺：制造并释放胰岛素", "start": 22.3987, "end": 25.5156},
+        {"name": "胰岛素", "role": "把利用葡萄糖的信号传给细胞", "label": "胰岛素：通知细胞开始用葡萄糖", "start": 25.5156, "end": 28.6324}
+      ],
+      "actions": [
+        {"t": 22.3987, "description": "沿血管找到胰腺", "sfx": "pancreas-in"},
+        {"t": 25.5156, "description": "胰岛素从胰腺释放", "sfx": "insulin-made"}
+      ],
+      "transition": "跟随胰岛素从胰腺到肌肉细胞"
+    },
+    {
+      "id": "normal",
+      "start": 28.6324,
+      "end": 37.9831,
+      "purpose": "完整演示正常入胞顺序",
+      "lines": [
+        {"text": "胰岛素先发出信号", "start": 28.6324, "end": 31.7493},
+        {"text": "细胞再把转运通道送到膜上", "start": 31.7493, "end": 37.9831}
+      ],
+      "visuals": [
+        {"name": "肌肉细胞", "role": "利用葡萄糖产生能量", "label": "肌肉细胞：用葡萄糖产生能量", "start": 28.6324, "end": 31.7493},
+        {"name": "胰岛素受体", "role": "接收胰岛素信号", "label": "受体：接收胰岛素信号", "start": 31.7493, "end": 34.8662},
+        {"name": "葡萄糖转运通道", "role": "让葡萄糖穿过细胞膜", "label": "转运通道：让葡萄糖穿过细胞膜", "start": 34.8662, "end": 37.9831}
+      ],
+      "actions": [
+        {"t": 28.6324, "description": "胰岛素接近细胞", "sfx": "signal-arrive"},
+        {"t": 31.7493, "description": "胰岛素与受体结合", "sfx": "receptor-bind"},
+        {"t": 34.087, "description": "转运通道从细胞内移向膜", "sfx": "channel-move"},
+        {"t": 34.8662, "description": "通道在膜上就位", "sfx": "channel-open"},
+        {"t": 36.4247, "description": "葡萄糖通过通道进入细胞", "sfx": "glucose-enter"}
+      ],
+      "transition": "镜头随葡萄糖进入细胞内部"
+    },
+    {
+      "id": "energy",
+      "start": 37.9831,
+      "end": 44.2169,
+      "purpose": "闭环正常机制：入胞后产生能量",
+      "lines": [
+        {"text": "进入细胞的葡萄糖", "start": 37.9831, "end": 41.1},
+        {"text": "才能被利用，产生能量", "start": 41.1, "end": 44.2169}
+      ],
+      "visuals": [
+        {"name": "线粒体", "role": "细胞产生可用能量的重要结构", "label": "线粒体：参与产生细胞可用能量", "start": 37.9831, "end": 41.1}
+      ],
+      "actions": [
+        {"t": 37.9831, "description": "葡萄糖到达细胞内部并点亮能量", "sfx": "energy"},
+        {"t": 41.1, "description": "肌肉纤维获得能量并收缩", "sfx": "energy-confirm"}
+      ],
+      "transition": "同一细胞的信号开始变弱"
+    },
+    {
+      "id": "resistance",
+      "start": 44.2169,
+      "end": 53.5675,
+      "purpose": "解释胰岛素抵抗的真实含义",
+      "lines": [
+        {"text": "胰岛素抵抗：信号变弱", "start": 44.2169, "end": 47.3337},
+        {"text": "胰岛素仍在释放，细胞响应变弱", "start": 47.3337, "end": 53.5675}
+      ],
+      "visuals": [
+        {"name": "胰岛素抵抗", "role": "细胞对胰岛素信号反应变弱", "label": "胰岛素抵抗：细胞对信号反应变弱", "start": 44.2169, "end": 47.3337},
+        {"name": "血中葡萄糖", "role": "入胞变慢后留在血液里", "label": "葡萄糖：进入细胞变慢，留在血液里", "start": 47.3337, "end": 50.4506}
+      ],
+      "actions": [
+        {"t": 44.2169, "description": "同样的胰岛素只能触发弱信号", "sfx": "weak-signal"},
+        {"t": 47.3337, "description": "通道移位变慢，葡萄糖入胞减少", "sfx": "blocked"},
+        {"t": 50.4506, "description": "葡萄糖在血液中积多", "sfx": "build-up"}
+      ],
+      "transition": "沿胰岛素来路回到胰腺"
+    },
+    {
+      "id": "compensation",
+      "start": 53.5675,
+      "end": 62.9182,
+      "purpose": "讲清早期高胰岛素代偿这一反常识点",
+      "lines": [
+        {"text": "早期，胰腺会加大产量", "start": 53.5675, "end": 56.6844},
+        {"text": "血里的胰岛素可能反而更高", "start": 56.6844, "end": 62.9182}
+      ],
+      "visuals": [
+        {"name": "代偿中的胰腺", "role": "暂时制造并释放更多胰岛素", "label": "胰腺：暂时制造更多胰岛素", "start": 53.5675, "end": 56.6844}
+      ],
+      "actions": [
+        {"t": 53.5675, "description": "胰腺加速释放胰岛素", "sfx": "compensate"},
+        {"t": 56.6844, "description": "更多胰岛素进入血液", "sfx": "more-insulin"},
+        {"t": 59.8013, "description": "血中胰岛素升高暂时补偿弱信号", "sfx": "insulin-high"}
+      ],
+      "transition": "时间流逝，胰腺从加速转为疲惫"
+    },
+    {
+      "id": "decompensation",
+      "start": 62.9182,
+      "end": 72.2688,
+      "purpose": "说明代偿并非永远足够",
+      "lines": [
+        {"text": "长期代偿后，产能可能跟不上", "start": 62.9182, "end": 66.2},
+        {"text": "血糖就更容易持续偏高", "start": 66.2, "end": 72.2688}
+      ],
+      "visuals": [
+        {"name": "胰岛β细胞", "role": "胰腺中实际制造胰岛素的细胞", "label": "胰岛β细胞：制造胰岛素", "start": 62.9182, "end": 66.035}
+      ],
+      "actions": [
+        {"t": 62.9182, "description": "β细胞输出节奏逐渐减慢", "sfx": "slow-down"},
+        {"t": 66.035, "description": "补偿不足后血糖继续升高", "sfx": "decompensate"}
+      ],
+      "transition": "保留胰腺原位，引入另一种病因"
+    },
+    {
+      "id": "type1",
+      "start": 72.2688,
+      "end": 78.5026,
+      "purpose": "区分 1 型与 2 型的机制",
+      "lines": [
+        {"text": "1 型糖尿病：β细胞被误伤", "start": 72.2688, "end": 75.3857},
+        {"text": "胰岛素释放显著减少", "start": 75.3857, "end": 78.5026}
+      ],
+      "visuals": [
+        {
+          "name": "免疫细胞",
+          "role": "正常情况下防御身体，1 型中错误攻击β细胞",
+          "label": "免疫细胞：在 1 型中错误攻击β细胞",
+          "start": 72.2688,
+          "end": 75.3857
+        }
+      ],
+      "actions": [
+        {"t": 72.2688, "description": "免疫细胞接近胰岛", "sfx": "immune-in"},
+        {"t": 73.8273, "description": "β细胞受到误伤", "sfx": "immune-hit"},
+        {"t": 75.3857, "description": "胰岛素输出显著减少", "sfx": "insulin-low"}
+      ],
+      "transition": "从胰腺拉回血液检测场景"
+    },
+    {
+      "id": "silent",
+      "start": 78.5026,
+      "end": 84.7363,
+      "purpose": "避免用症状自行排除糖尿病",
+      "lines": [
+        {"text": "早期可能没有明显感觉", "start": 78.5026, "end": 81.6195},
+        {"text": "不能靠症状排除糖尿病", "start": 81.6195, "end": 84.7363}
+      ],
+      "visuals": [
+        {"name": "血糖检测", "role": "用测量发现异常", "label": "血糖检测：异常要靠测量发现", "start": 78.5026, "end": 81.6195}
+      ],
+      "actions": [
+        {"t": 78.5026, "description": "环境安静，表面没有警报", "sfx": "quiet"},
+        {"t": 81.6195, "description": "血糖计完成一次测量", "sfx": "test"}
+      ],
+      "transition": "血糖计上的颗粒匹配到血管中的颗粒"
+    },
+    {
+      "id": "risk",
+      "start": 84.7363,
+      "end": 94.087,
+      "purpose": "准确表达长期风险而不恐吓",
+      "lines": [
+        {"text": "长期高血糖可能损伤血管和神经", "start": 84.7363, "end": 89.4117},
+        {"text": "血管和神经的变化逐渐累积", "start": 89.4117, "end": 94.087}
+      ],
+      "visuals": [
+        {"name": "血管内皮", "role": "血管最内层，长期高糖可能受到损伤", "label": "血管内皮：长期高血糖可能受损伤", "start": 84.7363, "end": 87.8532},
+        {"name": "神经", "role": "长期高血糖也可能影响神经", "label": "神经：长期高血糖也可能影响它", "start": 87.8532, "end": 90.9701}
+      ],
+      "actions": [
+        {"t": 84.7363, "description": "血管内壁从平整变得受损", "sfx": "vessel-risk"},
+        {"t": 87.8532, "description": "神经信号传递变弱", "sfx": "nerve-risk"}
+      ],
+      "transition": "沿血管来到正在运动的肌肉"
+    },
+    {
+      "id": "exercise",
+      "start": 94.087,
+      "end": 103.4376,
+      "purpose": "解释运动帮助利用葡萄糖的机制",
+      "lines": [
+        {"text": "肌肉收缩也能促进葡萄糖利用", "start": 94.087, "end": 98.7623},
+        {"text": "这条通路不完全依赖胰岛素", "start": 98.7623, "end": 103.4376}
+      ],
+      "visuals": [
+        {"name": "肌肉收缩", "role": "促进葡萄糖进入肌肉细胞", "label": "肌肉收缩：也能促进葡萄糖进入细胞", "start": 94.087, "end": 97.2039},
+        {"name": "运动通路", "role": "肌肉收缩促进不完全依赖胰岛素的葡萄糖利用", "label": "运动通路：不完全依赖胰岛素", "start": 97.2039, "end": 100.3208}
+      ],
+      "actions": [
+        {"t": 94.087, "description": "脚步带动肌肉开始收缩", "sfx": "walk"},
+        {"t": 95.6454, "description": "肌肉纤维收缩", "sfx": "contract"},
+        {"t": 97.2039, "description": "转运通道增加，葡萄糖进入肌肉", "sfx": "exercise-uptake"},
+        {"t": 100.3208, "description": "规律活动提高胰岛素敏感性", "sfx": "sensitivity"}
+      ],
+      "transition": "肌肉收缩的节奏匹配到餐桌摆放"
+    },
+    {
+      "id": "management",
+      "start": 103.4376,
+      "end": 109.6714,
+      "purpose": "给出可持续的长期管理方向",
+      "lines": [
+        {"text": "主食适量，搭配蔬菜和蛋白质", "start": 103.4376, "end": 107},
+        {"text": "规范检测，遵医嘱用药", "start": 107, "end": 109.6714}
+      ],
+      "visuals": [
+        {"name": "均衡餐盘", "role": "主食适量并搭配蔬菜和蛋白质", "label": "均衡餐盘：主食适量，搭配蔬菜和蛋白质", "start": 103.4376, "end": 106.5545},
+        {"name": "处方", "role": "药物方案需要医生个体化判断", "label": "用药：遵医嘱，不自行停药或改药", "start": 106.5545, "end": 109.6714}
+      ],
+      "actions": [
+        {"t": 103.4376, "description": "镜头拉回现实餐桌", "sfx": "plate"},
+        {"t": 104.9961, "description": "主食蔬菜蛋白质组成餐盘", "sfx": "balance"},
+        {"t": 106.5545, "description": "检测与处方落定", "sfx": "care"}
+      ],
+      "transition": "餐盘圆形匹配品牌圆形头像"
+    },
+    {
+      "id": "ending",
+      "start": 109.6714,
+      "end": 116,
+      "purpose": "总结机制并引导关注",
+      "lines": [
+        {"text": "看懂机制，才能长期管理", "start": 109.6714, "end": 112.7883},
+        {"text": "关注「医学科普漫画」", "start": 112.7883, "end": 116}
+      ],
+      "visuals": [],
+      "actions": [
+        {"t": 109.6714, "description": "从身体世界拉回品牌结尾", "sfx": "pull-back"},
+        {"t": 112.7883, "description": "品牌与关注引导落定", "sfx": "follow"}
+      ],
+      "transition": "结束，保留轻微血流环境运动"
+    }
+  ],
+  "sources": [{"title": "NIDDK — What Is Diabetes?", "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes", "claims": ["葡萄糖是能量来源", "胰岛素帮助葡萄糖进入细胞", "1 型自身免疫机制", "长期眼肾神经心血管风险"]}, {"title": "NIDDK — Insulin Resistance & Prediabetes", "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance", "claims": ["肌肉脂肪肝脏细胞反应变弱", "胰腺补偿后可能不足", "胰岛素抵抗常无症状", "健康饮食和活动"]}, {"title": "American Diabetes Association — Blood Glucose and Exercise", "url": "https://diabetes.org/health-wellness/fitness/blood-glucose-and-exercise", "claims": ["肌肉收缩可促进不完全依赖胰岛素的葡萄糖利用", "活动提高胰岛素敏感性"]}, {"title": "WHO — World Diabetes Day 2025", "url": "https://www.who.int/westernpacific/newsroom/events/detail/2025/11/14/western-pacific-events/world-diabetes-day-2025", "claims": ["早检测", "均衡饮食与日常活动", "长期血管神经风险", "个体化管理"]}],
+  "medical_review": {"claims_checked_against_sources": true, "clinician_reviewed": false, "note": "依据患者指南核对科普表述；未声称经过临床医生审稿"}
+}
