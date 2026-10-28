@@ -105,7 +105,7 @@ def main():
                 raise SystemExit(f"找不到 {path}")
             for i, item in enumerate(json.loads(path.read_text("utf-8")).get("sources") or [], 1):
                 row = {"episode": slug, "idx": i, "claim": item.get("claim", ""), "note": ""}
-                if item.get("verdict") == "通过":
+                if item.get("verdict") in ("通过", "常识表述"):
                     decisions.append({**row, "action": "sign"})
                 elif item.get("verdict") == "待核查" and args.common:
                     decisions.append({**row, "action": "common",
@@ -145,7 +145,7 @@ def main():
             if action in ("sign", "common"):
                 if action == "common":
                     item["verdict"] = "常识表述"
-                elif item.get("verdict") != "通过":
+                elif item.get("verdict") not in ("通过", "常识表述"):
                     log.append(f"跳过 {slug} #{idx}：verdict 是 {item.get('verdict')}，不能按「通过」签字")
                     continue
                 item["reviewer"] = who

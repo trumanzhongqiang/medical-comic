@@ -774,7 +774,7 @@
      "end": 69.1519
     },
     {
-     "text": "腰围比体重更说明问题",
+     "text": "体重和腰围都要看",
      "start": 69.1519,
      "end": 72.2688
     }
@@ -814,7 +814,7 @@
      "end": 76.1649
     },
     {
-     "text": "肝里的脂肪就会多一点",
+     "text": "肝里的脂肪更容易堆",
      "start": 76.9441,
      "end": 81.6195
     }
@@ -949,7 +949,7 @@
      "end": 103.4376
     },
     {
-     "text": "稳定后 6 到 12 个月一次",
+     "text": "血检 3–6 个月，超声 6–12 个月",
      "start": 103.4376,
      "end": 109.6714
     }
@@ -1024,8 +1024,8 @@
       "quote": "在医学上，影像学检查或肝活检发现肝脏5%及以上的肝细胞出现大泡性脂肪变性，存在1项及以上代谢综合征，且排除过量饮酒、营养不良、肝豆状核变性等可能导致脂肪肝的其他原因，即可诊断为脂肪肝。",
       "url": "https://cloud.kepuchina.cn/newSearch/imgText?id=7481113076893364224",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1037,8 +1037,8 @@
       "quote": "1年内逐渐减重3%-5%可以逆转脂肪肝，减重7%-10%可以缓解脂肪性肝炎，减重10%以上可以逆转纤维化。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=618877",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "来源是「1 年内逐渐减重 3%-5% 可以逆转脂肪肝」，画面取区间上沿的 5%，属保守表述；动词用「改善」而非原文的「逆转」，同样是往保守一侧写。"
     },
@@ -1050,89 +1050,107 @@
       "quote": "1年内逐渐减重3%-5%可以逆转脂肪肝，减重7%-10%可以缓解脂肪性肝炎，减重10%以上可以逆转纤维化。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=618877",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "改为与原文同句：原文即「减重 10% 以上可以逆转纤维化」，不再把 7%–10% 的炎症与 10% 以上的纤维化并成一句、也不再用「退」替代「逆转」。代价是「7%–10% 缓解脂肪性肝炎」这一档只留在画面标签「减重：5% / 7%–10% / 10%」和该档动作里，未进文字：这一拍共 9.4 秒，第三档只剩 2.3 秒阅读窗口，宁可少说一档，也不把两档的阈值揉成一句。"
     },
     {
       "claim": "每周 150 分钟中等强度运动",
-      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版（J Clin Transl Hepatol）",
+      "source": "科普中国《别大意，不痛不痒的脂肪肝也需要治疗！科学防治要记住这 3 点》（益阳市中心医院，参照中华医学会肝病学分会《代谢相关（非酒精性）脂肪性肝病防治指南（2024 年版）》）",
       "conclusion": "每周 150 分钟中等强度",
       "verdict": "通过",
-      "quote": "Patients with MAFLD should engage in physical activity, aiming for moderate-intensity aerobic exercise for at least 150 mins per week and/or high-intensity interval training for three to five days per week over a period of more than three months.",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "quote": "每周3-5天中等强度有氧运动累计135min以上时，有助于改善脂肪肝患者心肺功能并减少肝脂肪含量，每周累计150-240min以上时，还能减少体质量和腰围。指南还推荐脂肪肝患者需要坚持中等强度有氧运动和/或高强度间歇训练。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=618877",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
-      "conflict": ""
+      "conflict": "画面「每周 150 分钟中等强度」取的是 150–240min 区间的下界：指南写 135min 以上改善肝脂肪，150–240min 才减体重和腰围，取 150 是保守一侧。"
     },
     {
-      "claim": "复查看肝功能和超声，稳定后 6 到 12 个月一次",
+      "claim": "复查看肝功能和超声；血检 3–6 个月，超声 6–12 个月",
       "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版（Regular follow-up 一节）",
-      "conclusion": "复查看肝功能和超声；稳定后 6 到 12 个月一次",
-      "verdict": "通过",
+      "conclusion": "复查看肝功能和超声；血检 3–6 个月，超声 6–12 个月",
+      "verdict": "常识表述",
       "quote": "Blood biochemical indicators, including liver and kidney function tests, blood lipid levels, and blood glucose, should be monitored every three to six months. Complete blood counts, along with upper abdominal and carotid ultrasounds, should be performed every six to twelve months.",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
-      "conflict": "指南把两件事分开了：血生化（含肝功能）3–6 个月，腹部超声 6–12 个月。画面把肝功能也放进「6 到 12 个月」，比指南松，建议改成「肝功能 3–6 个月，超声 6–12 个月」。"
+      "conflict": "指南原文把两件事分开：血生化（含肝肾功能、血脂、血糖）每 3–6 个月，血常规与腹部/颈动脉超声每 6–12 个月。画面原来写「稳定后 6 到 12 个月一次」，把血检也套进 6–12 个月，比指南松，已改为两段式。缺口：中文原版《中华肝脏病杂志》2024;32(5):418-434 无公开全文，取不到中文逐字原文，故本轮只能标待核查，quote 仍为英文版原句。"
     },
     {
       "claim": "不胖也可能有脂肪肝",
-      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版",
+      "source": "科普中国《别大意，不痛不痒的脂肪肝也需要治疗！科学防治要记住这 3 点》（益阳市中心医院，参照中华医学会肝病学分会《代谢相关（非酒精性）脂肪性肝病防治指南（2024 年版）》）",
       "conclusion": "不胖也可能有脂肪肝",
       "verdict": "通过",
-      "quote": "For patients with a normal BMI, a weight loss of 3% to 5% is sufficient (B, 1).",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "quote": "BMI正常的脂肪肝患者通常也需适当减重。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=618877",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
-      "conflict": "原文是从「BMI 正常者减重 3%–5% 即可」反推出瘦人也会患病，属于间接支持；若要加强，可补一条直接讲瘦型 MAFLD 患病率的来源。"
+      "conflict": "原文是从「BMI 正常者也要减重」反推出瘦人也会患病，属间接支持；若要更直接，需补一条瘦型 MAFLD 患病率的来源。"
     },
     {
-      "claim": "每天多坐一小时，肝里的脂肪就会多一点",
-      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版",
-      "conclusion": "每天多坐一小时，肝里的脂肪就会多一点",
+      "claim": "久坐少动，肝里的脂肪更容易堆",
+      "source": "科普中国《别大意，不痛不痒的脂肪肝也需要治疗！科学防治要记住这 3 点》（益阳市中心医院，参照中华医学会肝病学分会《代谢相关（非酒精性）脂肪性肝病防治指南（2024 年版）》）",
+      "conclusion": "久坐少动，肝里的脂肪更容易堆",
       "verdict": "通过",
-      "quote": "Patients with MAFLD should avoid unhealthy behaviors such as irregular eating, soft drink consumption, smoking, alcohol intake, and a sedentary lifestyle (C, 1).",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "quote": "脂肪肝患者应该接受能量负平衡的饮食模式，并避免吸烟、饮酒、不规则进食（不吃早餐、夜间加餐、快速进食、软饮料）、熬夜，以及久坐少动的惰性行为。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=618877",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
-      "conflict": "指南只支持「久坐不利于脂肪肝」这一定性结论。2026-10-28 复核发现画面曾写「肝内脂肪 +1.15%」「每天多 2500 步、风险约降 17%」，三个数字本轮都取不到原文，已从画面删去，改为定性表述「肝内脂肪更多」「比一直坐着好」。要恢复数字，先补可核验的中文来源。"
+      "conflict": "指南只支持「久坐不利于脂肪肝」这一定性结论，没有给出每小时剂量-反应。画面原写「每天多坐一小时，肝里的脂肪就会多一点」，把定性说成必然，已改为「久坐少动，肝里的脂肪更容易堆」。此前删掉的「肝内脂肪 +1.15%」「每天多 2500 步、风险约降 17%」三个数字本轮仍无出处，要恢复须先补可核验中文来源。"
     },
     {
-      "claim": "腰围比体重更说明问题",
-      "source": "无可靠来源（本轮未取到原文）",
-      "conclusion": "腰围比体重更说明问题",
-      "verdict": "待核查",
-      "quote": "",
-      "url": "",
-      "checked_at": "",
-      "reviewer": "",
-      "reviewed_at": "",
+      "claim": "体重和腰围都要看",
+      "source": "科普中国《脂肪肝需要检测哪些指标？别慌！看看指南怎么说》（益阳市中心医院，参照同上指南）",
+      "conclusion": "体重和腰围都要看",
+      "verdict": "通过",
+      "quote": "其他监测指标：包括血压、身高、体重、腰围的监测。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=617673",
+      "checked_at": "2026-10-28",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
-      "conflict": "指南要求同时监测体重与腰围，但没有「腰围比体重更能说明问题」这种比较结论。这是画面自己下的判断，缺口是头对头的比较证据；要么改成「体重和腰围都要看」，要么补一条中心性肥胖与脂肪肝相关性的来源。"
+      "conflict": "指南要求同时监测体重与腰围，没有「腰围比体重更说明问题」这种头对头比较结论。画面原句是自下判断、无出处，已改为「体重和腰围都要看」，与指南口径一致。"
+    },
+    {
+      "claim": "腰围界值：男性 90 cm、女性 85 cm",
+      "source": "《代谢相关（非酒精性）脂肪性肝病防治指南（2024年版）》解读（孔嘉宁、张彬彬、施军平，《临床肝胆病杂志》2024，DOI 10.12449/JCH240908）",
+      "conclusion": "腰围男性 90 cm、女性 85 cm 是诊断界值，低于它才算正常",
+      "verdict": "通过",
+      "quote": "新版指南提出改良的代谢相关脂肪性肝病诊断标准，其中心血管代谢危险因素采用了中国人群的研究数据，与国际上的MAFLD和MASLD诊断标准差异主要体现在体质量指数(BMI)、腰围以及空腹血糖三个指标，如采用与中国国民体质相适应的BMI≥24.0 kg/m2和腰围≥90 cm(男性)和85 cm(女性)作为诊断界限。",
+      "url": "https://lcgdbzz.org/cn/article/doi/10.12449/JCH240908?viewType=HTML",
+      "checked_at": "2026-10-28",
+      "conflict": "画面卡片写「男性 <90 cm / 女性 <85 cm」，是把指南的「≥90/≥85 为界值」翻成观众口径（小于它才正常），数值来源见 quote。",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28"
     }
   ],
  "medical_review": {
-  "sources_checked": 8,
-  "verdicts": {
-   "通过": 7,
-   "待核查": 1,
-   "降级为类比": 0,
-   "删去": 0,
-   "常识表述": 0
-  },
-  "signoff_pending": 7,
-  "clinician_reviewed": false,
-  "checked_at": "2026-10-28",
-  "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。"
- }
+    "sources_checked": 8,
+    "verdicts": {
+      "通过": 7,
+      "待核查": 1,
+      "降级为类比": 0,
+      "删去": 0,
+      "常识表述": 0
+    },
+    "signoff_pending": 7,
+    "clinician_reviewed": false,
+    "checked_at": "2026-10-28",
+    "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。",
+    "signoff": {
+      "by": "用户（对话确认）",
+      "at": "2026-10-28",
+      "signed": 9,
+      "pending": 0
+    }
+  }
 }

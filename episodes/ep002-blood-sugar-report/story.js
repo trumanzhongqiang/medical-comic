@@ -10,31 +10,31 @@
     months: BAR(15), time120: BAR(15), monthsCard: B(64), duties: BAR(17),
     line61: BAR(19), fastingHigh: B(80), line78: BAR(21), postHigh: B(88),
     line65: BAR(23), retest: B(96), interference: BAR(25), mismatch: BAR(27),
-    early: B(112), twice: BAR(29), plan: BAR(31), walk: B(128), engage: BAR(32),
+    early: B(112), twice: BAR(29), plan: BAR(31), walk: BAR(32), engage: BAR(32),
     care: BAR(33), checkup: B(136), pullBack: BAR(35), follow: B(144)
   };
   M.loadPlate('../../brand/avatar.jpg');
 
   const beats = [
     { start: 0, end: BAR(1), lines: [[0, BAR(1), '空腹、餐后、糖化，到底该看哪个数？']] },
-    { start: BAR(1), end: BAR(3), lines: [[BAR(1), B(8), '报告上的三个数，都和葡萄糖有关'], [B(8), BAR(3), '先认识血液里的葡萄糖']] },
-    { start: BAR(3), end: BAR(5), lines: [[BAR(3), B(16), '葡萄糖随着血液流动'], [B(16), BAR(5), '为全身细胞提供能量']] },
-    { start: BAR(5), end: BAR(7), lines: [[BAR(5), B(24), '空腹血糖，是抽血那一刻的血糖'], [B(24), BAR(7), '抽血前至少 8 小时不吃东西']] },
-    { start: BAR(7), end: BAR(9), lines: [[BAR(7), B(32), '吃下第一口饭，餐后计时开始'], [B(32), BAR(9), '两小时后再测，就是餐后两小时血糖']] },
-    { start: BAR(9), end: BAR(11), lines: [[BAR(9), B(40), '食物消化后，葡萄糖进入血液'], [B(40), BAR(11), '餐后血糖先升高，再逐渐回落']] },
-    { start: BAR(11), end: BAR(13), lines: [[BAR(11), B(48), '血液里还有红细胞'], [B(48), BAR(13), '红细胞里的血红蛋白负责运送氧气']] },
-    { start: BAR(13), end: BAR(15), lines: [[BAR(13), B(56), '葡萄糖会附着在血红蛋白上'], [B(56), BAR(15), '附着葡萄糖的血红蛋白比例，就是糖化血红蛋白']] },
-    { start: BAR(15), end: BAR(17), lines: [[BAR(15), B(64), '红细胞大约活 120 天'], [B(64), BAR(17), '所以糖化反映近 3 个月的平均血糖水平']] },
-    { start: BAR(17), end: BAR(19), lines: [[BAR(17), B(72), '空腹和餐后，各看一个时刻'], [B(72), BAR(19), '糖化看近 3 个月的整体情况']] },
-    { start: BAR(19), end: BAR(21), lines: [[BAR(19), B(80), '空腹低于 6.1，在正常范围'], [B(80), BAR(21), '6.1 到不足 7.0，提示糖尿病前期']] },
-    { start: BAR(21), end: BAR(23), lines: [[BAR(21), B(88), '餐后两小时达到 7.8，需要留意'], [B(88), BAR(23), '7.8 到不足 11.1，提示糖尿病前期']] },
-    { start: BAR(23), end: BAR(25), lines: [[BAR(23), B(96), '糖化达到 6.5%，是诊断标准之一'], [B(96), BAR(25), '没有典型症状，需要复查确认']] },
-    { start: BAR(25), end: BAR(27), lines: [[BAR(25), B(104), '贫血、失血会改变红细胞寿命'], [B(104), BAR(27), '这时糖化结果可能被带偏']] },
-    { start: BAR(27), end: BAR(29), lines: [[BAR(27), B(112), '空腹正常，餐后也可能已经偏高'], [B(112), BAR(29), '三个指标互相补充，才有完整图景']] },
-    { start: BAR(29), end: BAR(31), lines: [[BAR(29), B(120), '结果拿不准，交给医生结合情况判断'], [B(120), BAR(31), '必要时复查，或做糖耐量试验']] },
-    { start: BAR(31), end: BAR(33), lines: [[BAR(31), B(128), '主食适量，搭配蔬菜和蛋白质'], [B(128), BAR(33), '每周规律活动，管理体重']] },
-    { start: BAR(33), end: BAR(35), lines: [[BAR(33), B(136), '用药按医嘱'], [B(136), BAR(35), '按医生安排复查，别自行停药']] },
-    { start: BAR(35), end: DUR, lines: [[BAR(35), B(144), '空腹看当下，餐后看应对'], [B(144), DUR, '糖化看近 3 个月，三个一起交给医生看']] }
+    { start: BAR(1), end: BAR(3), lines: [[BAR(1), BAR(3), '三个数，都和葡萄糖有关']] },
+    { start: BAR(3), end: BAR(5), lines: [[BAR(3), BAR(5), '葡萄糖随血液流动，给细胞供能']] },
+    { start: BAR(5), end: BAR(7), lines: [[BAR(5), BAR(7), '空腹血糖：抽血前至少 8 小时不吃东西']] },
+    { start: BAR(7), end: BAR(9), lines: [[BAR(7), BAR(9), '餐后两小时，从吃下第一口饭开始计']] },
+    { start: BAR(9), end: BAR(11), lines: [[BAR(9), BAR(11), '饭后葡萄糖进血液，血糖先升再落']] },
+    { start: BAR(11), end: BAR(13), lines: [[BAR(11), BAR(13), '红细胞里的血红蛋白，负责运送氧气']] },
+    { start: BAR(13), end: BAR(15), lines: [[BAR(13), BAR(15), '附着在血红蛋白上的比例，叫糖化']] },
+    { start: BAR(15), end: BAR(17), lines: [[BAR(15), BAR(17), '红细胞大约活 120 天，糖化看近 3 个月']] },
+    { start: BAR(17), end: BAR(19), lines: [[BAR(17), BAR(19), '空腹、餐后看一个时刻，糖化看近 3 个月']] },
+    { start: BAR(19), end: BAR(21), lines: [[BAR(19), BAR(21), '空腹低于 6.1 正常，到不足 7.0 是前期']] },
+    { start: BAR(21), end: BAR(23), lines: [[BAR(21), BAR(23), '餐后 7.8 到不足 11.1，也提示前期']] },
+    { start: BAR(23), end: BAR(25), lines: [[BAR(23), BAR(25), '糖化达到 6.5%，是诊断标准之一']] },
+    { start: BAR(25), end: BAR(27), lines: [[BAR(25), BAR(27), '贫血、失血改寿命，糖化可能不准']] },
+    { start: BAR(27), end: BAR(29), lines: [[BAR(27), BAR(29), '空腹正常时，餐后也可能已经偏高']] },
+    { start: BAR(29), end: BAR(31), lines: [[BAR(29), BAR(31), '拿不准就复查，或做糖耐量试验']] },
+    { start: BAR(31), end: BAR(33), lines: [[BAR(31), BAR(33), '主食适量，搭配蔬菜和蛋白质']] },
+    { start: BAR(33), end: BAR(35), lines: [[BAR(33), BAR(35), '用药按医嘱，复查别自行停药']] },
+    { start: BAR(35), end: DUR, lines: [[BAR(35), DUR, '三个数一起看，交给医生判断']] }
   ];
 
   function brand(g) {
@@ -51,7 +51,7 @@
     const s = line[2];
     const warn = /偏高|留意|前期|带偏|达到/.test(s);
     g.save(); g.globalAlpha = enter * leave; g.translate(0, (1 - enter) * 12);
-    const size = s.length > 24 ? 54 : 62;
+    const size = s.length > 20 ? 44 : s.length > 16 ? 48 : 54;
     M.text(g, s, 540, 194, { size, weight: 850, display: true, color: warn ? T.coralDark : T.ink });
     g.restore();
   }
@@ -143,7 +143,7 @@
     const p = E.inOutCubic(u.seg(t, C.meal, C.mealTone - C.meal));
     const a = p * Math.PI * 4; M.line(g, 0, -15, Math.sin(a) * 52, -15 - Math.cos(a) * 52, { w: 7, color: T.coralDark });
     g.beginPath(); g.arc(0, -15, 8, 0, 7); g.fillStyle = T.ink; g.fill();
-    M.text(g, t < C.mealTone ? '从第一口计时' : '两小时到点', 0, 96, { size: 38, weight: 750, role: 'object' }); g.restore();
+    if (t < C.flood) M.text(g, t < C.mealTone ? '从第一口计时' : '两小时到点', 0, 96, { size: 38, weight: 750, role: 'object' }); g.restore();
   }
 
   function hemoglobin(g, x, y, s, a) {
@@ -212,11 +212,12 @@
     const rows = [['空腹血糖', '5.6', 'mmol/L', T.tealDark], ['餐后 2 小时', '7.4', 'mmol/L', T.amber], ['糖化血红蛋白', '5.8', '%', T.tealDark]];
     g.save(); g.translate(x, y); g.rotate(-.02); M.softShadow(g, 0, 220, 280, 48, .16); M.paperPanel(g, -260, -310, 520, 620, { radius: 22 });
     M.text(g, '体检报告 · 血糖', 0, -264, { size: 44, weight: 800, color: T.ink }); M.line(g, -210, -226, 210, -226, { w: 3, color: T.inkSoft });
-    rows.forEach((r, i) => { const yy = -150 + i * 156; const on = i === 0 ? t >= C.fastingShot : i === 1 ? t >= C.postHigh : t >= C.line65;
-      g.save(); g.globalAlpha = big ? (on ? 1 : .72) : .9; M.text(g, r[0], -216, yy, { size: 42, weight: 700, align: 'left', color: T.ink });
-      M.text(g, r[1], 128, yy + 4, { size: 56, weight: 850, align: 'right', color: r[3], role: 'object' });
-      M.text(g, r[2], 214, yy + 4, { size: r[2] === '%' ? 42 : 30, weight: 650, align: 'right', color: T.inkSoft, role: 'object' }); g.restore();
-      M.line(g, -216, yy + 68, 216, yy + 68, { w: 2, color: T.paperShadow }); }); g.restore();
+    rows.forEach((r, i) => { const yy = -160 + i * 168; const on = i === 0 ? t >= C.fastingShot : i === 1 ? t >= C.postHigh : t >= C.line65;
+      g.save(); g.globalAlpha = big ? (on ? 1 : .72) : .9;
+      M.text(g, r[0], 0, yy, { size: 44, weight: 700, color: T.ink, role: 'object' });
+      M.text(g, r[1] + ' ' + r[2], 0, yy + 62, { size: 52, weight: 850, color: r[3], role: 'object' });
+      g.restore();
+      M.line(g, -200, yy + 100, 200, yy + 100, { w: 2, color: T.paperShadow }); }); g.restore();
   }
   const DUTY = [[0, 486], [120, 482], [190, 440], [250, 396], [320, 430], [400, 470], [470, 476]];
   function dutyCurve(g, x0, y0, t) {

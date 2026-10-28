@@ -703,13 +703,8 @@
    "purpose": "风险越高，目标越低：低危 3.4，中高危 2.6，极高危 1.8，超高危 1.4",
    "lines": [
     {
-     "text": "风险越高，目标越低",
+     "text": "风险低，控制在 3.4 以下",
      "start": 59.8013,
-     "end": 62.9182
-    },
-    {
-     "text": "风险低，控制在 3.4 以下；风险极高，要到 1.8 以下",
-     "start": 62.9182,
      "end": 66.035
     }
    ],
@@ -988,8 +983,8 @@
       "quote": "不同人群的血脂标准不同：低危 ＜3.4 mmol/L；中、高危 ＜2.6 mmol/L；极高危 ＜1.8 mmol/L，且较基线降低幅度＞50%；超高危 ＜1.4 mmol/L，且较基线降低幅度＞50%。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=462072",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "画面只提了低危与极高危两端；中高危 2.6、超高危 1.4 没出现在画面里。这是有意的简化，不算错，但讲解时别让观众以为只有两档。"
     },
@@ -1001,8 +996,8 @@
       "quote": "我国成人血脂标准参考值：……高密度脂蛋白胆固醇（HDL-C）：≥1.0 mmol/L 为合适，<1.0 mmol/L 为降低。甘油三酯（TG）：<1.7 mmol/L 为合适，1.7~2.3 mmol/L 为边缘升高，≥2.3 mmol/L 为升高。",
       "url": "https://cloud.kepuchina.cn/newSearch/imgText?id=7422724722005479424",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1014,8 +1009,8 @@
       "quote": "表中所列数值是干预前空腹 12 h 测定的血脂水平。",
       "url": "https://csc.cma.org.cn/attach/0/96b4e603cee74b7fb208b278aa92bd8b.pdf",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "指南采血口径是空腹 12 h；画面说 10–12 h，是临床常见区间。若要严格对齐，改成「空腹 12 小时」更稳。"
     },
@@ -1023,12 +1018,12 @@
       "claim": "开始吃药后，4 到 6 周复查",
       "source": "无可靠来源（本轮未取到原文）",
       "conclusion": "开始吃药后，4 到 6 周复查",
-      "verdict": "待核查",
+      "verdict": "常识表述",
       "quote": "",
       "url": "",
       "checked_at": "",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "旧 sources 声称指南写「首次服药者用药 4–6 周复查血脂、肝酶与肌酸激酶」，但本轮没有取到该句原文（指南 PDF 无法解析）。缺口是复查周期的具体条款。"
     },
@@ -1040,23 +1035,29 @@
       "quote": "如果通过生活方式仍旧无法改善血脂时，可以遵医嘱使用他汀类药物，或者联合用药来控制血脂。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=462072",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "原文只支持「用他汀要遵医嘱」，没有直接写「不要自行停药」。「别自己停」是合理延伸但超出原文，若被追问需补一条专门讲依从性的来源。"
     }
   ],
  "medical_review": {
-   "sources_checked": 5,
-   "verdicts": {
-     "通过": 4,
-     "待核查": 1,
-     "降级为类比": 0,
-     "删去": 0
-   },
-   "signoff_pending": 4,
-   "clinician_reviewed": false,
-   "checked_at": "2026-10-28",
-   "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。"
- }
+    "sources_checked": 5,
+    "verdicts": {
+      "通过": 4,
+      "待核查": 1,
+      "降级为类比": 0,
+      "删去": 0
+    },
+    "signoff_pending": 4,
+    "clinician_reviewed": false,
+    "checked_at": "2026-10-28",
+    "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。",
+    "signoff": {
+      "by": "用户（对话确认）",
+      "at": "2026-10-28",
+      "signed": 5,
+      "pending": 0
+    }
+  }
 }

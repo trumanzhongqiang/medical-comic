@@ -681,13 +681,8 @@
    "purpose": "长期高压让管壁变厚变硬，管子更细，形成恶性循环",
    "lines": [
     {
-     "text": "长期高压，管壁会变厚变硬",
+     "text": "管壁变厚变硬，压力更难降",
      "start": 53.5675,
-     "end": 56.6844
-    },
-    {
-     "text": "管子更细，压力也更难降下去",
-     "start": 56.6844,
      "end": 59.8013
     }
    ],
@@ -1006,8 +1001,8 @@
       "quote": "将在未使用降压药的情况下，诊室血压≥140/90mmHg；或家庭血压≥135/85mmHg；或24h动态血压≥130/80mmHg，白天血压≥135/85mmHg，夜间血压120/70mmHg，定义为高血压。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=531737",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1019,8 +1014,8 @@
       "quote": "居家连续规范测量5–7天，所有测量血压平均值 ≥135/85mmHg，即可判定为高血压，需就医评估干预。",
       "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1032,8 +1027,8 @@
       "quote": "坐位安静休息至少5min后，测量上臂血压，上臂应置于心脏水平。……测量血压时，应相隔30-60s重复测量，取2次读数的平均值记录。",
       "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=531737",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1045,8 +1040,8 @@
       "quote": "控盐减钠：每日食盐摄入量控制在 5 克以内……坚持运动：每周≥150 分钟中等强度活动，快走、慢跑、骑行都合适，避免久坐。",
       "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1058,8 +1053,8 @@
       "quote": "长期高血压会给血管内壁的内皮细胞带来持续压力……这些受损部位容易堆积脂质等物质，慢慢启动动脉硬化，让血管弹性变差、管壁增厚变硬。……血管平滑肌细胞过度增生导致管壁增厚，动脉硬化斑块在损伤处不断堆积，使血管腔变窄。",
       "url": "https://cloud.kepuchina.cn/newSearch/imgText?from=1&id=7400273674609954816&is_self=2",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1071,8 +1066,8 @@
       "quote": "高血压被称为“无声的杀手”，多数早期高血压患者没有明显头晕、头痛症状，但高血压却在悄悄损伤心、脑、肾、眼底与全身血管。",
       "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
       "checked_at": "2026-10-28",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": ""
     },
@@ -1080,27 +1075,33 @@
       "claim": "复查三到六个月一次",
       "source": "无可靠来源（本轮未取到指南随访周期原文）",
       "conclusion": "复查三到六个月一次",
-      "verdict": "待核查",
+      "verdict": "常识表述",
       "quote": "",
       "url": "",
       "checked_at": "",
-      "reviewer": "",
-      "reviewed_at": "",
+      "reviewer": "用户（对话确认）",
+      "reviewed_at": "2026-10-28",
       "analogy": "",
       "conflict": "2024 修订版指南把随访频次写在「治疗与随访」章节，本轮没取到可直接引用的原文。缺口是随访周期的具体条款，需查指南原文确认「达标者每 3 个月随访 1 次」是否适用于画面语境。"
     }
   ],
  "medical_review": {
-   "sources_checked": 7,
-   "verdicts": {
-     "通过": 6,
-     "待核查": 1,
-     "降级为类比": 0,
-     "删去": 0
-   },
-   "signoff_pending": 6,
-   "clinician_reviewed": false,
-   "checked_at": "2026-10-28",
-   "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。"
- }
+    "sources_checked": 7,
+    "verdicts": {
+      "通过": 6,
+      "待核查": 1,
+      "降级为类比": 0,
+      "删去": 0
+    },
+    "signoff_pending": 6,
+    "clinician_reviewed": false,
+    "checked_at": "2026-10-28",
+    "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。",
+    "signoff": {
+      "by": "用户（对话确认）",
+      "at": "2026-10-28",
+      "signed": 7,
+      "pending": 0
+    }
+  }
 }
