@@ -822,7 +822,7 @@
    "visuals": [
     {
      "name": "久坐",
-     "role": "每日久坐每增加 1 小时，肝内脂肪增加约 1.15%",
+     "role": "久坐时间越长，肝内脂肪越多（指南只给定性结论，没有可用数字）",
      "label": "久坐：每多 1 小时，肝脂多一点",
      "start": 73.8273,
      "end": 76.9441
@@ -841,7 +841,7 @@
     },
     {
      "t": 80.061,
-     "description": "多走 2500 步，风险往下走",
+     "description": "多走路，比一直坐着好",
      "sfx": "steps"
     }
    ],
@@ -854,12 +854,12 @@
    "purpose": "减重幅度对应不同层面的改善",
    "lines": [
     {
-     "text": "减 5%，脂肪变就能改善",
+     "text": "减 5%，脂肪变能改善",
      "start": 81.6195,
      "end": 85.5156
     },
     {
-     "text": "减 10%，炎症和纤维化也能退",
+     "text": "减 10% 以上，可以逆转纤维化",
      "start": 85.5156,
      "end": 90.9701
     }
@@ -1016,26 +1016,123 @@
   }
  ],
  "sources": [
-  {
-   "title": "《代谢相关（非酒精性）脂肪性肝病防治指南（2024 年版）》",
-   "url": "https://cloud.kepuchina.cn/h5/detail?id=7433557904642015232",
-   "claims": [
-    "影像学或肝活检发现 5% 及以上肝细胞大泡性脂肪变，并存在 1 项及以上代谢综合征组分，排除过量饮酒等原因后方可诊断",
-    "我国成人非酒精性脂肪肝患病率约 29.6%",
-    "减重 3%–5% 可逆转脂肪变，7%–10% 缓解脂肪性肝炎，10% 以上可见纤维化逆转",
-    "生活方式干预是基础治疗"
-   ]
+    {
+      "claim": "肝里脂肪超过 5% 才叫脂肪肝",
+      "source": "科普中国《世界肝炎日｜告别脂肪肝：科学减重避雷攻略》（引 2024 年版 MAFLD 防治指南）",
+      "conclusion": "超过 5% 才叫脂肪肝",
+      "verdict": "通过",
+      "quote": "在医学上，影像学检查或肝活检发现肝脏5%及以上的肝细胞出现大泡性脂肪变性，存在1项及以上代谢综合征，且排除过量饮酒、营养不良、肝豆状核变性等可能导致脂肪肝的其他原因，即可诊断为脂肪肝。",
+      "url": "https://cloud.kepuchina.cn/newSearch/imgText?id=7481113076893364224",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "减 5%，脂肪变能改善",
+      "source": "科普中国《别大意，不痛不痒的脂肪肝也需要治疗！》（引 2024 年版指南）",
+      "conclusion": "减 5%，脂肪变能改善",
+      "verdict": "通过",
+      "quote": "1年内逐渐减重3%-5%可以逆转脂肪肝，减重7%-10%可以缓解脂肪性肝炎，减重10%以上可以逆转纤维化。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=618877",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "来源是「1 年内逐渐减重 3%-5% 可以逆转脂肪肝」，画面取区间上沿的 5%，属保守表述；动词用「改善」而非原文的「逆转」，同样是往保守一侧写。"
+    },
+    {
+      "claim": "减 10% 以上，可以逆转纤维化",
+      "source": "科普中国《别大意，不痛不痒的脂肪肝也需要治疗！》（引 2024 年版指南）",
+      "conclusion": "减 10% 以上，可以逆转纤维化",
+      "verdict": "通过",
+      "quote": "1年内逐渐减重3%-5%可以逆转脂肪肝，减重7%-10%可以缓解脂肪性肝炎，减重10%以上可以逆转纤维化。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=618877",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "改为与原文同句：原文即「减重 10% 以上可以逆转纤维化」，不再把 7%–10% 的炎症与 10% 以上的纤维化并成一句、也不再用「退」替代「逆转」。代价是「7%–10% 缓解脂肪性肝炎」这一档只留在画面标签「减重：5% / 7%–10% / 10%」和该档动作里，未进文字：这一拍共 9.4 秒，第三档只剩 2.3 秒阅读窗口，宁可少说一档，也不把两档的阈值揉成一句。"
+    },
+    {
+      "claim": "每周 150 分钟中等强度运动",
+      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版（J Clin Transl Hepatol）",
+      "conclusion": "每周 150 分钟中等强度",
+      "verdict": "通过",
+      "quote": "Patients with MAFLD should engage in physical activity, aiming for moderate-intensity aerobic exercise for at least 150 mins per week and/or high-intensity interval training for three to five days per week over a period of more than three months.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "复查看肝功能和超声，稳定后 6 到 12 个月一次",
+      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版（Regular follow-up 一节）",
+      "conclusion": "复查看肝功能和超声；稳定后 6 到 12 个月一次",
+      "verdict": "通过",
+      "quote": "Blood biochemical indicators, including liver and kidney function tests, blood lipid levels, and blood glucose, should be monitored every three to six months. Complete blood counts, along with upper abdominal and carotid ultrasounds, should be performed every six to twelve months.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "指南把两件事分开了：血生化（含肝功能）3–6 个月，腹部超声 6–12 个月。画面把肝功能也放进「6 到 12 个月」，比指南松，建议改成「肝功能 3–6 个月，超声 6–12 个月」。"
+    },
+    {
+      "claim": "不胖也可能有脂肪肝",
+      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版",
+      "conclusion": "不胖也可能有脂肪肝",
+      "verdict": "通过",
+      "quote": "For patients with a normal BMI, a weight loss of 3% to 5% is sufficient (B, 1).",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "原文是从「BMI 正常者减重 3%–5% 即可」反推出瘦人也会患病，属于间接支持；若要加强，可补一条直接讲瘦型 MAFLD 患病率的来源。"
+    },
+    {
+      "claim": "每天多坐一小时，肝里的脂肪就会多一点",
+      "source": "《代谢相关脂肪性肝病防治指南（2024 年版）》英文版",
+      "conclusion": "每天多坐一小时，肝里的脂肪就会多一点",
+      "verdict": "通过",
+      "quote": "Patients with MAFLD should avoid unhealthy behaviors such as irregular eating, soft drink consumption, smoking, alcohol intake, and a sedentary lifestyle (C, 1).",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11557364/pdf/JCTH-12-955.pdf",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "指南只支持「久坐不利于脂肪肝」这一定性结论。2026-10-28 复核发现画面曾写「肝内脂肪 +1.15%」「每天多 2500 步、风险约降 17%」，三个数字本轮都取不到原文，已从画面删去，改为定性表述「肝内脂肪更多」「比一直坐着好」。要恢复数字，先补可核验的中文来源。"
+    },
+    {
+      "claim": "腰围比体重更说明问题",
+      "source": "无可靠来源（本轮未取到原文）",
+      "conclusion": "腰围比体重更说明问题",
+      "verdict": "待核查",
+      "quote": "",
+      "url": "",
+      "checked_at": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "指南要求同时监测体重与腰围，但没有「腰围比体重更能说明问题」这种比较结论。这是画面自己下的判断，缺口是头对头的比较证据；要么改成「体重和腰围都要看」，要么补一条中心性肥胖与脂肪肝相关性的来源。"
+    }
+  ],
+ "medical_review": {
+  "sources_checked": 8,
+  "verdicts": {
+   "通过": 7,
+   "待核查": 1,
+   "降级为类比": 0,
+   "删去": 0,
+   "常识表述": 0
   },
-  {
-   "title": "《中国 2 型糖尿病运动治疗指南（2024 版）》MAFLD 章节",
-   "url": "https://rs.yiigle.com/cmaid/1508094",
-   "claims": [
-    "我国 MAFLD 患病率 29.2%，肥胖人群 51.6%",
-    "体重下降 >5% 改善肝脂肪沉积，>7% 改善炎症，>10% 可逆转或部分逆转纤维化",
-    "每日久坐每增加 1 小时，肝内脂肪增加 1.15%",
-    "每日增加 2500 步或 20 分钟中等至较大强度活动可改善脂肪肝，风险下降约 17%"
-   ]
-  }
- ],
- "medical_review": "门槛与减重幅度取自 2024 年版 MAFLD 防治指南与中国 T2DM 运动治疗指南；不给出个体化诊断与用药建议，是否用药与复查频率提示遵医嘱。"
+  "signoff_pending": 7,
+  "clinician_reviewed": false,
+  "checked_at": "2026-10-28",
+  "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。"
+ }
 }

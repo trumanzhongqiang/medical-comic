@@ -678,7 +678,7 @@
    "id": "thicken",
    "start": 53.5675,
    "end": 59.8013,
-   "purpose": "长期高压让管壁变厚变硬，管腔更窄，形成恶性循环",
+   "purpose": "长期高压让管壁变厚变硬，管子更细，形成恶性循环",
    "lines": [
     {
      "text": "长期高压，管壁会变厚变硬",
@@ -686,7 +686,7 @@
      "end": 56.6844
     },
     {
-     "text": "管腔更窄，压力更难降",
+     "text": "管子更细，压力也更难降下去",
      "start": 56.6844,
      "end": 59.8013
     }
@@ -838,15 +838,15 @@
    "id": "clinic",
    "start": 81.6195,
    "end": 90.9701,
-   "purpose": "诊室标准是 140/90，不同测量场景界值不同",
+   "purpose": "诊室量到 140/90 算高；在家和在医院，标准不一样",
    "lines": [
     {
-     "text": "诊室测量的界值是 140 / 90",
+     "text": "诊室量，140 / 90 算高",
      "start": 81.6195,
      "end": 86.2948
     },
     {
-     "text": "不同场景，界值不一样",
+     "text": "在家和在医院，标准不一样",
      "start": 86.2948,
      "end": 90.9701
     }
@@ -998,36 +998,109 @@
   }
  ],
  "sources": [
-  {
-   "title": "《中国高血压防治指南（2024 年修订版）》要点（科普中国）",
-   "url": "https://cloud.kepuchina.cn/h5/detail?id=7242967759211806720",
-   "claims": [
-    "诊室血压 ≥140/90 为高血压",
-    "家庭血压 ≥135/85、24 小时动态 ≥130/80",
-    "钠摄入 <2 g/天，相当于食盐 <5 g/天",
-    "生活方式干预与药物治疗时机"
-   ]
-  },
-  {
-   "title": "《中国高血压防治指南（2024 修订版）》分级（广西疾控）",
-   "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
-   "claims": [
-    "正常血压 <120/80",
-    "正常高值 120–139/80–89",
-    "多数早期高血压没有明显症状",
-    "每周 ≥150 分钟中等强度活动"
-   ]
-  },
-  {
-   "title": "NHLBI — High Blood Pressure (Hypertension)",
-   "url": "https://www.nhlbi.nih.gov/health/high-blood-pressure",
-   "claims": [
-    "收缩压是心脏收缩时的压力",
-    "舒张压是心脏放松时的压力",
-    "动脉弹性缓冲心脏的间歇射血",
-    "小动脉阻力与血容量影响血压"
-   ]
-  }
- ],
- "medical_review": "界值取自 2024 年修订版指南；不给出个体化诊断与用药建议，一律提示遵医嘱。"
+    {
+      "claim": "诊室血压 ≥140/90 mmHg、家庭血压 ≥135/85 mmHg 都算高血压",
+      "source": "科普中国《中国高血压防治指南（2024 年修订版）》更新内容速递",
+      "conclusion": "诊室量，140 / 90 算高；在家和在医院，标准不一样",
+      "verdict": "通过",
+      "quote": "将在未使用降压药的情况下，诊室血压≥140/90mmHg；或家庭血压≥135/85mmHg；或24h动态血压≥130/80mmHg，白天血压≥135/85mmHg，夜间血压120/70mmHg，定义为高血压。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=531737",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "在家要连续测五到七天才能判断",
+      "source": "广西壮族自治区疾病预防控制中心《知晓血压·平稳人生》（引 2024 修订版指南）",
+      "conclusion": "在家连续测五到七天",
+      "verdict": "通过",
+      "quote": "居家连续规范测量5–7天，所有测量血压平均值 ≥135/85mmHg，即可判定为高血压，需就医评估干预。",
+      "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "测血压前安静坐五分钟，连测两次取平均",
+      "source": "科普中国《中国高血压防治指南（2024 年修订版）》更新内容速递（血压测量方法一节）",
+      "conclusion": "测之前安静坐五分钟，连测两次，取平均",
+      "verdict": "通过",
+      "quote": "坐位安静休息至少5min后，测量上臂血压，上臂应置于心脏水平。……测量血压时，应相隔30-60s重复测量，取2次读数的平均值记录。",
+      "url": "https://www.kepuchina.cn/article/articleinfo?business_type=100&ar_id=531737",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "每天食盐少于 5 克、每周 150 分钟中等强度运动",
+      "source": "广西壮族自治区疾病预防控制中心《知晓血压·平稳人生》",
+      "conclusion": "每天食盐少于 5 克；每周 150 分钟中等强度运动",
+      "verdict": "通过",
+      "quote": "控盐减钠：每日食盐摄入量控制在 5 克以内……坚持运动：每周≥150 分钟中等强度活动，快走、慢跑、骑行都合适，避免久坐。",
+      "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "长期高压会让管壁变厚变硬、管腔变窄",
+      "source": "科普中国《血压悄悄高，心脑风险来》",
+      "conclusion": "长期高压，管壁会变厚变硬；管子更细，压力也更难降下去",
+      "verdict": "通过",
+      "quote": "长期高血压会给血管内壁的内皮细胞带来持续压力……这些受损部位容易堆积脂质等物质，慢慢启动动脉硬化，让血管弹性变差、管壁增厚变硬。……血管平滑肌细胞过度增生导致管壁增厚，动脉硬化斑块在损伤处不断堆积，使血管腔变窄。",
+      "url": "https://cloud.kepuchina.cn/newSearch/imgText?from=1&id=7400273674609954816&is_self=2",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "多数高血压没有感觉，只能靠测量发现",
+      "source": "广西壮族自治区疾病预防控制中心《知晓血压·平稳人生》",
+      "conclusion": "多数高血压没有感觉，只能靠测量发现",
+      "verdict": "通过",
+      "quote": "高血压被称为“无声的杀手”，多数早期高血压患者没有明显头晕、头痛症状，但高血压却在悄悄损伤心、脑、肾、眼底与全身血管。",
+      "url": "https://www.gxcdc.org.cn/html/2026/ztqggxyr_1008/16412.html",
+      "checked_at": "2026-10-28",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": ""
+    },
+    {
+      "claim": "复查三到六个月一次",
+      "source": "无可靠来源（本轮未取到指南随访周期原文）",
+      "conclusion": "复查三到六个月一次",
+      "verdict": "待核查",
+      "quote": "",
+      "url": "",
+      "checked_at": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "analogy": "",
+      "conflict": "2024 修订版指南把随访频次写在「治疗与随访」章节，本轮没取到可直接引用的原文。缺口是随访周期的具体条款，需查指南原文确认「达标者每 3 个月随访 1 次」是否适用于画面语境。"
+    }
+  ],
+ "medical_review": {
+   "sources_checked": 7,
+   "verdicts": {
+     "通过": 6,
+     "待核查": 1,
+     "降级为类比": 0,
+     "删去": 0
+   },
+   "signoff_pending": 6,
+   "clinician_reviewed": false,
+   "checked_at": "2026-10-28",
+   "note": "按 pipeline/factcheck.md 第 5 节两段式重核：AI 检索并逐条留原文摘录与链接，人工签字尚未完成。不给出个体化诊断与用药建议，一律提示遵医嘱。"
+ }
 }

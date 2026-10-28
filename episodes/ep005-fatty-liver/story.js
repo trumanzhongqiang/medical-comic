@@ -44,7 +44,7 @@
     { start: B(76), end: B(84), lines: [[B(76), B(80), '这条路几乎没有感觉'], [B(80), B(84), '多数是体检查出来的']] },
     { start: B(84), end: B(92), lines: [[B(84), B(88), '不胖也可能有脂肪肝'], [B(88), B(92), '腰围比体重更说明问题']] },
     { start: B(92), end: B(104), lines: [[B(92), B(97), '每天多坐一小时'], [B(98), B(104), '肝里的脂肪就会多一点']] },
-    { start: B(104), end: B(116), lines: [[B(104), B(109), '减 5%，脂肪变就能改善'], [B(109), B(116), '减 10%，炎症和纤维化也能退']] },
+    { start: B(104), end: B(116), lines: [[B(104), B(109), '减 5%，脂肪变能改善'], [B(109), B(116), '减 10% 以上，可以逆转纤维化']] },
     { start: B(116), end: B(124), lines: [[B(116), B(120), '每周 150 分钟中等强度'], [B(120), B(124), '少含糖饮料，酒别喝']] },
     { start: B(124), end: BAR(35), lines: [[B(124), B(128), '复查看肝功能和超声'], [B(128), B(132), '必要时看弹性成像'], [B(132), BAR(35), '稳定后 6 到 12 个月一次']] },
     { start: BAR(35), end: DUR, lines: [[BAR(35), B(144), '肝不会喊疼'], [B(144), DUR, '但指标会替你说话']] }
@@ -268,12 +268,12 @@
     M.rr(g, x0 + 30, y0 + 120, w - 60, 30, 15); g.fillStyle = T.paperShadow; g.fill();
     M.rr(g, x0 + 30, y0 + 120, Math.max((w - 60) * grow, 6), 30, 15); g.fillStyle = T.coralLight; g.fill();
     M.text(g, '每天多坐 1 小时', x0 + 30, y0 + 190, { size: 34, weight: 700, align: 'left', role: 'object' });
-    M.text(g, '肝内脂肪 +1.15%', x0 + 30, y0 + 238, { size: 34, weight: 800, align: 'left', role: 'object', color: T.coralDark });
+    M.text(g, '肝内脂肪更多', x0 + 30, y0 + 238, { size: 34, weight: 800, align: 'left', role: 'object', color: T.coralDark });
     g.save(); g.globalAlpha *= rise;
     M.line(g, x0 + 30, y0 + 276, x0 + 30 + 220 * rise, y0 + 276, { w: 6, color: T.coralDark });
     g.restore();
-    M.text(g, '每天多 2500 步', x0 + 30, y0 + 330, { size: 34, weight: 700, align: 'left', role: 'object' });
-    M.text(g, '风险约降 17%', x0 + 30, y0 + 378, { size: 34, weight: 800, align: 'left', role: 'object', color: T.tealDark });
+    M.text(g, '每天多走一点', x0 + 30, y0 + 330, { size: 34, weight: 700, align: 'left', role: 'object' });
+    M.text(g, '比一直坐着好', x0 + 30, y0 + 378, { size: 34, weight: 800, align: 'left', role: 'object', color: T.tealDark });
     g.save(); g.globalAlpha *= steps; g.translate(x0 + 340, y0 + 340);
     for (let i = 0; i < 4; i++) {
       g.beginPath(); g.ellipse(-26 + i * 18, -i * 8, 9, 6, 0, 0, 7);
@@ -287,7 +287,7 @@
   const TIERS = [
     { k: '减 5%', v: '脂肪变改善', y: 660, color: '#F3C7BC' },
     { k: '减 7%–10%', v: '炎症改善', y: 746, color: '#EFB9A9' },
-    { k: '减 10% 以上', v: '纤维化可退', y: 832, color: '#E7A392' }
+    { k: '减 10% 以上', v: '纤维化逆转', y: 832, color: '#E7A392' }
   ];
   function weightSet(g, t, wa) {
     if (wa <= .02) return;
@@ -410,7 +410,7 @@
       { start: B(77), end: B(81), text: '多数靠体检发现', target: P(3150, 620), dy: -205 },
       { start: B(85), end: B(89), text: '腰围比体重更说明问题', target: P(3760, 620), dy: -175 },
       { start: B(94), end: B(98), text: '每多坐 1 小时，肝脂多一点', target: P(4470, 620), dy: -210, color: T.coralDark },
-      { start: B(108), end: B(112), text: '减得越多，退得越多', target: P(5300, 640), dy: -235 },
+      { start: B(108), end: B(112), text: '减得越多，改善的层次越深', target: P(5300, 640), dy: -235 },
       { start: B(117), end: B(121), text: '每周 150 分钟', target: P(5950, 630), dy: -225, color: T.tealDark },
       { start: B(132), end: B(136), text: '复查按医嘱', target: P(6590, 620), dy: -215 }
     ];

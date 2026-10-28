@@ -384,5 +384,6 @@
     }
   ],
   "sources": [{"title": "NIDDK — What Is Diabetes?", "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes", "claims": ["葡萄糖是能量来源", "胰岛素帮助葡萄糖进入细胞", "1 型自身免疫机制", "长期眼肾神经心血管风险"]}, {"title": "NIDDK — Insulin Resistance & Prediabetes", "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance", "claims": ["肌肉脂肪肝脏细胞反应变弱", "胰腺补偿后可能不足", "胰岛素抵抗常无症状", "健康饮食和活动"]}, {"title": "American Diabetes Association — Blood Glucose and Exercise", "url": "https://diabetes.org/health-wellness/fitness/blood-glucose-and-exercise", "claims": ["肌肉收缩可促进不完全依赖胰岛素的葡萄糖利用", "活动提高胰岛素敏感性"]}, {"title": "WHO — World Diabetes Day 2025", "url": "https://www.who.int/westernpacific/newsroom/events/detail/2025/11/14/western-pacific-events/world-diabetes-day-2025", "claims": ["早检测", "均衡饮食与日常活动", "长期血管神经风险", "个体化管理"]}],
-  "medical_review": {"claims_checked_against_sources": true, "clinician_reviewed": false, "note": "依据患者指南核对科普表述；未声称经过临床医生审稿"}
+  "medical_review": {"claims_checked_against_sources": true, "clinician_reviewed": false, "note": "依据患者指南核对科普表述；未声称经过临床医生审稿"},
+  "factcheck_legacy": {"since": "2026-10-26", "reason": "本期已对外发布，sources 为旧格式 title/url/claims 且画面文案不再改动，故不回填 verdict；两段式核查从 ep002 起适用"}
 }
