@@ -128,10 +128,10 @@ export const HypertensionArt: React.FC<{t: number; scene: string; u: number; bi:
   if (scene === "silent") {
     return (
       <g>
-        <g transform={`translate(${COL[0]} ${ROW[1] + 20}) scale(1.32)`}>
+        <g transform={`translate(${COL[0]} ${ROW[1] - 40}) scale(1.32)`}>
           <Person x={0} y={0} tense={0} />
         </g>
-        <Label x={COL[0]} y={ROW[2] + 34} text="没有不舒服" size={30} weight={800} />
+        <Label x={COL[0]} y={ROW[2] + 26} text="没有不舒服" size={30} weight={800} />
         <Label x={COL[1] - 60} y={ROW[1] + 40} text="≠" size={104} color={C.coralDark} weight={800} />
         <Label x={COL[2] - 130} y={ROW[1] + 20} text="血压不高" size={46} weight={800} color={C.ink} />
       </g>
@@ -161,9 +161,7 @@ export const HypertensionArt: React.FC<{t: number; scene: string; u: number; bi:
   if (scene === "cuff2") {
     return (
       <g>
-        <g transform={`translate(300 ${ROW[1] + 10}) scale(1)}`}>
-          <Cuff x={0} y={0} inflate={on(0.05, 0.5)} />
-        </g>
+        <Cuff x={300} y={ROW[1] + 10} inflate={on(0.05, 0.5)} />
         <Label x={300} y={ROW[2] + 20} text="袖带绑上臂，和心脏同高" size={28} />
         <Panel x={620} y={360} w={380} h={380} title="测两遍" tone={C.tealDark}>
           <Label x={810} y={520} text="1" size={64} weight={800} color={C.tealDark} />

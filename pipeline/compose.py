@@ -230,7 +230,10 @@ def main():
     mix = ep / "out" / "audio_mix.wav"
     print("混音中…", flush=True)
     bus = ep / "out" / "audio_bus0.wav"
-    sh([*base, "-filter_complex", ";".join([*af, f"[premaster]aresample=48000,{loudnorm}[aout]"]),
+    # loudnorm 的 linear 归一在真峰受限时会给不够，落库后实测偏低时用 loudness_trim_db 补回来。
+    trim = float(s.get("music", {}).get("loudness_trim_db", 0) or 0)
+    tail = f",volume={trim}dB" if trim else ""
+    sh([*base, "-filter_complex", ";".join([*af, f"[premaster]aresample=48000,{loudnorm}{tail}[aout]"]),
         "-map", "[aout]", "-c:a", "pcm_s24le", "-ar", "48000", str(bus)])
     # AAC 编码会在采样点之间产生过冲，限幅要留够余量；只削短尖峰，不动整体响度。
     target = float(s.get("true_peak_max", -1.8))

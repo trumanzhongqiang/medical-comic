@@ -1,0 +1,183 @@
+{
+  "scenes": {
+    "gauge": [
+      {
+        "at": 0.03,
+        "name": "tap",
+        "gain": 0.45
+      },
+      {
+        "at": 0.34,
+        "name": "tick",
+        "gain": 0.35
+      },
+      {
+        "at": 0.66,
+        "name": "ding",
+        "gain": 0.5
+      }
+    ],
+    "compare": [
+      {
+        "at": 0.05,
+        "name": "sweep-soft",
+        "gain": 0.4
+      },
+      {
+        "at": 0.3,
+        "name": "stamp",
+        "gain": 0.6
+      },
+      {
+        "at": 0.58,
+        "name": "stamp",
+        "gain": 0.55
+      }
+    ],
+    "elastic": [
+      {
+        "at": 0.05,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.36,
+        "name": "whoosh",
+        "gain": 0.42
+      },
+      {
+        "at": 0.66,
+        "name": "air-2",
+        "gain": 0.4
+      }
+    ],
+    "elastic2": [
+      {
+        "at": 0.1,
+        "name": "move-a",
+        "gain": 0.4
+      },
+      {
+        "at": 0.52,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "close": [
+      {
+        "at": 0.2,
+        "name": "tick",
+        "gain": 0.35
+      },
+      {
+        "at": 0.55,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "types": [
+      {
+        "at": 0.1,
+        "name": "stamp",
+        "gain": 0.6
+      },
+      {
+        "at": 0.4,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.72,
+        "name": "tick",
+        "gain": 0.32
+      }
+    ],
+    "silent": [
+      {
+        "at": 0.15,
+        "name": "paper",
+        "gain": 0.4
+      },
+      {
+        "at": 0.55,
+        "name": "tick",
+        "gain": 0.32
+      }
+    ],
+    "cuff": [
+      {
+        "at": 0.08,
+        "name": "paper",
+        "gain": 0.38
+      },
+      {
+        "at": 0.36,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.64,
+        "name": "tick",
+        "gain": 0.3
+      }
+    ],
+    "cuff2": [
+      {
+        "at": 0.1,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.46,
+        "name": "tick",
+        "gain": 0.34
+      },
+      {
+        "at": 0.72,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "record2": [
+      {
+        "at": 0.14,
+        "name": "stamp",
+        "gain": 0.58
+      },
+      {
+        "at": 0.5,
+        "name": "stamp",
+        "gain": 0.55
+      }
+    ],
+    "salt2": [
+      {
+        "at": 0.08,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.4,
+        "name": "tick",
+        "gain": 0.32
+      },
+      {
+        "at": 0.7,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "pill": [
+      {
+        "at": 0.15,
+        "name": "pop",
+        "gain": 0.42
+      },
+      {
+        "at": 0.58,
+        "name": "impact-soft",
+        "gain": 0.5
+      }
+    ]
+  }
+}
