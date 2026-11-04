@@ -1,0 +1,219 @@
+{
+  "_about": "每个动作配一个「像那个东西」的拟物音：纸是纸、章是章、快门是快门。at 是拍内比例，gain 是相对力度。",
+  "scenes": {
+    "report": [
+      {
+        "at": 0.02,
+        "name": "paper",
+        "gain": 0.9
+      },
+      {
+        "at": 0.16,
+        "name": "stamp",
+        "gain": 0.7
+      },
+      {
+        "at": 0.5,
+        "name": "stamp",
+        "gain": 0.85
+      }
+    ],
+    "timeline": [
+      {
+        "at": 0.04,
+        "name": "sweep-soft",
+        "gain": 0.5
+      }
+    ],
+    "missA": [
+      {
+        "at": 0.2,
+        "name": "stamp",
+        "gain": 0.6
+      },
+      {
+        "at": 0.45,
+        "name": "stamp",
+        "gain": 0.7
+      },
+      {
+        "at": 0.64,
+        "name": "tick",
+        "gain": 0.35
+      }
+    ],
+    "replay": [
+      {
+        "at": 0.03,
+        "name": "tap",
+        "gain": 0.45
+      },
+      {
+        "at": 0.58,
+        "name": "tick",
+        "gain": 0.4
+      }
+    ],
+    "avg3m": [
+      {
+        "at": 0.04,
+        "name": "sweep-soft",
+        "gain": 0.45
+      },
+      {
+        "at": 0.4,
+        "name": "ding",
+        "gain": 0.5
+      }
+    ],
+    "missB": [
+      {
+        "at": 0.2,
+        "name": "stamp",
+        "gain": 0.6
+      },
+      {
+        "at": 0.44,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.6,
+        "name": "tick",
+        "gain": 0.32
+      }
+    ],
+    "rbc": [
+      {
+        "at": 0.28,
+        "name": "tick",
+        "gain": 0.45
+      }
+    ],
+    "rbc2": [
+      {
+        "at": 0.14,
+        "name": "tick",
+        "gain": 0.4
+      },
+      {
+        "at": 0.3,
+        "name": "tick",
+        "gain": 0.4
+      }
+    ],
+    "fix": [
+      {
+        "at": 0.1,
+        "name": "tap",
+        "gain": 0.45
+      },
+      {
+        "at": 0.26,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.42,
+        "name": "ding",
+        "gain": 0.5
+      }
+    ],
+    "camera": [
+      {
+        "at": 0.02,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.2,
+        "name": "shutter",
+        "gain": 0.9
+      },
+      {
+        "at": 0.46,
+        "name": "paper",
+        "gain": 0.6
+      }
+    ],
+    "ruler1": [
+      {
+        "at": 0.04,
+        "name": "sweep-soft",
+        "gain": 0.5
+      },
+      {
+        "at": 0.38,
+        "name": "tick",
+        "gain": 0.4
+      }
+    ],
+    "ruler2": [
+      {
+        "at": 0.04,
+        "name": "sweep-soft",
+        "gain": 0.5
+      }
+    ],
+    "ruler3": [
+      {
+        "at": 0.04,
+        "name": "sweep-soft",
+        "gain": 0.5
+      }
+    ],
+    "trap": [
+      {
+        "at": 0.06,
+        "name": "tick",
+        "gain": 0.45
+      },
+      {
+        "at": 0.2,
+        "name": "tick",
+        "gain": 0.45
+      },
+      {
+        "at": 0.34,
+        "name": "tick",
+        "gain": 0.45
+      }
+    ],
+    "once": [
+      {
+        "at": 0.1,
+        "name": "paper",
+        "gain": 0.55
+      },
+      {
+        "at": 0.3,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "habit": [
+      {
+        "at": 0.08,
+        "name": "tap",
+        "gain": 0.45
+      },
+      {
+        "at": 0.12,
+        "name": "ding",
+        "gain": 0.4
+      }
+    ],
+    "quote": [
+      {
+        "at": 0.06,
+        "name": "paper",
+        "gain": 0.45
+      },
+      {
+        "at": 0.5,
+        "name": "sweep-soft",
+        "gain": 0.45
+      }
+    ]
+  }
+}

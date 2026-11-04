@@ -1,0 +1,252 @@
+{
+  "slug": "ep003-hypertension",
+  "title": "血压为什么分高压和低压",
+  "episode": 3,
+  "composition": "Hypertension",
+  "timing": "cues",
+  "ending": {
+    "big": "一高一低两个数",
+    "sub": "高压在心脏使劲时，低压在它松手时",
+    "chips": [
+      "盐每天少于 5 克",
+      "药别自己停，复查别断"
+    ],
+    "next": "下期：血脂为什么分好和坏"
+  },
+  "sections": [
+    {
+      "beat": 0,
+      "label": "一挤一松两个数"
+    },
+    {
+      "beat": 3,
+      "label": "松手后为什么还有压力"
+    },
+    {
+      "beat": 5,
+      "label": "两个数各看什么"
+    },
+    {
+      "beat": 7,
+      "label": "压力为什么变高"
+    },
+    {
+      "beat": 11,
+      "label": "怎么量才算数"
+    },
+    {
+      "beat": 16,
+      "label": "接下来怎么做"
+    }
+  ],
+  "beats": [
+    {
+      "cues": [
+        0,
+        1
+      ],
+      "scene": "gauge",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        2,
+        3
+      ],
+      "scene": "systolic",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        4,
+        5
+      ],
+      "scene": "diastolic",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        6,
+        7
+      ],
+      "scene": "elastic",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        8,
+        9
+      ],
+      "scene": "elastic2",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        10,
+        11
+      ],
+      "scene": "compare",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        12,
+        13
+      ],
+      "scene": "types",
+      "note": {
+        "kind": "term",
+        "title": "两种高",
+        "body": "大血管硬 · 小血管紧"
+      }
+    },
+    {
+      "cues": [
+        14,
+        15
+      ],
+      "scene": "why",
+      "note": {
+        "kind": "term",
+        "title": "三件事",
+        "body": "水 · 紧 · 神经"
+      }
+    },
+    {
+      "cues": [
+        16,
+        17
+      ],
+      "scene": "salt",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        18,
+        19
+      ],
+      "scene": "stiff",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        20,
+        21
+      ],
+      "scene": "silent",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        22,
+        23
+      ],
+      "scene": "cuff",
+      "note": {
+        "kind": "term",
+        "title": "量之前",
+        "body": "坐 5 分钟 · 脚放平 · 不说话"
+      }
+    },
+    {
+      "cues": [
+        24,
+        25
+      ],
+      "scene": "cuff2",
+      "note": {
+        "kind": "term",
+        "title": "量两遍",
+        "body": "隔 1–2 分钟，取平均"
+      }
+    },
+    {
+      "cues": [
+        26,
+        27
+      ],
+      "scene": "record",
+      "note": {
+        "kind": "term",
+        "title": "5–7 天",
+        "body": "第一天的数不算"
+      }
+    },
+    {
+      "cues": [
+        28,
+        29
+      ],
+      "scene": "record2",
+      "note": {
+        "kind": "number",
+        "title": "135/85",
+        "body": "家里 · 诊室 140/90"
+      }
+    },
+    {
+      "cues": [
+        30,
+        31
+      ],
+      "scene": "doctor",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        32,
+        33,
+        34
+      ],
+      "scene": "salt2",
+      "note": {
+        "kind": "term",
+        "title": "每天",
+        "body": "盐 < 5 克 · 运动 150 分钟"
+      }
+    },
+    {
+      "cues": [
+        35,
+        36
+      ],
+      "scene": "pill",
+      "note": {
+        "kind": "term",
+        "title": "别自己停",
+        "body": "降下来是药在起作用"
+      }
+    },
+    {
+      "cues": [
+        37,
+        38
+      ],
+      "scene": "close",
+      "note": {
+        "kind": "none"
+      }
+    }
+  ],
+  "duration": 171.8
+}

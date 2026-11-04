@@ -1,0 +1,225 @@
+{
+  "slug": "ep006-gout",
+  "title": "尿酸为什么会变成扎人的针",
+  "episode": 6,
+  "composition": "Gout",
+  "timing": "cues",
+  "ending": {
+    "big": "尿酸溶不下",
+    "sub": "才会变成扎人的针",
+    "chips": [
+      "发作先处理这一次的疼和肿",
+      "长期把尿酸压下来"
+    ],
+    "next": "下期：甲状腺，一个油门一个刹车"
+  },
+  "sections": [
+    {
+      "beat": 0,
+      "label": "先看这只脚"
+    },
+    {
+      "beat": 3,
+      "label": "针是怎么长出来的"
+    },
+    {
+      "beat": 5,
+      "label": "身体来包，所以又红又肿"
+    },
+    {
+      "beat": 8,
+      "label": "尿酸高不等于痛风"
+    },
+    {
+      "beat": 11,
+      "label": "该做什么"
+    }
+  ],
+  "beats": [
+    {
+      "cues": [
+        0,
+        1
+      ],
+      "scene": "toe",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        2,
+        3
+      ],
+      "scene": "nospr",
+      "note": {
+        "kind": "term",
+        "title": "痛风",
+        "body": "突然红肿热痛"
+      }
+    },
+    {
+      "cues": [
+        4,
+        5
+      ],
+      "scene": "bone",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        6,
+        7
+      ],
+      "scene": "uric",
+      "note": {
+        "kind": "term",
+        "title": "尿酸",
+        "body": "血里的代谢废物"
+      }
+    },
+    {
+      "cues": [
+        8,
+        9
+      ],
+      "scene": "crystal",
+      "note": {
+        "kind": "term",
+        "title": "析出",
+        "body": "溶不下，就成针"
+      }
+    },
+    {
+      "cues": [
+        10,
+        11
+      ],
+      "scene": "wbc",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        12,
+        13
+      ],
+      "scene": "wrap",
+      "note": {
+        "kind": "term",
+        "title": "白细胞",
+        "body": "来包住、清理"
+      }
+    },
+    {
+      "cues": [
+        14,
+        15
+      ],
+      "scene": "flare",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        16,
+        17
+      ],
+      "scene": "where",
+      "note": {
+        "kind": "term",
+        "title": "大脚趾根",
+        "body": "最常见的位置"
+      }
+    },
+    {
+      "cues": [
+        18,
+        19
+      ],
+      "scene": "highnot",
+      "note": {
+        "kind": "term",
+        "title": "高尿酸",
+        "body": "不等于痛风"
+      }
+    },
+    {
+      "cues": [
+        20,
+        21
+      ],
+      "scene": "quiet",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        22,
+        23
+      ],
+      "scene": "acute",
+      "note": {
+        "kind": "term",
+        "title": "急性期",
+        "body": "先止痛消肿"
+      }
+    },
+    {
+      "cues": [
+        24,
+        25
+      ],
+      "scene": "long",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        26,
+        27
+      ],
+      "scene": "food",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        28,
+        29
+      ],
+      "scene": "doctor",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        30,
+        31
+      ],
+      "scene": "silent",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        32,
+        33
+      ],
+      "scene": "close",
+      "note": {
+        "kind": "none"
+      }
+    }
+  ],
+  "duration": 131.13
+}

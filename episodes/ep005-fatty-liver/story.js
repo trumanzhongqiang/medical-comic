@@ -395,9 +395,8 @@
     ]);
   }
 
-  function notes(g, t, cam) {
-    const P = (x, y) => () => ({ x, y });
-    const specs = [
+  const P = (x, y) => () => ({ x, y });
+  const NOTE_SPECS = [
       { start: B(2), end: B(6), text: '超声报告：提示脂肪肝', target: P(500, 900), dy: 150 },
       { start: B(9), end: B(13), text: '肝：糖和脂肪的转换站', target: P(1280, 560), dy: -225 },
       { start: B(18), end: B(22), text: '20 个肝细胞里 1 个', target: P(2080, 1046), dy: 120, color: T.coralDark },
@@ -413,8 +412,16 @@
       { start: B(108), end: B(112), text: '减得越多，改善的层次越深', target: P(5300, 640), dy: -235 },
       { start: B(117), end: B(121), text: '每周 150 分钟', target: P(5950, 630), dy: -225, color: T.tealDark },
       { start: B(132), end: B(136), text: '复查按医嘱', target: P(6590, 620), dy: -215 }
-    ];
-    specs.forEach(spec => F.note(g, t, spec, cam));
+  ];
+
+  // 名牌窗口对齐到所属那一拍：整拍都在讲同一个东西，字幕与图形始终有指向关系
+  NOTE_SPECS.forEach(sp => {
+    const b = beats.find(x => sp.start >= x.start - .02 && sp.start < x.end);
+    if (b) { sp.start = b.start; sp.end = b.end; }
+  });
+
+  function notes(g, t, cam) {
+    NOTE_SPECS.forEach(spec => F.note(g, t, spec, cam));
   }
 
   function scene(g, t, cam) {
@@ -466,7 +473,7 @@
       const cam = camera(t);
       g.save(); g.beginPath(); g.rect(0, 330, 1080, 810); g.clip();
       M.withCamera(g, cam, gg => scene(gg, t, cam)); g.restore();
-      F.brand(g); F.caption(g, t, beats); notes(g, t, cam);
+      F.brand(g); F.caption(g, t, beats); F.captionLink(g, t, beats, NOTE_SPECS, cam); notes(g, t, cam);
     }
     ending(g, t);
   });

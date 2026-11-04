@@ -1,0 +1,407 @@
+{
+  "slug": "ep007-thyroid",
+  "title": "甲亢和甲减：一个油门卡住，一个动力不足",
+  "episode": 7,
+  "composition": "Thyroid",
+  "timing": "cues",
+  "duration": 235.56,
+  "ending": {
+    "big": "甲状腺就是油门",
+    "sub": "甲亢是卡住，甲减是松了",
+    "chips": [
+      "体检查甲功，别靠感觉",
+      "药别自己加，也别自己停"
+    ],
+    "next": "下期：体检报告上的肝功和肾功"
+  },
+  "beats": [
+    {
+      "cues": [
+        0
+      ],
+      "scene": "tired",
+      "note": {
+        "kind": "term",
+        "title": "甲状腺",
+        "body": "先别急着怪自己"
+      }
+    },
+    {
+      "cues": [
+        1
+      ],
+      "scene": "report",
+      "note": {
+        "kind": "term",
+        "title": "体检单上的它",
+        "body": "甲功 + 彩超，是两件事"
+      }
+    },
+    {
+      "cues": [
+        2
+      ],
+      "scene": "signs-hyper",
+      "note": {
+        "kind": "term",
+        "title": "甲亢",
+        "accent": true,
+        "body": "激素长期高于正常"
+      }
+    },
+    {
+      "cues": [
+        3
+      ],
+      "scene": "split",
+      "note": {
+        "kind": "term",
+        "title": "同一个腺体",
+        "body": "两种完全相反的表现"
+      }
+    },
+    {
+      "cues": [
+        4,
+        5
+      ],
+      "scene": "neck",
+      "note": {
+        "kind": "term",
+        "title": "位置",
+        "body": "喉结往下、气管两旁"
+      }
+    },
+    {
+      "cues": [
+        6
+      ],
+      "scene": "where",
+      "note": {
+        "kind": "term",
+        "title": "蝴蝶形",
+        "body": "左右两叶 + 中间峡部"
+      }
+    },
+    {
+      "cues": [
+        7
+      ],
+      "scene": "size",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        8,
+        9,
+        10
+      ],
+      "scene": "systemic",
+      "note": {
+        "kind": "term",
+        "title": "管全身快慢",
+        "body": "激素就是它发的指令"
+      }
+    },
+    {
+      "cues": [
+        11
+      ],
+      "scene": "pedal",
+      "note": {
+        "kind": "term",
+        "title": "油门",
+        "body": "激素 = 踩下去的那股劲"
+      }
+    },
+    {
+      "cues": [
+        12
+      ],
+      "scene": "pedal-gentle",
+      "note": {
+        "kind": "term",
+        "title": "踩深踩浅",
+        "body": "全身跟着快慢"
+      }
+    },
+    {
+      "cues": [
+        13
+      ],
+      "scene": "pedal-stuck",
+      "note": {
+        "kind": "term",
+        "title": "甲亢",
+        "accent": true,
+        "body": "油门卡住，收不回来"
+      }
+    },
+    {
+      "cues": [
+        14
+      ],
+      "scene": "fast",
+      "note": {
+        "kind": "number",
+        "title": "110",
+        "unit": "次 / 分",
+        "accent": true,
+        "body": "静息心率也常过 100"
+      }
+    },
+    {
+      "cues": [
+        15
+      ],
+      "scene": "hyper-body",
+      "note": {
+        "kind": "term",
+        "title": "吃得多还掉秤",
+        "accent": true,
+        "body": "怕热、爱出汗"
+      }
+    },
+    {
+      "cues": [
+        16
+      ],
+      "scene": "mood",
+      "note": {
+        "kind": "term",
+        "title": "手抖 · 易急",
+        "accent": true,
+        "body": "不是脾气变差，是激素在推"
+      }
+    },
+    {
+      "cues": [
+        17
+      ],
+      "scene": "pedal-off",
+      "note": {
+        "kind": "term",
+        "title": "甲减",
+        "body": "油门松开，全身都慢"
+      }
+    },
+    {
+      "cues": [
+        18
+      ],
+      "scene": "slow",
+      "note": {
+        "kind": "number",
+        "title": "50",
+        "unit": "次 / 分",
+        "body": "心跳慢，人就没劲"
+      }
+    },
+    {
+      "cues": [
+        19
+      ],
+      "scene": "hypo-body",
+      "note": {
+        "kind": "term",
+        "title": "怕冷 · 犯困 · 长肉",
+        "body": "皮肤干、大便几天一次"
+      }
+    },
+    {
+      "cues": [
+        20
+      ],
+      "scene": "mirror",
+      "note": {
+        "kind": "term",
+        "title": "像照镜子",
+        "body": "一个都快，一个都慢"
+      }
+    },
+    {
+      "cues": [
+        21
+      ],
+      "scene": "unsure",
+      "note": {
+        "kind": "term",
+        "title": "光靠感觉",
+        "body": "分不出来，要看化验单"
+      }
+    },
+    {
+      "cues": [
+        22
+      ],
+      "scene": "causes",
+      "note": {
+        "kind": "term",
+        "title": "别的病也这样",
+        "body": "先查了再说"
+      }
+    },
+    {
+      "cues": [
+        23
+      ],
+      "scene": "lab",
+      "note": {
+        "kind": "term",
+        "title": "甲功三项",
+        "body": "TSH + 游离 T4 + 游离 T3"
+      }
+    },
+    {
+      "cues": [
+        24,
+        25
+      ],
+      "scene": "tsh",
+      "note": {
+        "kind": "term",
+        "title": "TSH",
+        "body": "大脑催甲状腺干活的命令"
+      }
+    },
+    {
+      "cues": [
+        26
+      ],
+      "scene": "lab",
+      "note": {
+        "kind": "term",
+        "title": "T4 / T3",
+        "body": "高多半甲亢，低多半甲减"
+      }
+    },
+    {
+      "cues": [
+        27
+      ],
+      "scene": "ok",
+      "note": {
+        "kind": "term",
+        "title": "都能治"
+      }
+    },
+    {
+      "cues": [
+        28
+      ],
+      "scene": "drug-hyper",
+      "note": {
+        "kind": "term",
+        "title": "抗甲状腺药",
+        "accent": true,
+        "body": "一般要吃 1.5–2 年"
+      }
+    },
+    {
+      "cues": [
+        29
+      ],
+      "scene": "drug-hypo",
+      "note": {
+        "kind": "term",
+        "title": "左甲状腺素",
+        "body": "早饭前半小时，空腹"
+      }
+    },
+    {
+      "cues": [
+        30
+      ],
+      "scene": "dose",
+      "note": {
+        "kind": "term",
+        "title": "剂量",
+        "body": "按化验结果调，别自己改"
+      }
+    },
+    {
+      "cues": [
+        31
+      ],
+      "scene": "follow",
+      "note": {
+        "kind": "number",
+        "title": "1",
+        "unit": "个月起",
+        "body": "稳了改 3–6 个月一次"
+      }
+    },
+    {
+      "cues": [
+        32
+      ],
+      "scene": "pregnant",
+      "note": {
+        "kind": "term",
+        "title": "备孕 / 怀孕",
+        "body": "TSH 目标比普通人更低"
+      }
+    },
+    {
+      "cues": [
+        33
+      ],
+      "scene": "warning",
+      "note": {
+        "kind": "term",
+        "title": "尽快去查",
+        "accent": true,
+        "body": "脖子粗、声哑、摸到硬块"
+      }
+    },
+    {
+      "cues": [
+        34
+      ],
+      "scene": "summary",
+      "note": {
+        "kind": "none"
+      }
+    }
+  ],
+  "sections": [
+    {
+      "beat": 0,
+      "label": "先从一个常见的困说起"
+    },
+    {
+      "beat": 3,
+      "label": "甲状腺是什么"
+    },
+    {
+      "beat": 7,
+      "label": "它管全身的快慢"
+    },
+    {
+      "beat": 8,
+      "label": "激素就是油门"
+    },
+    {
+      "beat": 10,
+      "label": "甲亢：油门卡住"
+    },
+    {
+      "beat": 14,
+      "label": "甲减：油门松开"
+    },
+    {
+      "beat": 17,
+      "label": "症状像照镜子"
+    },
+    {
+      "beat": 20,
+      "label": "抽血才分得清"
+    },
+    {
+      "beat": 23,
+      "label": "查出来怎么办"
+    }
+  ]
+}

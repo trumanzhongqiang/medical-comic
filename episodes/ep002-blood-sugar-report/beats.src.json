@@ -1,0 +1,143 @@
+{
+ "slug": "ep002-blood-sugar-report",
+ "title": "化验单上两个数，该信哪个？",
+ "episode": 2,
+ "composition": "BloodSugar",
+ "timing": "cues",
+ "ending": {
+  "big": "空腹看那一刻，糖化看三个月",
+  "sub": "空腹血糖代表抽血这一刻，糖化代表过去三个月",
+  "chips": [
+   "对不上，先补查饭后",
+   "拿不准，把单子带给医生"
+  ],
+  "next": "下期：血压为什么分高压和低压"
+ },
+ "sections": [
+  {
+   "beat": 0,
+   "label": "一个正常，一个超标"
+  },
+  {
+   "beat": 1,
+   "label": "两个数的时间窗"
+  },
+  {
+   "beat": 2,
+   "label": "空腹正常，糖化超标"
+  },
+  {
+   "beat": 5,
+   "label": "空腹高，糖化正常"
+  },
+  {
+   "beat": 6,
+   "label": "糖化为什么代表三个月"
+  },
+  {
+   "beat": 8,
+   "label": "对不上怎么办"
+  }
+ ],
+ "beats": [
+  {
+   "cues": [
+    0,
+    1
+   ],
+   "scene": "report",
+   "note": {
+    "kind": "term",
+    "title": "糖化",
+    "body": "三个月的平均"
+   }
+  },
+  {
+   "cues": [
+    2,
+    3
+   ],
+   "scene": "timeline",
+   "note": {
+    "kind": "none"
+   }
+  },
+  {
+   "cues": [
+    4,
+    5
+   ],
+   "scene": "missA",
+   "note": {
+    "kind": "none"
+   }
+  },
+  {
+   "cues": [
+    6
+   ],
+   "scene": "replay",
+   "note": {
+    "kind": "term",
+    "title": "饭后两小时",
+    "body": "血糖最高的一段"
+   }
+  },
+  {
+   "cues": [
+    7
+   ],
+   "scene": "avg3m",
+   "note": {
+    "kind": "none"
+   }
+  },
+  {
+   "cues": [
+    8,
+    9,
+    10
+   ],
+   "scene": "missB",
+   "note": {
+    "kind": "term",
+    "title": "刚冒头",
+    "body": "最近才高起来"
+   }
+  },
+  {
+   "cues": [
+    11
+   ],
+   "scene": "rbc",
+   "note": {
+    "kind": "term",
+    "title": "红细胞",
+    "body": "寿命约四个月"
+   }
+  },
+  {
+   "cues": [
+    12
+   ],
+   "scene": "rbc2",
+   "note": {
+    "kind": "term",
+    "title": "老的糖多",
+    "body": "新的还干净"
+   }
+  },
+  {
+   "cues": [
+    13,
+    14,
+    15
+   ],
+   "scene": "fix",
+   "note": {
+    "kind": "none"
+   }
+  }
+ ],
+ "duration": 100.44
+}

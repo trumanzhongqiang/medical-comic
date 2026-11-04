@@ -1,0 +1,248 @@
+{
+  "slug": "ep005-fatty-liver",
+  "title": "肝里的油是从哪来的",
+  "episode": 5,
+  "composition": "FattyLiver",
+  "timing": "cues",
+  "ending": {
+    "big": "肝不会喊疼",
+    "sub": "有没有变好，得靠检查看",
+    "chips": [
+      "减重 5% 起，能吃动能坚持",
+      "复查按风险评估安排"
+    ],
+    "next": "下期：痛风，尿酸为什么会结晶"
+  },
+  "sections": [
+    {
+      "beat": 0,
+      "label": "不喝酒也会有"
+    },
+    {
+      "beat": 2,
+      "label": "进来的两条路"
+    },
+    {
+      "beat": 4,
+      "label": "出去的两条路"
+    },
+    {
+      "beat": 7,
+      "label": "多少算脂肪肝"
+    },
+    {
+      "beat": 9,
+      "label": "会不会变严重"
+    },
+    {
+      "beat": 12,
+      "label": "接下来怎么做"
+    }
+  ],
+  "beats": [
+    {
+      "cues": [
+        0,
+        1
+      ],
+      "scene": "open",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        2,
+        3
+      ],
+      "scene": "balance",
+      "note": {
+        "kind": "term",
+        "title": "进出不平衡",
+        "body": "进来的多，出去的少"
+      }
+    },
+    {
+      "cues": [
+        4,
+        5
+      ],
+      "scene": "in1",
+      "note": {
+        "kind": "term",
+        "title": "来路一",
+        "body": "吃进来 · 运过来"
+      }
+    },
+    {
+      "cues": [
+        6,
+        7
+      ],
+      "scene": "in2",
+      "note": {
+        "kind": "term",
+        "title": "来路二",
+        "body": "肝自己用糖做"
+      }
+    },
+    {
+      "cues": [
+        8,
+        9
+      ],
+      "scene": "out",
+      "note": {
+        "kind": "term",
+        "title": "出路",
+        "body": "烧掉 · 运走"
+      }
+    },
+    {
+      "cues": [
+        10,
+        11
+      ],
+      "scene": "why",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        12,
+        13
+      ],
+      "scene": "insulin",
+      "note": {
+        "kind": "term",
+        "title": "胰岛素抵抗",
+        "body": "对胰岛素不敏感"
+      }
+    },
+    {
+      "cues": [
+        14,
+        15
+      ],
+      "scene": "define",
+      "note": {
+        "kind": "term",
+        "title": "脂肪肝",
+        "body": "肝细胞里脂肪超量"
+      }
+    },
+    {
+      "cues": [
+        16,
+        17
+      ],
+      "scene": "ultra",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        18,
+        19
+      ],
+      "scene": "progress",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        20,
+        21
+      ],
+      "scene": "progress2",
+      "note": {
+        "kind": "term",
+        "title": "纤维化",
+        "body": "炎症反复才留疤"
+      }
+    },
+    {
+      "cues": [
+        22,
+        23
+      ],
+      "scene": "check",
+      "note": {
+        "kind": "term",
+        "title": "弹性成像",
+        "body": "看纤维化，不是常规"
+      }
+    },
+    {
+      "cues": [
+        24,
+        25
+      ],
+      "scene": "lose",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        26,
+        27
+      ],
+      "scene": "vary",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        28,
+        29
+      ],
+      "scene": "eat",
+      "note": {
+        "kind": "term",
+        "title": "少碰",
+        "body": "甜饮料 · 酒 · 主食过量"
+      }
+    },
+    {
+      "cues": [
+        30,
+        31
+      ],
+      "scene": "move",
+      "note": {
+        "kind": "number",
+        "title": "150",
+        "unit": "分钟 / 周",
+        "body": "是下限，不是目标"
+      }
+    },
+    {
+      "cues": [
+        32,
+        33
+      ],
+      "scene": "follow",
+      "note": {
+        "kind": "term",
+        "title": "查什么",
+        "body": "肝功 · 血糖血脂 · 纤维化"
+      }
+    },
+    {
+      "cues": [
+        34,
+        35
+      ],
+      "scene": "close",
+      "note": {
+        "kind": "none"
+      }
+    }
+  ],
+  "duration": 167.2
+}

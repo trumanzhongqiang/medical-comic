@@ -1,17 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh">
 <head>
-<meta charset="utf-8">
-<title>stage</title>
+<meta charset="utf-8" />
+<title>loading</title>
 <style>
-  html,body{margin:0;padding:0;background:#F7F1E4;overflow:hidden}
-  canvas{display:block;width:1080px;height:1440px}
+  html, body { margin: 0; background: #F6F0E5; }
+  #stage { width: 1080px; height: 1440px; position: relative; overflow: hidden; }
+  .cap { position: absolute; left: 72px; right: 80px; top: 150px; font-family: "Songti SC","STSong",serif;
+         font-size: 68px; font-weight: 800; line-height: 1.28; color: #17324D; }
+  .note { position: absolute; background: #FFFCF5; border: 3px solid #17324D; border-radius: 16px;
+          padding: 12px 20px; max-width: 520px; }
+  .note b { display: block; font-family: "Songti SC",serif; font-size: 44px; color: #17324D; }
+  .note span { display: block; font-family: "PingFang SC","Hiragino Sans GB",sans-serif; font-size: 44px; color: #526477; }
+  .fine { position: absolute; left: 72px; bottom: 78px; font-family: "PingFang SC",sans-serif; font-size: 36px; color: #65717B; }
+  .brand { position: absolute; left: 72px; top: 78px; font-family: "PingFang SC",sans-serif; font-size: 36px; color: #17324D; }
 </style>
 </head>
 <body>
-<canvas id="stage" width="1080" height="1440"></canvas>
-<script src="../../pipeline/engine.js"></script>
-<script src="../../pipeline/frame.js"></script>
-<script src="story.js"></script>
+<div id="stage"></div>
+<script>
+const OFFSET = 0.5804988662, BEAT = 60 / 77;
+const B = n => OFFSET + n * BEAT, BAR = n => B(n * 4), DUR = 116;
+const beats = [
+  [0, BAR(2), ["你量到的两个数", "是血管里的压力"]],
+  [BAR(2), BAR(4), ["心脏一挤", "血冲进右边这根血管"]],
+  [BAR(4), B(26), ["心脏一松", "血管里的压力落到最低"]],
+  [B(26), BAR(9), ["血管壁会回弹", "血才不会断"]],
+  [BAR(9), BAR(11), ["血变多，或者血管难推", "压力就高"]],
+  [BAR(11), BAR(13), ["远处这段变细", "同样的血更难推"]],
+  [BAR(13), BAR(15), ["盐吃多，身体留住水", "血量变多"]],
+  [BAR(15), BAR(17), ["一紧张，心跳快", "血管也收紧"]],
+  [BAR(17), BAR(19), ["血管壁变厚变硬", "压力更难降"]],
+  [BAR(19), BAR(21), ["你往往没感觉", "只能量出来"]],
+  [BAR(21), BAR(23), ["量之前", "先安静坐五分钟"]],
+  [BAR(23), BAR(26), ["在家连测几天", "135 和 85 算高"]],
+  [BAR(26), BAR(29), ["在医院量", "140 和 90 算高"]],
+  [BAR(29), BAR(31), ["少吃盐", "再让自己多动一点"]],
+  [BAR(31), BAR(35), ["药按医嘱吃", "复查别自己断"]],
+  [BAR(35), DUR, ["两个数", "就是这套压力高不高"]]
+];
+const notes = [
+  [B(4), BAR(2), "血压计", "量的是血管里的压力", 540, 430],
+  [B(9), B(13), "心脏", "左边这颗，把血挤出去", 96, 430],
+  [B(17), B(21), "血管", "血从心脏挤进这里", 560, 900],
+  [B(28), B(32), "血管壁", "松开后还会回弹", 560, 900],
+  [B(37), B(41), "压力表", "血多或难推，针就高", 500, 430],
+  [B(45), B(49), "小动脉", "变细以后更难推", 620, 980],
+  [B(53), B(57), "盐", "让身体留住水", 96, 980],
+  [B(61), B(65), "紧张", "心跳变快，血管收紧", 500, 980],
+  [B(69), B(73), "血管壁", "变厚以后更难松开", 560, 980],
+  [B(85), B(89), "袖带", "缠在上臂再量", 96, 980],
+  [B(93), B(97), "家里", "连着几天量，再看平均", 560, 360],
+  [B(105), B(109), "医院", "140 和 90 算高", 600, 430],
+  [B(117), B(121), "盐", "每天少于 5 克", 96, 980],
+  [B(133), B(137), "复查", "三到六个月一次", 620, 980]
+];
+const stage = document.getElementById("stage");
+function box(el) {
+  const r = el.getBoundingClientRect();
+  return {text: el.innerText, x: r.x, y: r.y, w: r.width, h: r.height, size: parseFloat(getComputedStyle(el).fontSize)};
+}
+window.__seek = function (t) {
+  const beat = beats.find(b => t >= b[0] && t < b[1]) || beats[beats.length - 1];
+  const note = notes.find(n => t >= n[0] && t < n[1]);
+  const ending = t >= BAR(35);
+  stage.innerHTML = ending
+    ? `<div class="cap" style="top:620px;text-align:center;left:90px;right:90px">你量到的两个数<br>就是这根血管里的压力</div>
+       <div class="fine" style="left:72px;right:72px;width:auto;text-align:center;bottom:90px">本内容仅供科普，不能替代医生诊疗</div>`
+    : `<div class="brand">医学科普漫画</div><div class="cap">${beat[2].join("<br>")}</div>` +
+      (note ? `<div class="note" style="left:${note[4]}px;top:${note[5]}px"><b>${note[2]}</b><span>${note[3]}</span></div>` : "") +
+      `<div class="fine">本内容仅供科普，不能替代医生诊疗</div>`;
+};
+window.__audit = function () {
+  const text = [...stage.querySelectorAll(".cap,.note b,.note span,.fine,.brand")].map(el => {
+    const item = box(el);
+    if (el.classList.contains("fine")) item.role = "disclaimer";
+    if (el.classList.contains("brand")) item.role = "brand";
+    if (el.tagName === "B") item.role = "label";
+    return item;
+  });
+  return {text};
+};
+window.__DURATION = DUR;
+window.__ASSETS_PENDING = false;
+document.title = "ready";
+</script>
 </body>
 </html>

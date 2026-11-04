@@ -1,0 +1,182 @@
+[
+  {
+    "file": "voice/v000.wav",
+    "t": 1.2,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v001.wav",
+    "t": 5.54,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v002.wav",
+    "t": 8.821,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v003.wav",
+    "t": 12.031,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v004.wav",
+    "t": 19.03,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v005.wav",
+    "t": 22.535,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v006.wav",
+    "t": 27.311,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v007.wav",
+    "t": 32.172,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v008.wav",
+    "t": 38.343,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v009.wav",
+    "t": 40.717,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v010.wav",
+    "t": 46.856,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v011.wav",
+    "t": 49.627,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v012.wav",
+    "t": 57.934,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v013.wav",
+    "t": 64.06,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v014.wav",
+    "t": 67.905,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v015.wav",
+    "t": 69.836,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v016.wav",
+    "t": 76.026,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v017.wav",
+    "t": 79.515,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v018.wav",
+    "t": 85.483,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v019.wav",
+    "t": 89.354,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v020.wav",
+    "t": 93.311,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v021.wav",
+    "t": 98.549,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v022.wav",
+    "t": 103.836,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v023.wav",
+    "t": 108.27,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v024.wav",
+    "t": 114.684,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v025.wav",
+    "t": 117.793,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v026.wav",
+    "t": 122.318,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v027.wav",
+    "t": 127.128,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v028.wav",
+    "t": 131.245,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v029.wav",
+    "t": 133.272,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v030.wav",
+    "t": 139.807,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v031.wav",
+    "t": 143.452,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v032.wav",
+    "t": 146.299,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v033.wav",
+    "t": 150.481,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v034.wav",
+    "t": 154.047,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v035.wav",
+    "t": 156.186,
+    "gain": 1.0
+  }
+]

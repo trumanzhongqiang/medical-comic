@@ -27,6 +27,7 @@ python3 pipeline/qacheck.py episodes/ep003-hypertension   # 看 out/qa/ 抽帧
 | `assets/audio/sfx/` | 共用音效库（配乐不在这里，在每期目录的 `bgm.mp3`） |
 | `reference/netter/` | 奈特解剖涂色书（只核对结构，禁止描图进成片） |
 | `reference/anatomy/` | 可进成片的开放许可解剖静帧，须在 `MANIFEST.json` 登记 |
+| `成片/` | 交付归档：质检通过的 mp4 按内容命名放这里，不再往 `~/Downloads` 落副本 |
 
 ## 自动化程度说明
 

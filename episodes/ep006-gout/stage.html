@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>stage</title>
+<style>
+  html, body { margin: 0; background: #F6F0E5; overflow: hidden; }
+  body { width: 1080px; height: 1440px; position: relative; }
+  iframe { position: absolute; left: 0; top: 250px; width: 1080px; height: 1040px; border: 0; background: #F6F0E5; }
+  .cap { position: absolute; left: 72px; right: 72px; top: 64px; color: #17324D; }
+  .cap b { display: block; font-family: "Songti SC", "STSong", serif; font-size: 52px; line-height: 1.28; font-weight: 700; }
+  .cap span { display: block; margin-top: 14px; font-family: "PingFang SC", "Hiragino Sans GB", sans-serif; font-size: 42px; line-height: 1.35; color: #526477; }
+  .foot { position: absolute; left: 72px; right: 72px; bottom: 48px; font-family: "PingFang SC", sans-serif; font-size: 32px; color: #526477; }
+</style>
+</head>
+<body>
+  <iframe id="model" title="关节模型"></iframe>
+  <div class="cap"><b id="line"></b><span id="sub"></span></div>
+  <div class="foot">医学科普漫画 · 第 6 期 · 本内容仅供科普，不能替代医生诊疗</div>
+<script>
+const CUES = [{"t": 0.35, "text": "脚趾突然红了，一碰就钻心疼。", "model": 0.3}, {"t": 3.88, "text": "很多人第一反应是扭到了。", "model": 0.5}, {"t": 6.21, "text": "不一定。痛风常常就是这样开头的。", "model": 0.8}, {"t": 9.19, "text": "疼的不是骨头裂了。", "model": 1.4}, {"t": 10.98, "text": "是关节里长出了针一样的小晶体。", "model": 2.6}, {"t": 14.43, "text": "血里有一种废物，叫尿酸。", "model": 3.4}, {"t": 17.73, "text": "平时它溶在血里，跟着血流走，你感觉不到。", "model": 4.2}, {"t": 21.61, "text": "多到溶不下，它就在关节里析出来。", "model": 6.0}, {"t": 24.95, "text": "析出来的样子，就是这些针。", "model": 7.6}, {"t": 27.63, "text": "针扎在关节表面，身体发现有东西扎进来。", "model": 8.8}, {"t": 31.68, "text": "白细胞赶过去，想把这些针包住、清掉。", "model": 10.6}, {"t": 35.62, "text": "这一包，周围就又红、又肿、又热。", "model": 12.8}, {"t": 39.24, "text": "所以痛来得又急又狠，常常是半夜把人疼醒。", "model": 13.6}, {"t": 44.0, "text": "最常见的位置，是大脚趾根那一节。", "model": 13.7}, {"t": 47.63, "text": "别的关节也会，但不一定第一次就在脚趾。", "model": 13.8}, {"t": 51.39, "text": "尿酸高，不等于已经痛风。", "model": 4.8}, {"t": 54.94, "text": "有的人高了很久，关节里还没长出针。", "model": 2.2}, {"t": 58.62, "text": "针一旦长出来，痛可以自己缓几天。", "model": 13.4}, {"t": 62.01, "text": "缓了不代表针没了，也不代表下次不会再来。", "model": 13.6}, {"t": 66.54, "text": "发作的时候，先把这一次的疼和肿处理好。", "model": 13.7}, {"t": 70.64, "text": "别自己乱吃止痛药硬扛。", "model": 13.7}, {"t": 73.69, "text": "尿酸要长期往下管。", "model": 13.8}, {"t": 75.9, "text": "一次吃得清淡，管不了已经长出来的针。", "model": 13.8}, {"t": 79.6, "text": "啤酒、动物内脏、含糖饮料，这几样最容易把尿酸顶上去。", "model": 13.8}, {"t": 84.71, "text": "已经在吃药的，别因为不疼了就自己停。", "model": 13.8}, {"t": 88.12, "text": "是不是痛风，要医生看关节，必要时看化验，不能只靠一次疼来猜。", "model": 13.9}, {"t": 94.57, "text": "记住这一句：尿酸溶不下，才会变成扎人的针。", "model": 8.2}, {"t": 99.08, "text": "本内容仅供科普，不能替代医生诊疗。", "model": 13.9}];
+const frame = document.getElementById("model");
+const MODEL_START = 1.2;
+const MODEL_END = 13.6;
+const MODEL_SPAN = 62;
+let booted = false;
+function modelTime(t) {
+  const u = Math.max(0, Math.min(1, t / MODEL_SPAN));
+  const shaped = u * u * (3 - 2 * u);
+  return MODEL_START + (MODEL_END - MODEL_START) * shaped;
+}
+function seek(t) {
+  let i = 0;
+  for (let k = 0; k < CUES.length; k++) if (t >= CUES[k].t) i = k;
+  document.getElementById("line").textContent = CUES[i].text;
+  document.getElementById("sub").textContent = "";
+  const mt = modelTime(t).toFixed(3);
+  if (!booted) {
+    booted = true;
+    frame.src = "http://127.0.0.1:5174/index.html?scene=0&capture=1&frame=portrait&t=" + mt;
+  } else {
+    frame.contentWindow && frame.contentWindow.__seek && frame.contentWindow.__seek(mt);
+  }
+  document.title = "ready";
+}
+window.__seek = seek;
+window.__DURATION = 103.62;
+window.__ASSETS_PENDING = true;
+frame.addEventListener("load", () => {
+  const wait = () => {
+    const win = frame.contentWindow;
+    if (win && win.__SCENE_READY__) {
+      window.__ASSETS_PENDING = false;
+      return;
+    }
+    setTimeout(wait, 40);
+  };
+  wait();
+});
+seek(0);
+</script>
+</body>
+</html>

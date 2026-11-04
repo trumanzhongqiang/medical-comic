@@ -1,8 +1,30 @@
 /* 第 2 期重做：封面提问，沿同一颗葡萄糖读懂报告上的三个指标。 */
 (function () {
   const M = window.MedComic, T = M.T, u = M.u, E = M.Ease;
-  const DUR = 116, tl = new M.TL(DUR);
+  const DUR = 143.81, tl = new M.TL(DUR);
   const B = n => .5804988662 + n * 60 / 77, BAR = n => B(n * 4);
+  const OLD_EDGES = [0, 3.6974, 9.9311, 16.1649, 22.3987, 28.6324, 34.8662, 41.1, 47.3337, 53.5675, 59.8013, 66.035, 72.2688, 78.5026, 84.7363, 90.9701, 97.2039, 103.4376, 109.6714, 116];
+  const NEW_EDGES = [0, 4.41, 17.06, 24.59, 30.17, 34.98, 39.07, 47.4, 51.89, 59.47, 64.68, 75.45, 84.98, 94.35, 101, 105.41, 120.46, 128.63, 136.24, 143.81];
+  function toNew(t) {
+    for (let i = 0; i < OLD_EDGES.length - 1; i++) {
+      const a = OLD_EDGES[i], b = OLD_EDGES[i + 1];
+      if (t < b || i === OLD_EDGES.length - 2) {
+        const p = Math.min(1, Math.max(0, (t - a) / (b - a)));
+        return NEW_EDGES[i] + p * (NEW_EDGES[i + 1] - NEW_EDGES[i]);
+      }
+    }
+    return NEW_EDGES[NEW_EDGES.length - 1];
+  }
+  function toOld(t) {
+    for (let i = 0; i < NEW_EDGES.length - 1; i++) {
+      const a = NEW_EDGES[i], b = NEW_EDGES[i + 1];
+      if (t < b || i === NEW_EDGES.length - 2) {
+        const p = Math.min(1, Math.max(0, (t - a) / (b - a)));
+        return OLD_EDGES[i] + p * (OLD_EDGES[i + 1] - OLD_EDGES[i]);
+      }
+    }
+    return 116;
+  }
   const C = {
     open: BAR(1), glucose: BAR(1), cells: BAR(3), fasting: BAR(5), fastingShot: B(24),
     meal: BAR(7), mealTone: B(32), rise: BAR(9), flood: B(36), peak: B(40),
@@ -16,25 +38,25 @@
   M.loadPlate('../../brand/avatar.jpg');
 
   const beats = [
-    { start: 0, end: BAR(1), lines: [[0, BAR(1), '空腹、餐后、糖化，到底该看哪个数？']] },
-    { start: BAR(1), end: BAR(3), lines: [[BAR(1), BAR(3), '三个数，都和葡萄糖有关']] },
-    { start: BAR(3), end: BAR(5), lines: [[BAR(3), BAR(5), '葡萄糖随血液流动，给细胞供能']] },
-    { start: BAR(5), end: BAR(7), lines: [[BAR(5), BAR(7), '空腹血糖：抽血前至少 8 小时不吃东西']] },
-    { start: BAR(7), end: BAR(9), lines: [[BAR(7), BAR(9), '餐后两小时，从吃下第一口饭开始计']] },
-    { start: BAR(9), end: BAR(11), lines: [[BAR(9), BAR(11), '饭后葡萄糖进血液，血糖先升再落']] },
-    { start: BAR(11), end: BAR(13), lines: [[BAR(11), BAR(13), '红细胞里的血红蛋白，负责运送氧气']] },
-    { start: BAR(13), end: BAR(15), lines: [[BAR(13), BAR(15), '附着在血红蛋白上的比例，叫糖化']] },
-    { start: BAR(15), end: BAR(17), lines: [[BAR(15), BAR(17), '红细胞大约活 120 天，糖化看近 3 个月']] },
-    { start: BAR(17), end: BAR(19), lines: [[BAR(17), BAR(19), '空腹、餐后看一个时刻，糖化看近 3 个月']] },
-    { start: BAR(19), end: BAR(21), lines: [[BAR(19), BAR(21), '空腹低于 6.1 正常，到不足 7.0 是前期']] },
-    { start: BAR(21), end: BAR(23), lines: [[BAR(21), BAR(23), '餐后 7.8 到不足 11.1，也提示前期']] },
-    { start: BAR(23), end: BAR(25), lines: [[BAR(23), BAR(25), '糖化达到 6.5%，是诊断标准之一']] },
-    { start: BAR(25), end: BAR(27), lines: [[BAR(25), BAR(27), '贫血、失血改寿命，糖化可能不准']] },
-    { start: BAR(27), end: BAR(29), lines: [[BAR(27), BAR(29), '空腹正常时，餐后也可能已经偏高']] },
-    { start: BAR(29), end: BAR(31), lines: [[BAR(29), BAR(31), '拿不准就复查，或做糖耐量试验']] },
-    { start: BAR(31), end: BAR(33), lines: [[BAR(31), BAR(33), '主食适量，搭配蔬菜和蛋白质']] },
-    { start: BAR(33), end: BAR(35), lines: [[BAR(33), BAR(35), '用药按医嘱，复查别自行停药']] },
-    { start: BAR(35), end: DUR, lines: [[BAR(35), DUR, '三个数一起看，交给医生判断']] }
+    { start: 0, end: 4.41, lines: [[0, 4.41, '三个数，看的不是同一段时间']] },
+    { start: 4.41, end: 17.06, lines: [[4.41, 17.06, '空腹看没吃饭，餐后看这顿饭，糖化看近两三个月']] },
+    { start: 17.06, end: 24.59, lines: [[17.06, 24.59, '血里的糖，是送给细胞用的']] },
+    { start: 24.59, end: 30.17, lines: [[24.59, 30.17, '空腹：至少 8 小时没吃东西']] },
+    { start: 30.17, end: 34.98, lines: [[30.17, 34.98, '餐后两小时：从第一口饭算起']] },
+    { start: 34.98, end: 39.07, lines: [[34.98, 39.07, '这顿饭：先升高，再落下来']] },
+    { start: 39.07, end: 47.4, lines: [[39.07, 47.4, '糖会结合在运氧气的蛋白上']] },
+    { start: 47.4, end: 51.89, lines: [[47.4, 51.89, '结合多少，就是糖化血红蛋白']] },
+    { start: 51.89, end: 59.47, lines: [[51.89, 59.47, '看近两三个月，不看某一顿']] },
+    { start: 59.47, end: 64.68, lines: [[59.47, 64.68, '三个数，各看一段时间']] },
+    { start: 64.68, end: 75.45, lines: [[64.68, 75.45, '空腹 6.1 到不足 7.0，是前期']] },
+    { start: 75.45, end: 84.98, lines: [[75.45, 84.98, '餐后 7.8 到不足 11.1，也是前期']] },
+    { start: 84.98, end: 94.35, lines: [[84.98, 94.35, '糖化 6.5%，要复查确认']] },
+    { start: 94.35, end: 101, lines: [[94.35, 101, '贫血或失血，糖化可能不准']] },
+    { start: 101, end: 105.41, lines: [[101, 105.41, '早上正常，不代表这顿饭正常']] },
+    { start: 105.41, end: 120.46, lines: [[105.41, 120.46, '喝糖水和普通吃饭，不是同一种检查']] },
+    { start: 120.46, end: 128.63, lines: [[120.46, 128.63, '主食怎么选，菜和蛋白怎么搭']] },
+    { start: 128.63, end: 136.24, lines: [[128.63, 136.24, '药别因为一次正常就自己停']] },
+    { start: 136.24, end: DUR, lines: [[136.24, DUR, '先问：这是哪一段时间']] }
   ];
 
   function brand(g) {
@@ -51,8 +73,9 @@
     const s = line[2];
     const warn = /偏高|留意|前期|带偏|达到/.test(s);
     g.save(); g.globalAlpha = enter * leave; g.translate(0, (1 - enter) * 12);
-    const size = s.length > 20 ? 44 : s.length > 16 ? 48 : 54;
-    M.text(g, s, 540, 194, { size, weight: 850, display: true, color: warn ? T.coralDark : T.ink });
+    const size = s.length > 22 ? 46 : s.length > 16 ? 52 : s.length > 13 ? 58 : 64;
+    const shown = s.length > 18 ? s.replace('，', '，\n') : s;
+    M.text(g, shown, 540, shown.includes('\n') ? 176 : 194, { size, weight: 850, display: true, color: warn ? T.coralDark : T.ink });
     g.restore();
   }
   function worldToScreen(p, cam) {
@@ -61,12 +84,20 @@
   function note(g, t, spec, cam) {
     if (t < spec.start || t >= spec.end) return;
     const target = worldToScreen(spec.target(t), cam);
+    if (target.x < -80 || target.x > 1160 || target.y < 300 || target.y > 1220) return;
     const a = E.outCubic(u.seg(t, spec.start, .22)) * (1 - u.seg(t, spec.end - .18, .18));
     g.save(); g.font = `600 44px ${T.font}`;
     const w = g.measureText(spec.text).width + 48;
     const x = u.clamp(target.x + (spec.dx || 0), 72 + w / 2, 1008 - w / 2);
     const desiredY = target.y + (spec.dy || (target.y > 790 ? -155 : 155));
     const y = u.clamp(desiredY, 390, 1160);
+    // 目标点脉冲圈：先垫一圈纸色，保证落在深色物体上也看得见
+    const rr0 = 17 + 4 * Math.sin(t * 4.2);
+    g.globalAlpha = a * .7;
+    g.beginPath(); g.arc(target.x, target.y, rr0, 0, 7);
+    g.lineWidth = 9; g.strokeStyle = 'rgba(255,252,245,.8)'; g.stroke();
+    g.globalAlpha = a * .85;
+    g.lineWidth = 4.5; g.strokeStyle = spec.color || T.tealDark; g.stroke();
     g.globalAlpha = a;
     M.label(g, spec.text, x, y, { anchor: 'center', size: 44, border: spec.color || T.ink, color: spec.color || T.ink, leader: target });
     g.restore();
@@ -159,7 +190,7 @@
     const a = E.outCubic(u.seg(t, C.ratio, C.months - C.ratio)); if (a <= 0) return;
     g.save(); g.globalAlpha = a;
     for (let i = 0; i < 10; i++) { glycated(g, x + (i % 5) * 105, y + Math.floor(i / 5) * 125, .52, i < 3); }
-    M.text(g, '10 份中约 6 份附着 → 6%', x + 210, y + 285, { size: 40, weight: 800, color: T.coralDark, role: 'object' }); g.restore();
+    M.text(g, '10 个里有 3 个粘着糖', x + 210, y + 285, { size: 40, weight: 800, color: T.coralDark, role: 'object' }); g.restore();
   }
   function monthsBar(g, x0, x1, y, t) {
     const grow = E.inOutCubic(u.seg(t, C.months, C.monthsCard - C.months)); if (grow <= 0) return;
@@ -185,8 +216,8 @@
     const mp = pts => pts.map(q => [x0 + q[0] * 2.1, y0 + (q[1] - 470) * 2.1]);
     const p1 = E.outCubic(u.seg(t, C.mismatch, C.early - C.mismatch)); polyline(g, curvePoints(mp(FLAT), p1), { color: T.tealDark, w: 9 });
     const p2 = E.outCubic(u.seg(t, C.early, BAR(29) - C.early)); polyline(g, curvePoints(mp(SPIKE), p2), { color: T.coralDark, w: 9 });
-    if (t >= C.early) { M.text(g, '空腹正常', x0 + 34, y0 + 16, { size: 44, weight: 700, color: T.tealDark, role: 'object', align: 'left' });
-      M.text(g, '餐后更高', x0 + 34, y0 - 240, { size: 44, weight: 700, color: T.coralDark, role: 'object', align: 'left' }); }
+    if (t >= C.early) { M.text(g, '早上这一次', x0 + 34, y0 + 16, { size: 44, weight: 700, color: T.tealDark, role: 'object', align: 'left' });
+      M.text(g, '这顿饭之后', x0 + 34, y0 - 240, { size: 44, weight: 700, color: T.coralDark, role: 'object', align: 'left' }); }
   }
   function glucoseCup(g, x, y) {
     g.save(); g.translate(x, y); M.softShadow(g, 0, 92, 96, 24, .14); g.beginPath(); g.moveTo(-62, -78); g.lineTo(62, -78); g.lineTo(48, 96); g.quadraticCurveTo(0, 112, -48, 96); g.closePath(); fillStroke(g, '#F6E3C8', 6);
@@ -243,27 +274,81 @@
   function camera(t) {
     return M.cameraAt(t, [[0, 620, 650, 1], [BAR(1), 620, 650, 1], [BAR(3), 700, 660, 1.05], [BAR(5), 700, 680, 1.05], [BAR(7), 800, 700, 1.05], [BAR(9), 1050, 700, 1.1], [BAR(11), 1350, 640, 1.1], [BAR(13), 1800, 620, 1.16], [BAR(15), 1900, 640, 1.12], [BAR(17), 2280, 660, 1.06], [BAR(19), 2900, 600, 1.04], [BAR(21), 3600, 690, 1.12], [BAR(25), 3700, 690, 1.1], [BAR(27), 4400, 640, 1.05], [BAR(29), 4800, 620, 1.06], [BAR(31), 5460, 700, 1.06], [BAR(33), 5920, 720, 1.04], [BAR(35), 6300, 700, 1.02], [DUR, 6320, 700, 1]]);
   }
+  const P = (x, y) => () => ({ x, y });
+  const NOTE_SPECS = [
+      { start: B(8), end: B(12), text: '葡萄糖', target: P(840, TUBE_Y), dy: -180 },
+      { start: B(24), end: B(28), text: '单位 mmol/L', target: P(600, TUBE_Y - 60), dy: -190 },
+      { start: B(32), end: B(36), text: '单位 mmol/L', target: P(780, 430), dy: -170 },
+      { start: B(48), end: B(52), text: '血红蛋白：运氧气的蛋白', target: P(1800, 470), color: T.coralDark, dy: -170 },
+      { start: B(80), end: B(84), text: '6.1–不足 7.0：前期', target: P(3560, 560), dy: -300 },
+      { start: B(88), end: B(92), text: '7.8–不足 11.1：前期', target: P(3720, 560), dy: -300 },
+      { start: B(96), end: B(100), text: '6.5%：诊断标准之一', target: P(3800, 560), dy: -300 },
+      { start: B(120), end: B(124), text: '糖耐量：喝定量糖水后按点测', target: P(5470, 800), dy: 190 }
+  ];
+
+  // 名牌窗口对齐到所属那一拍：整拍都在讲同一个东西，字幕与图形始终有指向关系
+  NOTE_SPECS.forEach(sp => {
+    const b = beats.find(x => sp.start >= x.start - .02 && sp.start < x.end);
+    if (b) { sp.start = b.start; sp.end = b.end; }
+  });
+
   function notes(g, t, cam) {
-    const P = (x, y) => () => ({ x, y });
-    const specs = [
-      { start: B(8), end: B(12), text: '葡萄糖：血液里供细胞使用的能量', target: P(840, TUBE_Y), dy: -180 },
-      { start: B(16), end: B(20), text: '血液：把葡萄糖送到全身', target: P(700, TUBE_Y - 60), dy: -190 },
-      { start: B(24), end: B(28), text: '空腹血糖：禁食至少 8 小时后测量', target: P(600, TUBE_Y - 60), dy: -190 },
-      { start: B(32), end: B(36), text: '餐后两小时：从第一口饭开始计时', target: P(780, 430), dy: -170 },
-      { start: B(40), end: B(44), text: '血糖曲线：餐后升高再回落', target: P(1240, 388), dy: -150 },
-      { start: B(48), end: B(52), text: '血红蛋白：红细胞里运送氧气的蛋白', target: P(1800, 470), color: T.coralDark, dy: -170 },
-      { start: B(56), end: B(60), text: '糖化血红蛋白：附着葡萄糖的比例', target: P(2050, 420), color: T.coralDark, dy: -170 },
-      { start: B(64), end: B(68), text: '近 3 个月：红细胞新老更替的时间', target: P(2280, 470), dy: -180 },
-      { start: B(72), end: B(76), text: '三个指标：两个时刻和近 3 个月', target: P(2880, 470), dy: -250 },
-      { start: B(80), end: B(84), text: '空腹血糖：单位 mmol/L', target: P(3560, 560), dy: -300 },
-      { start: B(88), end: B(92), text: '餐后两小时：单位 mmol/L', target: P(3720, 560), dy: -300 },
-      { start: B(96), end: B(100), text: '糖化血红蛋白：单位是百分比', target: P(3800, 560), dy: -300 },
-      { start: B(104), end: B(108), text: '红细胞寿命改变，会影响糖化结果', target: P(3700, 560), dy: -300 },
-      { start: B(112), end: B(116), text: '同一天：空腹和餐后可以不一致', target: P(4700, 330), dy: -160 },
-      { start: B(120), end: B(124), text: '糖耐量试验：喝糖水后分点测量', target: P(5470, 800), dy: 190 },
-      { start: B(128), end: B(132), text: '餐盘：主食适量，菜和蛋白占一半', target: P(5820, 900), dy: 200 }
+    const ot = toOld(t);
+    NOTE_SPECS.forEach(spec => note(g, ot, spec, cam));
+  }
+  function compareCard(g, x0, y0, t) {
+    const a = E.outCubic(u.seg(t, C.duties, .5));
+    if (a <= 0.01) return;
+    g.save(); g.globalAlpha = a;
+    M.rr(g, x0, y0, 500, 572, 26); g.fillStyle = T.paperLight; g.fill(); g.lineWidth = 7; g.strokeStyle = T.ink; g.stroke();
+    M.text(g, '三个数各管一段', x0 + 250, y0 + 66, { size: 54, weight: 900, align: 'center' });
+    const rows = [
+      ['空腹血糖', '一次', '空腹 8 小时后', T.tealDark],
+      ['餐后血糖', '一次', '从这顿饭算起', T.amber],
+      ['糖化血红蛋白', '平均', '近 2–3 个月', T.coralDark]
     ];
-    specs.forEach(spec => note(g, t, spec, cam));
+    rows.forEach((r, i) => {
+      const ra = E.outCubic(u.seg(t, C.duties + .7 + i * .8, .45));
+      if (ra <= 0) return;
+      g.save(); g.globalAlpha = a * ra;
+      const y = y0 + 126 + i * 146;
+      M.rr(g, x0 + 18, y, 464, 138, 16); g.fillStyle = T.paperLight; g.fill(); g.lineWidth = 3; g.strokeStyle = T.paperShadow; g.stroke();
+      M.text(g, r[0], x0 + 40, y + 50, { size: 46, weight: 850, align: 'left' });
+      M.text(g, r[2], x0 + 40, y + 118, { size: 44, weight: 600, align: 'left', color: T.inkSoft });
+      M.rr(g, x0 + 330, y + 34, 118, 56, 28); g.fillStyle = r[3]; g.fill();
+      M.text(g, r[1], x0 + 389, y + 74, { size: 44, weight: 800, align: 'center', color: r[3] === T.amber ? T.ink : '#FFFCF5' });
+      g.restore();
+    });
+    g.restore();
+  }
+  function captionLink(g, t, cam) {
+    const beat = beats.find(x => t >= x.start && t < x.end);
+    if (!beat) return;
+    const line = beat.lines.find(x => t >= x[0] && t < x[1]);
+    if (!line) return;
+    const ot = toOld(t);
+    const spec = NOTE_SPECS.find(s2 => ot >= s2.start && ot < s2.end);
+    if (!spec) return;
+    const target = worldToScreen(spec.target(t), cam);
+    if (target.y < 340 || target.y > 1130) return;
+    const a = E.outCubic(u.seg(t, line[0], .24)) * (1 - u.seg(t, line[1] - .18, .18));
+    if (a <= .02) return;
+    g.save(); g.font = `600 44px ${T.font}`;
+    const w = g.measureText(spec.text).width + 48;
+    const x = u.clamp(target.x + (spec.dx || 0), 72 + w / 2, 1008 - w / 2);
+    const y = u.clamp(target.y + (spec.dy || (target.y > 790 ? -155 : 155)), 390, 1160);
+    const sy = 234, sx = 540;
+    const cardTop = y - 34;
+    const toTarget = target.y < cardTop - 8 && Math.abs(target.x - sx) < 300;
+    const ex = toTarget ? target.x : u.clamp(sx, x - w / 2 - 6, x + w / 2 + 6);
+    const ey = toTarget ? target.y - 30 : cardTop;
+    if (ey > sy + 24) {
+      g.globalAlpha = a * .85;
+      g.setLineDash([12, 10]); g.lineCap = 'round';
+      g.lineWidth = 3.5; g.strokeStyle = T.inkSoft;
+      g.beginPath(); g.moveTo(sx, sy); g.lineTo(ex, ey); g.stroke();
+    }
+    g.restore();
   }
   function inView(cam, x0, x1) { const half = 540 / cam.zoom; return x0 > cam.x - half + 40 && x1 < cam.x + half - 40; }
   function world(g, t, cam) {
@@ -294,22 +379,23 @@
     brand(g); reportCard(g, 540, 735, 0, true);
     M.text(g, '空腹、餐后、糖化', 540, 270, { size: 82, weight: 900, display: true });
     M.text(g, '到底该看哪个数？', 540, 1150, { size: 78, weight: 900, display: true, color: T.coralDark });
-    M.text(g, '带着这个问题，一起读懂报告', 540, 1260, { size: 44, weight: 650, color: T.inkSoft });
+    M.text(g, '它们问的不是同一件事', 540, 1260, { size: 44, weight: 650, color: T.inkSoft });
   }
   function ending(g, t) {
     if (t < C.pullBack) return;
     const r = M.kf(t, [[C.pullBack, 0], [B(142), 1650]]); g.save(); g.beginPath(); g.arc(540, 760, r, 0, 7); g.clip(); g.fillStyle = T.paper; g.fillRect(0, 0, 1080, 1440);
     g.globalAlpha = E.outCubic(u.seg(t, B(142), C.follow - B(142))); M.avatar(g, 540, 486, 112);
-    M.text(g, '三个数字', 540, 712, { size: 86, weight: 900, display: true }); M.text(g, '回答三个问题', 540, 812, { size: 64, weight: 800, display: true });
-    M.text(g, '空腹看当下，餐后看应对', 540, 960, { size: 58, weight: 750, color: T.tealDark }); M.text(g, '糖化看近 3 个月', 540, 1046, { size: 58, weight: 750, color: T.amber });
+    M.text(g, '下次拿到报告', 540, 712, { size: 80, weight: 900, display: true }); M.text(g, '先问这是哪一段时间', 540, 812, { size: 58, weight: 800, display: true });
+    M.text(g, '空腹、这顿饭、近两三个月', 540, 960, { size: 52, weight: 750, color: T.tealDark }); M.text(g, '拿不准，三个数交给医生', 540, 1046, { size: 52, weight: 750, color: T.amber });
     g.save(); g.globalAlpha *= E.outCubic(u.seg(t, C.follow, .4)); M.text(g, '关注「医学科普漫画」', 540, 1170, { size: 48, weight: 750 });
     M.text(g, '下期：血压里的两个数字在说什么', 540, 1250, { size: 44, weight: 600, color: T.coralDark });
     M.text(g, '本内容仅供科普，不能替代医生诊疗', 540, 1340, { size: 36, role: 'disclaimer', color: T.gray }); g.restore(); g.restore();
   }
   tl.add(0, DUR, (g, p, t) => {
-    if (t < C.open) { cover(g); return; }
-    if (t < C.pullBack) { const cam = camera(t); g.save(); g.beginPath(); g.rect(0, 330, 1080, 810); g.clip(); M.withCamera(g, cam, gg => world(gg, t, cam)); g.restore(); brand(g); caption(g, t); notes(g, t, cam); }
-    ending(g, t);
+    const ot = toOld(t);
+    if (t < toNew(C.open)) { cover(g); return; }
+    if (t < toNew(C.pullBack)) { const cam = camera(ot); g.save(); g.beginPath(); g.rect(0, 330, 1080, 810); g.clip(); M.withCamera(g, cam, gg => world(gg, ot, cam)); g.restore(); brand(g); caption(g, t); captionLink(g, t, cam); notes(g, t, cam); if (ot >= C.duties && ot < BAR(19)) compareCard(g, 60, 424, ot); }
+    ending(g, ot);
   });
   M.mount(tl);
 })();
