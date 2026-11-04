@@ -91,7 +91,11 @@ def main():
         if contact.returncode: fails.append("节拍联览生成失败: " + contact.stderr[-300:])
         report.append(f"- 每拍成片抽帧 {len(beats)} 张 + 手机尺寸联览 beats_contact.jpg")
 
-    if beats and not args.skip_layout:
+    if beats and not args.skip_layout and s.get("renderer") == "remotion":
+        # Remotion 期的画面不在 stage.html 里，画布审计量的是另一套代码，会报假异常。
+        # 版式改为看每拍成片的 beat_*.jpg / beats_contact.jpg 人工复核。
+        report.append("- 节拍布局审计: 跳过画布审计（Remotion 版，版式看 beats_contact.jpg 人工复核）")
+    elif beats and not args.skip_layout:
         layout_problems = []
         errors = []
         with sync_playwright() as p:

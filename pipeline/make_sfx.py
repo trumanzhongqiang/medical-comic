@@ -428,6 +428,12 @@ def build(force=False):
     jobs["reveal-b"] = _finish(*_layer((0.0, wl2, wr2, 0.72), (0.16, cl2, cr2, 0.68)),
                                wet=0.54, peak_db=-5.0)
 
+    # 快门：两声短促宽频脉冲（帘幕开合），配「拍一张照片」这个动作
+    _s1 = _noise_sweep(0.055, 2400, 5600, lambda k: (1 - k) ** 3)
+    _s2 = _noise_sweep(0.085, 900, 2600, lambda k: (1 - k) ** 2.4)
+    jobs["shutter"] = _finish(*_layer((0.0, _s1, _s1, 0.95), (0.052, _s2, _s2, 0.66)),
+                              wet=0.14, peak_db=-4.5)
+
     written, skipped = [], []
     for name, (left, right) in jobs.items():
         p = OUT / f"{name}.wav"

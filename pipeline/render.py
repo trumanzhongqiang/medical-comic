@@ -43,7 +43,12 @@ def main():
         page = browser.new_page(viewport={"width": 1080, "height": 1440}, device_scale_factor=2)
         errors = []
         page.on("pageerror", lambda e: errors.append(str(e)))
-        page.goto(stage.as_uri() + f"?fps={fps}")
+        stage_url = script.get("stage_url") or stage.as_uri()
+        if not script.get("stage_url"):
+            served = ep / ".." / ".." / "reference" / "models" / ep.name / "episode.html"
+            if served.exists():
+                stage_url = f"http://127.0.0.1:5174/episode.html"
+        page.goto(stage_url + ("" if "?" in stage_url else "") + f"?fps={fps}")
         page.wait_for_function("document.title === 'ready' && !!window.__seek", timeout=30000)
         page.evaluate("document.fonts && document.fonts.ready")
         page.wait_for_function("!window.__ASSETS_PENDING", timeout=30000)

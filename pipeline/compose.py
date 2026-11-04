@@ -93,7 +93,17 @@ def main():
     ep = Path(args.episode).resolve()
     s = json.loads((ep / "script.json").read_text("utf-8"))
     fps, dur = s["fps"], s["duration"]
-    frames = ep / "out" / "frames" / f"frame_%06d.{s.get('frame_format', 'jpg')}"
+    fdir = ep / "out" / "frames"
+    fmt = s.get("frame_format", "jpg")
+    seq = s.get("frame_sequence", "frame_%06d")
+    # Remotion --sequence 输出 element-0000.jpeg；存在就优先用，避免和旧帧混在一起
+    # Remotion 现在输出 5 位编号（element-00000.jpeg），老版本是 4 位；
+    # 先认 5 位，否则会误捡到目录里遗留的一张 4 位旧帧，成片只剩一百多秒。
+    for cand, ext in (("element-%05d", "jpeg"), ("element-%05d", "jpg"), ("element-%04d", "jpeg"), ("element-%04d", "jpg")):
+        if (fdir / (cand % 0 + "." + ext)).exists():
+            seq, fmt = cand, ext
+            break
+    frames = fdir / f"{seq}.{fmt}"
     if not (ep / "out" / "frames").exists():
         sys.exit("缺少 out/frames，先运行 render.py")
     if not (ep / "out").exists():
@@ -103,13 +113,23 @@ def main():
     bgm = (ep / s.get("bgm", "bgm.mp3")).resolve()
     if not bgm.exists():
         sys.exit(f"未找到 BGM {bgm}；不使用静音替代")
-    inputs += ["-ss", str(s.get("bgm_start", 0)), "-i", str(bgm)]
+    # BGM 循环铺满全片：片长常常超过素材长度（讲细了以后更明显），
+    # 不循环的话后半段就只剩人声，一听就露馅。
+    inputs += ["-ss", str(s.get("bgm_start", 0)), "-stream_loop", "-1", "-i", str(bgm)]
     af = []
-    chain = f"[1:a]atrim=0:{dur:.3f},asetpts=PTS-STARTPTS"
+    # 人声主要落在 500–4000 Hz，BGM 在这一段正好最密；先削掉这层，再谈音量。
+    # 高通去掉 70 Hz 以下的轰鸣（手机上听不出来，只占动态），中低频减 2 dB 去浑。
+    chain = (f"[1:a]atrim=0:{dur:.3f},asetpts=PTS-STARTPTS"
+             f",highpass=f=70,equalizer=f=350:width_type=o:w=1.0:g=-2"
+             f",equalizer=f=2400:width_type=o:w=1.3:g=-4.5")
+    # bgm_envelope 只描写「形状」（淡入淡出、逐段起伏），bgm_volume 才是绝对电平。
+    # 以前 envelope 的数值被直接当绝对增益用，bgm_volume 在有包络时被忽略——
+    # 所以调小 bgm_volume 一直没效果，BGM 始终是 0.52 在响，人声自然听不清。
+    bgm_gain = float(s.get("bgm_volume", 1.0))
     if s.get("bgm_envelope"):
-        chain += f",volume='{envelope(s['bgm_envelope'], s.get('bgm_volume', .9))}':eval=frame"
+        chain += f",volume='({envelope(s['bgm_envelope'], 1.0)})*{bgm_gain:.5f}':eval=frame"
     else:
-        chain += f",volume={s.get('bgm_volume', .9)}"
+        chain += f",volume={bgm_gain}"
     chain += f",afade=t=in:st=0:d={s.get('fade_in', 2)}"
     chain += f",afade=t=out:st={max(dur-s.get('fade_out', 2.5), 0):.3f}:d={s.get('fade_out', 2.5)}"
     for dip in s.get("bgm_dips", []):
@@ -135,7 +155,10 @@ def main():
         rate = fx.get("rate", 1)
         if not .5 <= rate <= 2:
             sys.exit(f"音效 {fx.get('id', k)} rate 需在 0.5–2.0")
-        chain = f"[{idx}:a]atrim=0:{fx.get('duration', dur):.3f},asetpts=PTS-STARTPTS,atempo={rate}"
+        # 音效统一做一次带通：60 Hz 以下只有轰鸣，7.5 kHz 以上在手机外放就是「嘶」。
+        # 素材本身多亮都不改，这一层保证听感不刺。
+        chain = (f"[{idx}:a]atrim=0:{fx.get('duration', dur):.3f},asetpts=PTS-STARTPTS,atempo={rate}"
+                 f",highpass=f=60,lowpass=f=7500")
         ms = round(place * 1000)
         pan = max(-1, min(1, fx.get("pan", 0)))
         left, right = (1 - max(0, pan)) * .9, (1 + min(0, pan)) * .9
@@ -155,6 +178,21 @@ def main():
         chain += f",apad,atrim=0:{dur:.3f},adelay={ms}|{ms},volume={vol:.4f}[sx{k}]"
         af.append(chain)
         sfx_labels.append(f"[sx{k}]")
+    voice_labels = []
+    for k, vx in enumerate(s.get("voice", [])):
+        source = (ep / vx["file"]).resolve()
+        if not source.exists():
+            sys.exit(f"缺旁白 {source}")
+        idx = 2 + len(s.get("sfx", [])) + k
+        inputs += ["-i", str(source)]
+        ms = round(float(vx["t"]) * 1000)
+        vol = float(vx.get("gain", 1))
+        chain = (f"[{idx}:a]aresample=48000,aformat=channel_layouts=stereo,"
+                 f"apad,atrim=0:{dur:.3f},adelay={ms}|{ms},volume={vol:.4f}[vx{k}]")
+        af.append(chain)
+        voice_labels.append(f"[vx{k}]")
+    if voice_labels:
+        af.append("".join(voice_labels) + f"amix=inputs={len(voice_labels)}:duration=longest:normalize=0,atrim=0:{dur:.3f}[voicebus]")
     if sfx_labels:
         af.append("".join(sfx_labels) + f"amix=inputs={len(sfx_labels)}:duration=longest:normalize=0,atrim=0:{dur:.3f}[sfxbus]")
         af.append("[sfxbus]asplit=2[sfxmix][sfxkey]")
@@ -164,9 +202,18 @@ def main():
         attack = duck.get("attack", 3)
         release = duck.get("release", 120)
         af.append(f"[bgm][sfxkey]sidechaincompress=threshold={threshold}:ratio={ratio}:attack={attack}:release={release}[bgmduck]")
-        af.append("[bgmduck][sfxmix]amix=inputs=2:duration=first:normalize=0[mix]")
+        af.append("[bgmduck][sfxmix]amix=inputs=2:duration=first:normalize=0[bed]")
     else:
-        af.append("[bgm]anull[mix]")
+        af.append("[bgm]anull[bed]")
+    if voice_labels:
+        duck = s.get("voice_ducking", {})
+        af.append("[voicebus]asplit=2[voicesc][voicemix]")
+        af.append("[bed][voicesc]sidechaincompress="
+                  f"threshold={duck.get('threshold', .03)}:ratio={duck.get('ratio', 6)}:"
+                  f"attack={duck.get('attack', 8)}:release={duck.get('release', 280)}[bedduck]")
+        af.append("[bedduck][voicemix]amix=inputs=2:duration=first:normalize=0[mix]")
+    else:
+        af.append("[bed]anull[mix]")
     af.append("[mix]acompressor=threshold=-7dB:ratio=3:attack=4:release=90:makeup=1[premaster]")
     base = ["ffmpeg", "-y", *inputs]
 
