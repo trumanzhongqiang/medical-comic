@@ -1,6 +1,6 @@
 # 流水线说明
 
-> 开工前先读 `pipeline/RETRO.md`：那是第 2 期六轮返工换来的教训，写文案的顺序、禁用比喻、配音核对和交付自检清单都在里面。本文件是操作手册，RETRO 是「为什么这么做」。
+> 写作前读 `pipeline/WRITING.md`（六个手法、结构模板、体长基线），开工前再读 `pipeline/RETRO.md`：那是第 2 期六轮返工换来的教训，写文案的顺序、禁用比喻、配音核对和交付自检清单都在里面。本文件是操作手册，RETRO 是「为什么这么做」。
 
 ## 组成
 
@@ -11,6 +11,7 @@
 | `factcheck_report.py` | 打印签字单：逐条 claim / verdict / 原文摘录 / 签字人；`--pending` 只看待签与待核查 |
 | `factcheck_page.py` | 生成单文件签字页（可离线开、勾选有进度、导出 json），一条卡片=一条 sources |
 | `apply_signoff.py` | 把签字页导出的 json 回填进 `script.json`（写 reviewer / reviewed_at，改 verdict），并在 `out/qa` 留复核记录 |
+| `lint_narration.py` | 旁白文案体检：按认知负荷查——单句过密、句长节奏扁平、抽象名词做主语、术语首现没解释、多音字当动词、量词口径打架、被否掉的比喻 |
 | `audit.py` | 节拍结构、阅读时间、音效引用、字号、安全区、文字碰撞、禁则折行、`sources` 结构与 verdict 枚举、文案精度（`lint_copy`：绝对承诺 / 术语压成单字 / 定量说成必然 / 一档并一句）检查 |
 | `render.py` | Playwright 逐帧截图：1080×1440 @2x，校验时长、字体和图片资源 |
 | `make_sfx.py` | 生成「空灵音阶」音高层素材（F 大调五声：铃/拨弦/跑动/闪烁/低频），自制无版权风险 |
