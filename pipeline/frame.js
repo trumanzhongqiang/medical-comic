@@ -29,14 +29,52 @@
   function note(g, t, spec, cam) {
     if (t < spec.start || t >= spec.end) return;
     const target = worldToScreen(spec.target(t), cam);
+    if (target.x < -80 || target.x > 1160 || target.y < 300 || target.y > 1220) return;
     const a = E.outCubic(u.seg(t, spec.start, .22)) * (1 - u.seg(t, spec.end - .18, .18));
     g.save(); g.font = `600 44px ${T.font}`;
     const w = g.measureText(spec.text).width + 48;
     const x = u.clamp(target.x + (spec.dx || 0), 72 + w / 2, 1008 - w / 2);
     const desiredY = target.y + (spec.dy || (target.y > 790 ? -155 : 155));
     const y = u.clamp(desiredY, 390, 1160);
+    // 目标点脉冲圈：先垫一圈纸色，保证落在深色物体上也看得见
+    const rr0 = 17 + 4 * Math.sin(t * 4.2);
+    g.globalAlpha = a * .7;
+    g.beginPath(); g.arc(target.x, target.y, rr0, 0, 7);
+    g.lineWidth = 9; g.strokeStyle = 'rgba(255,252,245,.8)'; g.stroke();
+    g.globalAlpha = a * .85;
+    g.lineWidth = 4.5; g.strokeStyle = spec.color || T.tealDark; g.stroke();
     g.globalAlpha = a;
     M.label(g, spec.text, x, y, { anchor: 'center', size: 44, border: spec.color || T.ink, color: spec.color || T.ink, leader: target });
+    g.restore();
+  }
+
+  // 字幕 → 名词卡的虚线：把「正在说的话」和「正在指的东西」链起来（卡→目标由 label 的 leader 负责）
+  function captionLink(g, t, beats, specs, cam) {
+    const beat = beats.find(x => t >= x.start && t < x.end);
+    if (!beat) return;
+    const line = beat.lines.find(x => t >= x[0] && t < x[1]);
+    if (!line) return;
+    const spec = specs.find(s => t >= s.start && t < s.end);
+    if (!spec) return;
+    const target = worldToScreen(spec.target(t), cam);
+    if (target.y < 340 || target.y > 1130) return;
+    const a = E.outCubic(u.seg(t, line[0], .24)) * (1 - u.seg(t, line[1] - .18, .18));
+    if (a <= .02) return;
+    g.save(); g.font = `600 44px ${T.font}`;
+    const w = g.measureText(spec.text).width + 48;
+    const x = u.clamp(target.x + (spec.dx || 0), 72 + w / 2, 1008 - w / 2);
+    const y = u.clamp(target.y + (spec.dy || (target.y > 790 ? -155 : 155)), 390, 1160);
+    const sy = 234, sx = 540;
+    const cardTop = y - 34;
+    const toTarget = target.y < cardTop - 8 && Math.abs(target.x - sx) < 300;
+    const ex = toTarget ? target.x : u.clamp(sx, x - w / 2 - 6, x + w / 2 + 6);
+    const ey = toTarget ? target.y - 30 : cardTop;
+    if (ey > sy + 24) {
+      g.globalAlpha = a * .85;
+      g.setLineDash([12, 10]); g.lineCap = 'round';
+      g.lineWidth = 3.5; g.strokeStyle = T.inkSoft;
+      g.beginPath(); g.moveTo(sx, sy); g.lineTo(ex, ey); g.stroke();
+    }
     g.restore();
   }
 
@@ -109,5 +147,5 @@
     g.fillStyle = fill; g.fill(); g.lineWidth = width || 5; g.strokeStyle = stroke || T.ink; g.stroke();
   }
 
-  window.MedFrame = { brand, caption, worldToScreen, note, inView, curvePoints, polyline, rail, glucoseFace, fillStroke };
+  window.MedFrame = { brand, caption, worldToScreen, note, captionLink, inView, curvePoints, polyline, rail, glucoseFace, fillStroke };
 })();
