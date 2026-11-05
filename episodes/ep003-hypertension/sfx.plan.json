@@ -17,6 +17,23 @@
         "gain": 0.5
       }
     ],
+    "pump": [
+      {
+        "at": 0.06,
+        "name": "tap",
+        "gain": 0.5
+      },
+      {
+        "at": 0.34,
+        "name": "whoosh",
+        "gain": 0.32
+      },
+      {
+        "at": 0.62,
+        "name": "tap",
+        "gain": 0.42
+      }
+    ],
     "compare": [
       {
         "at": 0.05,

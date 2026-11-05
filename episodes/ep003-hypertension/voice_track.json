@@ -6,92 +6,97 @@
   },
   {
     "file": "voice/v001.wav",
-    "t": 7.575,
+    "t": 7.244,
     "gain": 1.0
   },
   {
     "file": "voice/v002.wav",
-    "t": 9.946,
+    "t": 9.918,
     "gain": 1.0
   },
   {
     "file": "voice/v003.wav",
-    "t": 15.164,
+    "t": 16.486,
     "gain": 1.0
   },
   {
     "file": "voice/v004.wav",
-    "t": 21.18,
+    "t": 21.958,
     "gain": 1.0
   },
   {
     "file": "voice/v005.wav",
-    "t": 26.899,
+    "t": 27.219,
     "gain": 1.0
   },
   {
     "file": "voice/v006.wav",
-    "t": 32.598,
+    "t": 32.045,
     "gain": 1.0
   },
   {
     "file": "voice/v007.wav",
-    "t": 38.417,
+    "t": 36.826,
     "gain": 1.0
   },
   {
     "file": "voice/v008.wav",
-    "t": 40.998,
+    "t": 41.626,
     "gain": 1.0
   },
   {
     "file": "voice/v009.wav",
-    "t": 45.206,
+    "t": 44.709,
     "gain": 1.0
   },
   {
     "file": "voice/v010.wav",
-    "t": 52.279,
+    "t": 48.555,
     "gain": 1.0
   },
   {
     "file": "voice/v011.wav",
-    "t": 57.97,
+    "t": 55.447,
     "gain": 1.0
   },
   {
     "file": "voice/v012.wav",
-    "t": 60.415,
+    "t": 61.614,
     "gain": 1.0
   },
   {
     "file": "voice/v013.wav",
-    "t": 65.912,
+    "t": 64.433,
     "gain": 1.0
   },
   {
     "file": "voice/v014.wav",
-    "t": 71.694,
+    "t": 70.116,
     "gain": 1.0
   },
   {
     "file": "voice/v015.wav",
-    "t": 76.872,
+    "t": 76.137,
     "gain": 1.0
   },
   {
     "file": "voice/v016.wav",
-    "t": 84.505,
+    "t": 81.337,
     "gain": 1.0
   },
   {
     "file": "voice/v017.wav",
-    "t": 89.416,
+    "t": 88.429,
     "gain": 1.0
   },
   {
     "file": "voice/v018.wav",
-    "t": 92.529,
+    "t": 93.078,
+    "gain": 1.0
+  },
+  {
+    "file": "voice/v019.wav",
+    "t": 96.389,
     "gain": 1.0
   }
 ]

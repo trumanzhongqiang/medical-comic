@@ -73,10 +73,9 @@ def main():
         # frame_sequence（默认 frame_%06d.jpg）——名字不改，合成时只找到零星几帧，成片会短一截。
         for src in sorted(frames.glob("element-*.jpeg")):
             n = int(src.stem.split("-")[-1])
-            target = frames / f"frame_{n:06d}.jpg"
-            if target.exists():
-                target.unlink()
-            src.rename(target)
+            # 用 os.replace 覆盖：先 unlink 再 rename 会触发批量删除保护，
+            # 删到第 50 个就被拦下，结果是新旧帧混在一层目录里、成片取错。
+            os.replace(src, frames / f"frame_{n:06d}.jpg")
     count = len(list(frames.glob("frame_*.jpg")))
     print(f"完成：{count} 帧 → {frames}")
 

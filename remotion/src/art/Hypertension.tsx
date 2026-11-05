@@ -47,7 +47,7 @@ export const HypertensionArt: React.FC<{t: number; scene: string; u: number; bi:
         <Panel x={580} y={330} w={440} h={430} title="低压" tone={C.tealDark}>
           <Label x={800} y={520} text="80" size={124} weight={800} color={C.tealDark} />
           <Label x={800} y={576} text="mmHg" size={26} color={C.inkSoft} weight={600} />
-          <Label x={800} y={660} text="松手以后还剩多少" size={26} color={C.ink} weight={700} />
+          <Label x={800} y={660} text="松下来以后还剩多少" size={26} color={C.ink} weight={700} />
         </Panel>
       </g>
     );
@@ -296,12 +296,24 @@ export const HypertensionArt: React.FC<{t: number; scene: string; u: number; bi:
         <Label x={370} y={452} text="不挤了，压力也不会掉到零" size={26} anchor="start" color={C.tealDark} weight={800} />
       ) : null}
 
+      {scene === "pump" ? (
+        <g>
+          {/* 先立「挤」「松」两个字各干什么，后面所有说法都挂在这两行上 */}
+          <g opacity={on(0.02, 0.22)}>
+            <Label x={400} y={392} text="挤：血被推进血管" size={28} anchor="start" color={C.coralDark} weight={800} />
+          </g>
+          <g opacity={on(0.55, 0.78)}>
+            <Label x={400} y={452} text="松：心脏重新装满血" size={28} anchor="start" color={C.tealDark} weight={800} />
+          </g>
+        </g>
+      ) : null}
+
       {scene === "elastic" ? (
         <g>
           <Arrow x0={640} y0={520} x1={640} y1={420} p={on(0.05, 0.3)} color={C.tealDark} />
           <Label x={640} y={392} text="挤的时候撑开" size={24} color={C.tealDark} weight={700} />
           <Arrow x0={880} y0={420} x1={880} y1={520} p={on(0.35, 0.3)} color={C.coralDark} />
-          <Label x={880} y={392} text="松手缩回来" size={24} color={C.coralDark} weight={700} />
+          <Label x={880} y={392} text="松下来缩回来" size={24} color={C.coralDark} weight={700} />
         </g>
       ) : null}
 

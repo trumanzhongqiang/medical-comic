@@ -54,12 +54,62 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
         fs={36}
         rowH={106}
         rows={[
-          {name: "总胆固醇", value: "6.1", unit: "mmol/L", on: false},
-          {name: "甘油三酯", value: "2.4", unit: "mmol/L", on: false},
-          {name: "低密度脂蛋白", value: "4.2", unit: "mmol/L", on: true},
-          {name: "高密度脂蛋白", value: "0.9", unit: "mmol/L", on: false},
+          {name: "总胆固醇", value: "6.1", unit: "mmol/L"},
+          {name: "甘油三酯", value: "2.4", unit: "mmol/L"},
+          {name: "低密度脂蛋白", value: "4.2", unit: "mmol/L"},
+          {name: "高密度脂蛋白", value: "0.9", unit: "mmol/L"},
         ]}
       />
+    );
+  }
+
+  /* 单子上排第三，医生却先看它——圈出那一行，理由摆在下面 */
+  if (scene === "whyfirst") {
+    const p = on(0.05, 0.4);
+    return (
+      <g>
+        <Sheet
+          x={90}
+          y={288}
+          w={600}
+          h={490}
+          title="血脂四项"
+          fs={32}
+          rowH={100}
+          rows={[
+            {name: "总胆固醇", value: "6.1", on: false},
+            {name: "甘油三酯", value: "2.4", on: false},
+            {name: "低密度脂蛋白", value: "4.2", on: true},
+            {name: "高密度脂蛋白", value: "0.9", on: false},
+          ]}
+        />
+        <rect
+          x={96}
+          y={564}
+          width={588}
+          height={112}
+          rx={16}
+          fill="none"
+          stroke={C.coralDark}
+          strokeWidth={6}
+          opacity={p}
+        />
+        <line
+          x1={690}
+          y1={620}
+          x2={726}
+          y2={620}
+          stroke={C.coralDark}
+          strokeWidth={4}
+          strokeDasharray="10 8"
+          opacity={p}
+        />
+        <Panel x={730} y={380} w={294} h={300} title="为什么先看它" tone={C.coralDark}>
+          <Label x={877} y={512} text="降下来" size={36} weight={800} />
+          <Label x={877} y={594} text="心梗、脑梗" size={32} weight={800} color={C.coralDark} />
+          <Label x={877} y={646} text="会跟着少" size={32} weight={800} color={C.coralDark} />
+        </Panel>
+      </g>
     );
   }
 
@@ -70,7 +120,6 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
         <Label x={200} y={ROW[0] - 6} text="胆固醇" size={28} color={C.inkSoft} weight={700} />
         <Arrow x0={300} y0={ROW[1]} x1={440} y1={ROW[1]} p={on(0.1, 0.35)} />
         <Label x={540} y={ROW[0] + 4} text="不溶于血，得靠颗粒运" size={30} weight={800} />
-        <Label x={540} y={ROW[0] + 56} text="胆固醇本身是身体要用的原料" size={26} color={C.inkSoft} weight={600} />
       </g>
     );
   }
@@ -106,6 +155,19 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
             <Chip x={700} y={432} text="是两类运输颗粒" tone="teal" size={26} />
           </g>
         )}
+      </g>
+    );
+  }
+
+  /* 好和坏是两类颗粒的方向，不是两种胆固醇 */
+  if (scene === "myth") {
+    return (
+      <g>
+        <Label x={540} y={380} text="“好胆固醇”“坏胆固醇”" size={34} weight={800} />
+        <Label x={540} y={430} text="说的不是两种胆固醇" size={28} color={C.inkSoft} weight={700} />
+        <Chip x={380} y={560} text="低密度：往外送" tone="coral" size={28} />
+        <Chip x={730} y={560} text="高密度：运回肝" tone="teal" size={28} />
+        <Label x={540} y={680} text="是两批颗粒，方向相反" size={30} weight={800} />
       </g>
     );
   }
@@ -155,10 +217,9 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     return (
       <g>
         {[
-          ["3.4", "风险低", 0.34, C.teal],
-          ["2.6", "有高血压、糖尿病", 0.52, C.tealDark],
-          ["1.8", "已有心血管病", 0.72, "#9A6B12"],
-          ["1.4", "反复发作，更严", 0.92, C.coralDark],
+          ["3.4", "风险低的人", 0.34, C.teal],
+          ["2.6", "只有高血压、糖尿病", 0.52, C.tealDark],
+          ["1.8", "得过心梗、脑梗", 0.72, C.coralDark],
         ].map(([v, t, f, c], i) => (
           <g key={v as string} opacity={on(0.05 + i * 0.12, 0.3)}>
             <rect x={90} y={430 + i * 88} width={900 * (f as number)} height={56} rx={28} fill={c as string} opacity={0.16} />
@@ -171,7 +232,25 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     );
   }
 
-  if (scene === "tg" || scene === "tg2") {
+  if (scene === "tg") {
+    return (
+      <g>
+        <Label x={540} y={366} text="甘油三酯高，跟这几样关系更大" size={30} weight={800} />
+        {[
+          ["喝酒", "常喝就一直高"],
+          ["血糖高", "糖多了转成油"],
+          ["体重超标", "腰围先涨"],
+        ].map(([a, b], i) => (
+          <Panel key={a} x={[56, 384, 712][i]} y={452} w={304} h={252} tone="#9A6B12">
+            <Label x={[208, 536, 864][i]} y={552} text={a} size={34} weight={800} color="#9A6B12" />
+            <Label x={[208, 536, 864][i]} y={612} text={b} size={24} color={C.inkSoft} weight={600} />
+          </Panel>
+        ))}
+      </g>
+    );
+  }
+
+  if (scene === "tg2") {
     return (
       <g>
         <Ticks x={90} y={560} w={900} min={0.5} max={5.5} step={0.5} label="mmol/L" />
@@ -203,9 +282,11 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     );
   }
 
+  /* 总胆固醇是三项加出来的总数：好坏混在一起，分不出来 */
   if (scene === "tc") {
     return (
       <g>
+        <Label x={540} y={392} text="总胆固醇 6.1，是这三项加起来" size={30} weight={800} />
         {[
           ["低密度", "4.2", C.coralDark],
           ["高密度", "0.9", C.tealDark],
@@ -218,6 +299,7 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
             </Panel>
           </g>
         ))}
+        <Label x={540} y={714} text="好坏混在一个数里，分不出来" size={28} weight={800} color={C.inkSoft} />
       </g>
     );
   }

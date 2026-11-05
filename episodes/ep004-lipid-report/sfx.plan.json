@@ -1,0 +1,233 @@
+{
+  "scenes": {
+    "report": [
+      {
+        "at": 0.08,
+        "name": "paper",
+        "gain": 0.4
+      },
+      {
+        "at": 0.55,
+        "name": "tick",
+        "gain": 0.32
+      }
+    ],
+    "whyfirst": [
+      {
+        "at": 0.1,
+        "name": "sweep-soft",
+        "gain": 0.38
+      },
+      {
+        "at": 0.52,
+        "name": "ding",
+        "gain": 0.46
+      }
+    ],
+    "tc": [
+      {
+        "at": 0.08,
+        "name": "paper",
+        "gain": 0.35
+      },
+      {
+        "at": 0.44,
+        "name": "tick",
+        "gain": 0.3
+      },
+      {
+        "at": 0.78,
+        "name": "tap",
+        "gain": 0.32
+      }
+    ],
+    "why": [
+      {
+        "at": 0.06,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.38,
+        "name": "whoosh",
+        "gain": 0.35
+      }
+    ],
+    "two": [
+      {
+        "at": 0.05,
+        "name": "sweep-soft",
+        "gain": 0.4
+      },
+      {
+        "at": 0.45,
+        "name": "move-a",
+        "gain": 0.42
+      }
+    ],
+    "two2": [
+      {
+        "at": 0.08,
+        "name": "move-b",
+        "gain": 0.42
+      },
+      {
+        "at": 0.5,
+        "name": "sweep-soft",
+        "gain": 0.38
+      }
+    ],
+    "myth": [
+      {
+        "at": 0.08,
+        "name": "stamp",
+        "gain": 0.58
+      },
+      {
+        "at": 0.46,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.78,
+        "name": "tick",
+        "gain": 0.3
+      }
+    ],
+    "ldl": [
+      {
+        "at": 0.1,
+        "name": "tap",
+        "gain": 0.4
+      },
+      {
+        "at": 0.52,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "plaque": [
+      {
+        "at": 0.06,
+        "name": "whoosh",
+        "gain": 0.38
+      },
+      {
+        "at": 0.58,
+        "name": "hit-a",
+        "gain": 0.42
+      }
+    ],
+    "target": [
+      {
+        "at": 0.1,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.42,
+        "name": "stamp",
+        "gain": 0.5
+      },
+      {
+        "at": 0.74,
+        "name": "stamp",
+        "gain": 0.5
+      }
+    ],
+    "ladder": [
+      {
+        "at": 0.04,
+        "name": "tick",
+        "gain": 0.32
+      },
+      {
+        "at": 0.3,
+        "name": "tick",
+        "gain": 0.32
+      },
+      {
+        "at": 0.56,
+        "name": "tick",
+        "gain": 0.32
+      },
+      {
+        "at": 0.8,
+        "name": "ding",
+        "gain": 0.45
+      }
+    ],
+    "tg": [
+      {
+        "at": 0.1,
+        "name": "paper",
+        "gain": 0.35
+      },
+      {
+        "at": 0.48,
+        "name": "sweep-soft",
+        "gain": 0.38
+      }
+    ],
+    "tg2": [
+      {
+        "at": 0.16,
+        "name": "tick",
+        "gain": 0.34
+      },
+      {
+        "at": 0.62,
+        "name": "hit-b",
+        "gain": 0.4
+      }
+    ],
+    "hdl": [
+      {
+        "at": 0.08,
+        "name": "ding",
+        "gain": 0.42
+      },
+      {
+        "at": 0.55,
+        "name": "tick",
+        "gain": 0.32
+      }
+    ],
+    "food": [
+      {
+        "at": 0.14,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.62,
+        "name": "stamp",
+        "gain": 0.5
+      }
+    ],
+    "food2": [
+      {
+        "at": 0.14,
+        "name": "stamp",
+        "gain": 0.55
+      },
+      {
+        "at": 0.62,
+        "name": "stamp",
+        "gain": 0.5
+      }
+    ],
+    "statin": [
+      {
+        "at": 0.15,
+        "name": "pop",
+        "gain": 0.42
+      },
+      {
+        "at": 0.6,
+        "name": "impact-soft",
+        "gain": 0.45
+      }
+    ]
+  }
+}

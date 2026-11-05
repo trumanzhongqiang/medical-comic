@@ -1,14 +1,14 @@
 {
   "slug": "ep004-lipid-report",
-  "title": "血脂为什么分好和坏",
+  "title": "血脂报告，先看低密度",
   "episode": 4,
   "composition": "Lipid",
   "timing": "cues",
   "ending": {
-    "big": "该降的那一项，降到位",
-    "sub": "目标按风险定，不是所有人都一样",
+    "big": "先看低密度，目标按风险定",
+    "sub": "有人要压到一点八，有人三点四就够",
     "chips": [
-      "少饱和脂肪，多蔬菜全谷",
+      "少肥肉、少油炸",
       "他汀别自己停"
     ],
     "next": "下期：肝里的油是从哪来的"
@@ -16,26 +16,26 @@
   "sections": [
     {
       "beat": 0,
-      "label": "四项里先看哪一项"
+      "label": "四项里先看第三行"
     },
     {
-      "beat": 2,
-      "label": "两个方向相反的运"
+      "beat": 3,
+      "label": "两批颗粒，两个方向"
     },
     {
-      "beat": 4,
-      "label": "低密度高意味着什么"
+      "beat": 7,
+      "label": "低密度高会怎样"
     },
     {
-      "beat": 6,
-      "label": "目标怎么定"
+      "beat": 9,
+      "label": "目标按风险定"
     },
     {
-      "beat": 8,
-      "label": "另外三项"
+      "beat": 11,
+      "label": "另外两项"
     },
     {
-      "beat": 12,
+      "beat": 14,
       "label": "接下来怎么做"
     }
   ],
@@ -55,6 +55,25 @@
         2,
         3
       ],
+      "scene": "whyfirst",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        4
+      ],
+      "scene": "tc",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        5,
+        6
+      ],
       "scene": "why",
       "note": {
         "kind": "none"
@@ -62,8 +81,7 @@
     },
     {
       "cues": [
-        4,
-        5
+        7
       ],
       "scene": "two",
       "note": {
@@ -72,8 +90,7 @@
     },
     {
       "cues": [
-        6,
-        7
+        8
       ],
       "scene": "two2",
       "note": {
@@ -82,20 +99,19 @@
     },
     {
       "cues": [
-        8,
-        9
+        9,
+        10
       ],
-      "scene": "ldl",
+      "scene": "myth",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        10,
         11
       ],
-      "scene": "plaque",
+      "scene": "ldl",
       "note": {
         "kind": "none"
       }
@@ -105,6 +121,15 @@
         12,
         13
       ],
+      "scene": "plaque",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        14
+      ],
       "scene": "target",
       "note": {
         "kind": "none"
@@ -112,40 +137,35 @@
     },
     {
       "cues": [
-        14,
-        15
+        15,
+        16,
+        17
       ],
       "scene": "ladder",
       "note": {
         "kind": "term",
-        "title": "四条线",
-        "body": "1.8 / 2.6 / 3.4，按风险定"
+        "title": "三条线",
+        "body": "1.8 · 2.6 · 3.4，按风险定"
       }
     },
     {
       "cues": [
-        16,
-        17
+        18
       ],
       "scene": "tg",
       "note": {
-        "kind": "number",
-        "title": "1.7",
-        "unit": "mmol/L",
-        "body": "甘油三酯，超过要留意"
+        "kind": "none"
       }
     },
     {
       "cues": [
-        18,
         19
       ],
       "scene": "tg2",
       "note": {
-        "kind": "term",
-        "title": "胰腺炎",
-        "accent": true,
-        "body": "来得很急，要上医院"
+        "kind": "number",
+        "title": "1.7",
+        "body": "再高要当心胰腺炎"
       }
     },
     {
@@ -160,30 +180,18 @@
     },
     {
       "cues": [
-        22,
-        23
-      ],
-      "scene": "tc",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        24,
-        25
+        22
       ],
       "scene": "food",
       "note": {
         "kind": "term",
-        "title": "少四样",
-        "body": "肥肉 · 动物油 · 奶油 · 油炸"
+        "title": "少两样",
+        "body": "肥肉 · 油炸"
       }
     },
     {
       "cues": [
-        26,
-        27
+        23
       ],
       "scene": "food2",
       "note": {
@@ -194,26 +202,15 @@
     },
     {
       "cues": [
-        28,
-        29
+        24
       ],
       "scene": "statin",
       "note": {
         "kind": "term",
         "title": "他汀",
-        "body": "别自己停，按医嘱复查"
-      }
-    },
-    {
-      "cues": [
-        30,
-        31
-      ],
-      "scene": "close",
-      "note": {
-        "kind": "none"
+        "body": "别自己停"
       }
     }
   ],
-  "duration": 156.44
+  "duration": 103.41
 }

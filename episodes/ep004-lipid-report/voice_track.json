@@ -6,157 +6,122 @@
   },
   {
     "file": "voice/v001.wav",
-    "t": 5.178,
+    "t": 5.545,
     "gain": 1.0
   },
   {
     "file": "voice/v002.wav",
-    "t": 9.496,
+    "t": 9.131,
     "gain": 1.0
   },
   {
     "file": "voice/v003.wav",
-    "t": 13.44,
+    "t": 11.507,
     "gain": 1.0
   },
   {
     "file": "voice/v004.wav",
-    "t": 21.075,
+    "t": 16.048,
     "gain": 1.0
   },
   {
     "file": "voice/v005.wav",
-    "t": 26.536,
+    "t": 19.817,
     "gain": 1.0
   },
   {
     "file": "voice/v006.wav",
-    "t": 31.549,
+    "t": 21.881,
     "gain": 1.0
   },
   {
     "file": "voice/v007.wav",
-    "t": 36.593,
+    "t": 25.482,
     "gain": 1.0
   },
   {
     "file": "voice/v008.wav",
-    "t": 39.475,
+    "t": 30.779,
     "gain": 1.0
   },
   {
     "file": "voice/v009.wav",
-    "t": 44.73,
+    "t": 34.343,
     "gain": 1.0
   },
   {
     "file": "voice/v010.wav",
-    "t": 48.679,
+    "t": 37.977,
     "gain": 1.0
   },
   {
     "file": "voice/v011.wav",
-    "t": 52.658,
+    "t": 40.031,
     "gain": 1.0
   },
   {
     "file": "voice/v012.wav",
-    "t": 58.774,
+    "t": 43.443,
     "gain": 1.0
   },
   {
     "file": "voice/v013.wav",
-    "t": 63.851,
+    "t": 47.81,
     "gain": 1.0
   },
   {
     "file": "voice/v014.wav",
-    "t": 69.838,
+    "t": 51.546,
     "gain": 1.0
   },
   {
     "file": "voice/v015.wav",
-    "t": 74.242,
+    "t": 56.717,
     "gain": 1.0
   },
   {
     "file": "voice/v016.wav",
-    "t": 77.963,
+    "t": 61.033,
     "gain": 1.0
   },
   {
     "file": "voice/v017.wav",
-    "t": 85.285,
+    "t": 65.096,
     "gain": 1.0
   },
   {
     "file": "voice/v018.wav",
-    "t": 88.422,
+    "t": 68.675,
     "gain": 1.0
   },
   {
     "file": "voice/v019.wav",
-    "t": 93.108,
+    "t": 75.251,
     "gain": 1.0
   },
   {
     "file": "voice/v020.wav",
-    "t": 96.636,
+    "t": 79.74,
     "gain": 1.0
   },
   {
     "file": "voice/v021.wav",
-    "t": 101.085,
+    "t": 83.585,
     "gain": 1.0
   },
   {
     "file": "voice/v022.wav",
-    "t": 105.149,
+    "t": 86.41,
     "gain": 1.0
   },
   {
     "file": "voice/v023.wav",
-    "t": 110.207,
+    "t": 90.098,
     "gain": 1.0
   },
   {
     "file": "voice/v024.wav",
-    "t": 114.799,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v025.wav",
-    "t": 118.309,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v026.wav",
-    "t": 124.281,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v027.wav",
-    "t": 129.671,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v028.wav",
-    "t": 134.798,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v029.wav",
-    "t": 137.534,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v030.wav",
-    "t": 143.418,
-    "gain": 1.0
-  },
-  {
-    "file": "voice/v031.wav",
-    "t": 146.37,
+    "t": 94.164,
     "gain": 1.0
   }
 ]
