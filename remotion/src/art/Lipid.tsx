@@ -10,33 +10,27 @@ import {COL, Panel, ROW, X0, X1} from "./kit";
  * 每拍只保留一个对比、一个数值、一句结论。
  */
 
-const VY = 600;
-
-const Vessel: React.FC<{wall?: number; hot?: boolean; plaque?: number; x0?: number; x1?: number}> = ({
-  wall = 0,
-  hot,
-  plaque = 0,
-  x0 = 90,
-  x1 = 990,
-}) => (
-  <g>
-    <path
-      d={`M ${x0} ${VY - 66} L ${x1} ${VY - 58} L ${x1} ${VY + 58} L ${x0} ${VY + 66} Z`}
-      fill="#F6D3C7"
-      stroke={hot ? "#8E3B33" : C.ink}
-      strokeWidth={7 + wall}
-    />
-    {plaque > 0 ? (
+const Vessel: React.FC<{p?: number; hot?: boolean}> = ({p = 0, hot}) => {
+  const bulge = 108 * p;
+  const y = 554 + bulge;
+  return (
+    <g>
+      <rect x={90} y={520} width={900} height={34} rx={12} fill="#F6D3C7" stroke={hot ? "#8E3B33" : C.ink} strokeWidth={5} />
+      <rect x={90} y={668} width={900} height={34} rx={12} fill="#F6D3C7" stroke={hot ? "#8E3B33" : C.ink} strokeWidth={5} />
       <path
-        d={`M ${x0 + 300} ${VY - 60} Q ${x0 + 380} ${VY - 60 + 110 * plaque} ${x0 + 470} ${VY - 58}`}
+        d={`M 356 554 Q 430 ${y} 540 ${y} Q 650 ${y} 724 554 Z`}
         fill="#C0743F"
-        opacity={0.85}
         stroke="#8A4A22"
-        strokeWidth={5}
+        strokeWidth={4}
+        opacity={p > 0.02 ? 1 : 0}
       />
-    ) : null}
-  </g>
-);
+      <g opacity={p > 0.5 ? 1 : 0}>
+        <line x1={760} y1={y - 24} x2={806} y2={y - 54} stroke="#8A4A22" strokeWidth={3} strokeDasharray="7 6" />
+        <Label x={812} y={y - 60} text="斑块" size={26} anchor="start" color="#8A4A22" weight={800} />
+      </g>
+    </g>
+  );
+};
 
 /* 化验单是全片的地图：每一次回到它，只亮一行或两行，观众永远知道在说哪一项。
  * 单子统一放在左边（90–690），右边 712–1024 放这一行的注解，行与注解之间用虚线连。
@@ -96,18 +90,57 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     return <Sheet4 />;
   }
 
-  /* 一滴油浮在水上：胆固醇是油，血是水，两者混不到一起 */
-  if (scene === "oil") {
-    const w = on(0.3, 0.32);
-    const q = on(0.68, 0.3);
+  /* 报告单上那个箭头：全片只讲这一行 */
+  if (scene === "arrow") {
+    const p = on(0.1, 0.5);
+    const q = on(0.55, 0.45);
     return (
       <g>
-        <rect x={90} y={600} width={900} height={176} rx={18} fill={C.tealLight} opacity={0.6 * w} />
-        <line x1={90} y1={600} x2={990} y2={600} stroke={C.tealDark} strokeWidth={5} opacity={0.55 * w} />
+        <Sheet4 onIdx={[2]} />
+        <Tie y={ROW_Y(2)} p={p} />
+        <Arrow x0={788} y0={812} x1={846} y1={600} p={p} color={C.coralDark} width={9} head={24} />
+        <g opacity={q}>
+          <Label x={944} y={652} text="4.2" size={52} weight={800} color={C.coralDark} />
+          <Label x={944} y={704} text="偏高" size={26} weight={800} color={C.coralDark} />
+        </g>
+      </g>
+    );
+  }
+
+  /* 它是身体要用的原料：造膜、造激素 */
+  if (scene === "raw") {
+    const p = on(0.14, 0.3);
+    const q = on(0.56, 0.4);
+    return (
+      <g>
+        <g opacity={p}>
+          <circle cx={540} cy={464} r={46} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
+          <Label x={540} y={386} text="胆固醇" size={30} weight={800} color="#A9771B" />
+        </g>
+        <line x1={508} y1={498} x2={330} y2={642} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
+        <line x1={572} y1={498} x2={750} y2={642} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
+        <Panel x={110} y={648} w={380} h={190} title="细胞膜" tone={C.tealDark} on={q}>
+          <Label x={300} y={778} text="包住每一个细胞" size={24} weight={700} />
+        </Panel>
+        <Panel x={590} y={648} w={380} h={190} title="激素" tone="#9A6B12" on={q}>
+          <Label x={780} y={778} text="性激素、皮质醇" size={24} weight={700} />
+        </Panel>
+      </g>
+    );
+  }
+
+  /* 一滴油浮在水上：胆固醇是油，血是水，两者混不到一起 */
+  if (scene === "oil") {
+    const w = on(0.32, 0.3);
+    const q = on(0.56, 0.34);
+    return (
+      <g>
         <Label x={540} y={470} text="胆固醇" size={36} weight={800} />
         <circle cx={540} cy={592} r={58} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
         <circle cx={522} cy={572} r={13} fill={C.white} opacity={0.7} />
         <g opacity={w}>
+          <rect x={90} y={600} width={900} height={176} rx={18} fill={C.tealLight} opacity={0.6} />
+          <line x1={90} y1={600} x2={990} y2={600} stroke={C.tealDark} strokeWidth={5} opacity={0.55} />
           <Label x={540} y={712} text="血，主要成分是水" size={28} color={C.tealDark} weight={800} />
         </g>
         <g opacity={q}>
@@ -117,80 +150,195 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     );
   }
 
-  /* 自己走不动，得装车 */
+  /* 自己走不动，得装车；这种车叫脂蛋白 */
   if (scene === "car") {
-    const p = on(0.25, 0.5);
+    const p = on(0.2, 0.5);
+    const q = on(0.62, 0.35);
     return (
       <g>
         <circle cx={250} cy={590} r={54} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
         <Label x={250} y={700} text="胆固醇" size={26} color="#A9771B" weight={800} />
         <Arrow x0={348} y0={590} x1={600} y1={590} p={p} color={C.coralDark} width={8} />
-        <Car x={740} y={580} s={1.35} tone={C.ink} />
-        <Label x={740} y={756} text="车" size={30} weight={800} />
-      </g>
-    );
-  }
-
-  /* 这种车叫脂蛋白，按密度分两种 */
-  if (scene === "car2") {
-    const p = on(0.05, 0.3);
-    return (
-      <g>
-        <Label x={540} y={382} text="这种车叫脂蛋白" size={34} weight={800} />
-        <g opacity={p}>
-          <Car x={320} y={600} s={1.5} tone={C.coralDark} />
-          <Label x={320} y={790} text="低密度" size={28} color={C.coralDark} weight={800} />
-          <Car x={772} y={600} s={0.95} tone={C.tealDark} />
-          <Label x={772} y={790} text="高密度" size={28} color={C.tealDark} weight={800} />
+        <Car x={760} y={580} s={1.3} tone={C.ink} />
+        <g opacity={1 - q}>
+          <Label x={760} y={756} text="车" size={30} weight={800} />
+        </g>
+        <g opacity={q}>
+          <Label x={760} y={756} text="脂蛋白" size={30} weight={800} />
         </g>
       </g>
     );
   }
 
-  /* 肝是起点：低密度往外送，高密度往回收 */
-  if (scene === "loop" || scene === "loop2") {
-    const walk = scene === "loop";
-    const p1 = walk ? on(0.02, 0.46) : 1;
-    const p2 = walk ? on(0.5, 0.46) : 1;
+  /* 只有肝发货：全身的细胞要用，都等它送 */
+  if (scene === "liver") {
+    const p = on(0.04, 0.32);
+    const q = on(0.46, 0.46);
     return (
       <g>
-        <rect x={96} y={420} width={176} height={290} rx={34} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
-        <Label x={184} y={566} text="肝" size={48} weight={800} color="#A9771B" />
-        <Label x={184} y={614} text="装车发出" size={20} color={C.inkSoft} weight={700} />
-        <Arrow x0={386} y0={470} x1={790} y1={470} p={p1} color={C.coralDark} width={8} />
-        {p1 > 0.02 ? <Car x={386 + 396 * p1} y={470} s={0.72} tone={C.coralDark} /> : null}
-        <Label x={590} y={408} text="低密度：往外送" size={24} color={C.coralDark} weight={800} />
-        <Label x={926} y={470} text="全身" size={22} color={C.inkSoft} weight={700} />
-        {p2 > 0.02 ? (
-          <g>
-            <Arrow x0={790} y0={700} x1={386} y1={700} p={p2} color={C.tealDark} width={8} />
-            <Car x={790 - 396 * p2} y={700} s={0.72} tone={C.tealDark} />
-            <Label x={590} y={800} text="高密度：送回肝" size={24} color={C.tealDark} weight={800} />
+        <g opacity={p}>
+          <rect x={110} y={430} width={200} height={300} rx={34} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
+          <Label x={210} y={576} text="肝" size={54} weight={800} color="#A9771B" />
+          <Label x={210} y={632} text="唯一发货的地方" size={20} weight={700} color={C.inkSoft} />
+        </g>
+        <g opacity={q}>
+          <Arrow x0={348} y0={580} x1={640} y1={580} color={C.inkSoft} width={6} head={18} />
+          <Panel x={660} y={420} w={330} h={320} title="全身的细胞">
+            {[
+              [710, 510],
+              [770, 495],
+              [830, 520],
+              [890, 498],
+              [945, 515],
+              [720, 585],
+              [790, 600],
+              [860, 585],
+              [925, 600],
+            ].map(([cx, cy]) => (
+              <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={15} fill={C.tealDark} opacity={0.5} />
+            ))}
+            <Label x={825} y={690} text="要用，只能等肝送" size={22} weight={800} color={C.inkSoft} />
+          </Panel>
+        </g>
+      </g>
+    );
+  }
+
+  /* 肝装车往外送 */
+  if (scene === "send") {
+    const p = on(0.1, 0.62);
+    const q = on(0.62, 0.35);
+    return (
+      <g>
+        <rect x={96} y={470} width={176} height={220} rx={30} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
+        <Label x={184} y={604} text="肝" size={46} weight={800} color="#A9771B" />
+        <Arrow x0={300} y0={580} x1={940} y1={580} p={p} color={C.coralDark} width={8} />
+        <Car x={320 + 580 * p} y={580} s={0.8} tone={C.coralDark} />
+        <g opacity={q}>
+          <Label x={620} y={486} text="低密度：往外送" size={26} weight={800} color={C.coralDark} />
+        </g>
+      </g>
+    );
+  }
+
+  /* 密度是把尺子：比血轻的叫低密度 */
+  if (scene === "light" || scene === "back") {
+    const heavy = scene === "back";
+    const p = on(0.05, 0.42);
+    const q = on(0.5, 0.42);
+    return (
+      <g>
+        <line x1={180} y1={380} x2={180} y2={846} stroke={C.inkSoft} strokeWidth={4} opacity={0.45} />
+        <Arrow x0={180} y0={470} x1={180} y1={402} color={C.inkSoft} width={4} head={12} />
+        <Arrow x0={180} y0={786} x1={180} y1={838} color={C.inkSoft} width={4} head={12} />
+        <Label x={200} y={424} text="轻" size={24} anchor="start" color={C.inkSoft} weight={700} />
+        <Label x={200} y={834} text="沉" size={24} anchor="start" color={C.inkSoft} weight={700} />
+        <line x1={260} y1={640} x2={1000} y2={640} stroke={C.tealDark} strokeWidth={4} strokeDasharray="12 9" opacity={0.65} />
+        <Label x={1000} y={612} text="血的密度" size={22} anchor="end" color={C.tealDark} weight={700} />
+        <g opacity={heavy ? 0.16 : p}>
+          <Car x={560} y={545} s={1.1} tone={C.coralDark} />
+          <Label x={560} y={456} text="低密度" size={28} weight={800} color={C.coralDark} />
+        </g>
+        {heavy ? (
+          <g opacity={q}>
+            <Car x={560} y={772} s={1.05} tone={C.tealDark} />
+            <Label x={250} y={784} text="高密度" size={28} anchor="start" weight={800} color={C.tealDark} />
+            <Label x={860} y={716} text="蛋白多、油少" size={26} weight={800} color={C.tealDark} />
+            <Label x={860} y={760} text="所以比血沉" size={26} weight={800} color={C.tealDark} />
           </g>
-        ) : null}
-        {walk ? null : (
-          <g opacity={on(0.05, 0.26)}>
-            <Label x={560} y={592} text="一个来回" size={30} weight={800} color={C.inkSoft} />
+        ) : (
+          <g opacity={q}>
+            <Label x={560} y={718} text="油多、蛋白少" size={26} weight={800} color={C.coralDark} />
+            <Label x={560} y={762} text="所以比血轻" size={26} weight={800} color={C.coralDark} />
           </g>
         )}
       </g>
     );
   }
 
-  /* 没有好胆固醇坏胆固醇，只有两批车 */
-  if (scene === "verdict") {
-    const p = on(0.5, 0.35);
+  /* 送到地方，细胞卸下来用 */
+  if (scene === "use") {
+    const p = on(0.1, 0.55);
     return (
       <g>
-        <Label x={540} y={486} text="没有好胆固醇" size={46} weight={800} />
-        <Label x={540} y={562} text="也没有坏胆固醇" size={46} weight={800} />
+        <rect x={680} y={430} width={320} height={320} rx={64} fill={C.tealLight} stroke={C.tealDark} strokeWidth={5} />
+        <Label x={840} y={556} text="细胞" size={34} weight={800} color={C.tealDark} />
+        <Car x={350} y={586} s={0.9} tone={C.coralDark} />
+        <Arrow x0={462} y0={548} x1={664} y1={512} p={p} color={C.coralDark} width={7} head={18} />
         <g opacity={p}>
-          <rect x={120} y={660} width={380} height={92} rx={46} fill={C.coralLight} stroke={C.coralDark} strokeWidth={5} />
-          <Label x={310} y={718} text="低密度：往外送" size={26} color={C.coralDark} weight={800} />
-          <rect x={580} y={660} width={380} height={92} rx={46} fill={C.tealLight} stroke={C.tealDark} strokeWidth={5} />
-          <Label x={770} y={718} text="高密度：往回收" size={26} color={C.tealDark} weight={800} />
-          <Arrow x0={180} y0={812} x1={420} y1={812} p={p} color={C.coralDark} width={7} />
-          <Arrow x0={900} y0={812} x1={660} y1={812} p={p} color={C.tealDark} width={7} />
+          <circle cx={600} cy={524} r={22} fill={C.amber} stroke="#A9771B" strokeWidth={4} />
+        </g>
+      </g>
+    );
+  }
+
+  /* 用剩的不能扔，只能回肝，从胆汁排掉 */
+  if (scene === "waste") {
+    const p1 = on(0.05, 0.28);
+    const p2 = on(0.4, 0.28);
+    const p3 = on(0.72, 0.28);
+    return (
+      <g>
+        <rect x={110} y={400} width={210} height={210} rx={30} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
+        <Label x={215} y={524} text="肝" size={46} weight={800} color="#A9771B" />
+        <g opacity={p1}>
+          <circle cx={856} cy={432} r={38} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
+          <Label x={856} y={370} text="用剩的" size={24} weight={800} color="#A9771B" />
+          <Label x={856} y={534} text="就地扔掉" size={24} weight={700} color={C.inkSoft} />
+          <Cross x={856} y={584} s={1} />
+        </g>
+        <g opacity={p2}>
+          <Arrow x0={800} y0={666} x1={360} y1={666} p={p2} color={C.tealDark} width={7} />
+          <Car x={790 - 420 * p2} y={666} s={0.58} tone={C.tealDark} />
+          <Label x={578} y={630} text="只能运回肝" size={24} weight={800} color={C.tealDark} />
+        </g>
+        <g opacity={p3}>
+          <Arrow x0={215} y0={628} x1={215} y1={702} p={p3} color="#9A6B12" width={6} head={16} />
+          <Label x={215} y={752} text="变成胆汁酸" size={24} weight={800} color="#9A6B12" />
+          <Label x={215} y={798} text="随大便排掉" size={24} weight={700} color={C.inkSoft} />
+        </g>
+      </g>
+    );
+  }
+
+  /* 一辆往外送，一辆往回收，两头都是肝 */
+  if (scene === "both") {
+    const p = on(0.05, 0.4);
+    const q = on(0.5, 0.4);
+    return (
+      <g>
+        <rect x={96} y={470} width={190} height={260} rx={30} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
+        <Label x={191} y={622} text="肝" size={48} weight={800} color="#A9771B" />
+        <Arrow x0={320} y0={532} x1={890} y1={532} p={p} color={C.coralDark} width={8} />
+        <Car x={340 + 540 * p} y={532} s={0.68} tone={C.coralDark} />
+        <Label x={610} y={468} text="低密度：往外送" size={24} weight={800} color={C.coralDark} />
+        <g opacity={q}>
+          <Arrow x0={890} y0={722} x1={320} y1={722} color={C.tealDark} width={8} />
+          <Car x={600} y={722} s={0.68} tone={C.tealDark} />
+          <Label x={610} y={800} text="高密度：往回收" size={24} weight={800} color={C.tealDark} />
+          <rect x={84} y={458} width={214} height={284} rx={34} fill="none" stroke={C.coralDark} strokeWidth={5} strokeDasharray="10 8" />
+          <Label x={400} y={430} text="发货、收货，都是它" size={22} weight={800} color={C.coralDark} />
+        </g>
+      </g>
+    );
+  }
+
+  /* 送得太多：所以要盯 */
+  if (scene === "toomuch") {
+    const p = on(0.05, 0.45);
+    const q = on(0.52, 0.4);
+    return (
+      <g>
+        <rect x={96} y={500} width={170} height={180} rx={28} fill={C.amberLight} stroke="#A9771B" strokeWidth={5} />
+        <Label x={181} y={612} text="肝" size={42} weight={800} color="#A9771B" />
+        <Arrow x0={292} y0={592} x1={948} y1={592} p={p} color={C.coralDark} width={7} />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <Car key={i} x={346 + i * 132} y={592} s={0.4} tone={C.coralDark} />
+        ))}
+        <Label x={620} y={500} text="低密度：送得太多" size={26} weight={800} color={C.coralDark} />
+        <g opacity={q}>
+          <Label x={540} y={762} text="所以要盯" size={40} weight={800} />
+          <Label x={540} y={818} text="盯到多少，看风险" size={28} weight={700} color={C.inkSoft} />
         </g>
       </g>
     );
@@ -199,26 +347,9 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
   if (scene === "plaque") {
     return (
       <g>
-        <Vessel x0={90} x1={990} plaque={plaque} hot={plaque > 0.6} />
-        <Label x={540} y={VY - 130} text="颗粒进到血管壁里" size={28} color={C.coralDark} weight={800} />
-        <Label x={540} y={VY + 130} text="引起炎症，慢慢长成斑块" size={28} weight={800} />
-      </g>
-    );
-  }
-
-  if (scene === "target") {
-    return (
-      <g>
-        {[
-          ["得过心梗、脑梗", "要更严", C.coralDark],
-          ["糖尿病、高血压", "中等", "#9A6B12"],
-          ["风险低的人", "可以宽一些", C.tealDark],
-        ].map(([a, b, c], i) => (
-          <Panel key={a as string} x={[56, 384, 712][i]} y={450} w={304} h={280} tone={c as string}>
-            <Label x={[208, 536, 864][i]} y={580} text={a as string} size={26} weight={800} color={c as string} />
-            <Label x={[208, 536, 864][i]} y={630} text={b as string} size={26} />
-          </Panel>
-        ))}
+        <Vessel p={plaque} hot={plaque > 0.6} />
+        <Label x={540} y={452} text="颗粒一层层堆进血管壁" size={28} color={C.coralDark} weight={800} />
+        <Label x={540} y={796} text="血管变窄，心梗、脑梗就来了" size={28} weight={800} />
       </g>
     );
   }
@@ -309,15 +440,15 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
 
   /* 第四行：高密度好一点，但管不住低密度 */
   if (scene === "hdlcell") {
-    const p = on(0.08, 0.3);
-    const q = on(0.52, 0.4);
+    const p = on(0.05, 0.26);
+    const q = on(0.44, 0.36);
     return (
       <g>
         <Sheet4 onIdx={[3]} />
         <Tie y={ROW_Y(3)} p={p} />
         <Panel x={740} y={400} w={284} h={330} title="高密度" tone={C.tealDark} on={p}>
-          <Check x={792} y={505} s={1.4} />
-          <Label x={826} y={516} text="高一点是好事" size={26} anchor="start" weight={800} />
+          <Check x={784} y={505} s={1.2} />
+          <Label x={832} y={516} text="高一点是好事" size={26} anchor="start" weight={800} />
           <g opacity={q}>
             <Label x={882} y={650} text="但抵消不了低密度" size={26} color={C.coralDark} weight={800} />
           </g>

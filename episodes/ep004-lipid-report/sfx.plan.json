@@ -7,6 +7,42 @@
         "gain": 0.4
       }
     ],
+    "arrow": [
+      {
+        "at": 0.08,
+        "name": "tick",
+        "gain": 0.3
+      },
+      {
+        "at": 0.55,
+        "name": "ding",
+        "gain": 0.46
+      }
+    ],
+    "plaque": [
+      {
+        "at": 0.06,
+        "name": "whoosh",
+        "gain": 0.38
+      },
+      {
+        "at": 0.58,
+        "name": "hit-a",
+        "gain": 0.42
+      }
+    ],
+    "raw": [
+      {
+        "at": 0.14,
+        "name": "pop",
+        "gain": 0.4
+      },
+      {
+        "at": 0.56,
+        "name": "up-b",
+        "gain": 0.4
+      }
+    ],
     "oil": [
       {
         "at": 0.06,
@@ -36,84 +72,103 @@
         "gain": 0.3
       }
     ],
-    "car2": [
-      {
-        "at": 0.05,
-        "name": "up-a",
-        "gain": 0.4
-      },
-      {
-        "at": 0.4,
-        "name": "up-b",
-        "gain": 0.38
-      },
-      {
-        "at": 0.66,
-        "name": "ding",
-        "gain": 0.4
-      }
-    ],
-    "loop": [
-      {
-        "at": 0.14,
-        "name": "move-a",
-        "gain": 0.42
-      },
-      {
-        "at": 0.58,
-        "name": "move-b",
-        "gain": 0.42
-      }
-    ],
-    "loop2": [
-      {
-        "at": 0.24,
-        "name": "ding",
-        "gain": 0.44
-      }
-    ],
-    "verdict": [
+    "liver": [
       {
         "at": 0.06,
-        "name": "stamp",
-        "gain": 0.55
+        "name": "move-a",
+        "gain": 0.36
       },
       {
-        "at": 0.52,
-        "name": "stamp",
-        "gain": 0.5
-      },
-      {
-        "at": 0.78,
+        "at": 0.48,
         "name": "tick",
         "gain": 0.3
       }
     ],
-    "plaque": [
+    "send": [
       {
-        "at": 0.06,
-        "name": "whoosh",
-        "gain": 0.38
+        "at": 0.12,
+        "name": "move-b",
+        "gain": 0.42
       },
       {
-        "at": 0.58,
-        "name": "hit-a",
+        "at": 0.64,
+        "name": "ding",
+        "gain": 0.4
+      }
+    ],
+    "light": [
+      {
+        "at": 0.06,
+        "name": "up-a",
+        "gain": 0.4
+      },
+      {
+        "at": 0.5,
+        "name": "ding",
         "gain": 0.42
       }
     ],
-    "target": [
+    "use": [
       {
         "at": 0.1,
-        "name": "stamp",
-        "gain": 0.55
+        "name": "pop",
+        "gain": 0.36
       },
       {
-        "at": 0.42,
-        "name": "stamp",
-        "gain": 0.5
+        "at": 0.6,
+        "name": "tap",
+        "gain": 0.3
+      }
+    ],
+    "waste": [
+      {
+        "at": 0.06,
+        "name": "down-a",
+        "gain": 0.32
       },
       {
-        "at": 0.74,
+        "at": 0.4,
+        "name": "move-b",
+        "gain": 0.38
+      },
+      {
+        "at": 0.72,
+        "name": "sink",
+        "gain": 0.34
+      }
+    ],
+    "back": [
+      {
+        "at": 0.06,
+        "name": "sink",
+        "gain": 0.44
+      },
+      {
+        "at": 0.5,
+        "name": "ding",
+        "gain": 0.4
+      }
+    ],
+    "both": [
+      {
+        "at": 0.06,
+        "name": "move-a",
+        "gain": 0.36
+      },
+      {
+        "at": 0.5,
+        "name": "stamp",
+        "gain": 0.42
+      }
+    ],
+    "toomuch": [
+      {
+        "at": 0.06,
+        "name": "run-up-a",
+        "gain": 0.4
+      },
+      {
+        "at": 0.54,
         "name": "stamp",
         "gain": 0.5
       }
@@ -179,18 +234,6 @@
       }
     ],
     "food": [
-      {
-        "at": 0.14,
-        "name": "stamp",
-        "gain": 0.55
-      },
-      {
-        "at": 0.62,
-        "name": "stamp",
-        "gain": 0.5
-      }
-    ],
-    "food2": [
       {
         "at": 0.14,
         "name": "stamp",
