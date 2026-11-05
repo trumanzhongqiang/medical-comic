@@ -7,81 +7,86 @@
         "gain": 0.4
       }
     ],
-    "map": [
-      {
-        "at": 0.08,
-        "name": "tick",
-        "gain": 0.34
-      },
-      {
-        "at": 0.45,
-        "name": "sweep-soft",
-        "gain": 0.36
-      }
-    ],
-    "why": [
+    "oil": [
       {
         "at": 0.06,
+        "name": "ding",
+        "gain": 0.42
+      },
+      {
+        "at": 0.34,
+        "name": "sweep-soft",
+        "gain": 0.3
+      },
+      {
+        "at": 0.72,
         "name": "tap",
+        "gain": 0.34
+      }
+    ],
+    "car": [
+      {
+        "at": 0.2,
+        "name": "move-a",
         "gain": 0.4
       },
       {
-        "at": 0.38,
-        "name": "whoosh",
-        "gain": 0.35
+        "at": 0.55,
+        "name": "tick",
+        "gain": 0.3
       }
     ],
-    "two": [
+    "car2": [
       {
         "at": 0.05,
-        "name": "sweep-soft",
+        "name": "up-a",
         "gain": 0.4
       },
       {
-        "at": 0.45,
+        "at": 0.4,
+        "name": "up-b",
+        "gain": 0.38
+      },
+      {
+        "at": 0.66,
+        "name": "ding",
+        "gain": 0.4
+      }
+    ],
+    "loop": [
+      {
+        "at": 0.14,
         "name": "move-a",
         "gain": 0.42
-      }
-    ],
-    "two2": [
+      },
       {
-        "at": 0.08,
+        "at": 0.58,
         "name": "move-b",
         "gain": 0.42
-      },
-      {
-        "at": 0.5,
-        "name": "sweep-soft",
-        "gain": 0.38
       }
     ],
-    "myth": [
+    "loop2": [
       {
-        "at": 0.08,
-        "name": "stamp",
-        "gain": 0.58
-      },
+        "at": 0.24,
+        "name": "ding",
+        "gain": 0.44
+      }
+    ],
+    "verdict": [
       {
-        "at": 0.46,
+        "at": 0.06,
         "name": "stamp",
         "gain": 0.55
+      },
+      {
+        "at": 0.52,
+        "name": "stamp",
+        "gain": 0.5
       },
       {
         "at": 0.78,
         "name": "tick",
         "gain": 0.3
-      }
-    ],
-    "ldl": [
-      {
-        "at": 0.1,
-        "name": "tap",
-        "gain": 0.4
-      },
-      {
-        "at": 0.52,
-        "name": "ding",
-        "gain": 0.45
       }
     ],
     "plaque": [

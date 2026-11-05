@@ -16,23 +16,23 @@
   "sections": [
     {
       "beat": 0,
-      "label": "四项里谁是主角"
+      "label": "胆固醇是油，血是水"
     },
     {
-      "beat": 5,
-      "label": "两批颗粒，两个方向"
+      "beat": 4,
+      "label": "两趟车，两个方向"
     },
     {
-      "beat": 6,
+      "beat": 7,
       "label": "低密度高会怎样"
     },
     {
       "beat": 8,
-      "label": "目标按风险定"
+      "label": "盯到多少，看风险"
     },
     {
       "beat": 10,
-      "label": "回到单子，还有两项"
+      "label": "单子上剩下三项"
     },
     {
       "beat": 14,
@@ -54,54 +54,54 @@
         1,
         2
       ],
-      "scene": "map",
+      "scene": "oil",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        3,
+        3
+      ],
+      "scene": "car",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
         4
       ],
-      "scene": "why",
+      "scene": "car2",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        5
-      ],
-      "scene": "two",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
+        5,
         6
       ],
-      "scene": "two2",
+      "scene": "loop",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        7,
-        8
+        7
       ],
-      "scene": "myth",
+      "scene": "loop2",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
+        8,
         9
       ],
-      "scene": "ldl",
+      "scene": "verdict",
       "note": {
         "kind": "none"
       }
@@ -210,5 +210,5 @@
       }
     }
   ],
-  "duration": 101.95
+  "duration": 104.81
 }
