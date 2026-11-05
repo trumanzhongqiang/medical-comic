@@ -2,43 +2,21 @@
   "scenes": {
     "report": [
       {
-        "at": 0.08,
+        "at": 0.1,
         "name": "paper",
         "gain": 0.4
-      },
-      {
-        "at": 0.55,
-        "name": "tick",
-        "gain": 0.32
       }
     ],
-    "whyfirst": [
-      {
-        "at": 0.1,
-        "name": "sweep-soft",
-        "gain": 0.38
-      },
-      {
-        "at": 0.52,
-        "name": "ding",
-        "gain": 0.46
-      }
-    ],
-    "tc": [
+    "map": [
       {
         "at": 0.08,
-        "name": "paper",
-        "gain": 0.35
-      },
-      {
-        "at": 0.44,
         "name": "tick",
-        "gain": 0.3
+        "gain": 0.34
       },
       {
-        "at": 0.78,
-        "name": "tap",
-        "gain": 0.32
+        "at": 0.45,
+        "name": "sweep-soft",
+        "gain": 0.36
       }
     ],
     "why": [
@@ -157,35 +135,37 @@
         "gain": 0.45
       }
     ],
-    "tg": [
-      {
-        "at": 0.1,
-        "name": "paper",
-        "gain": 0.35
-      },
-      {
-        "at": 0.48,
-        "name": "sweep-soft",
-        "gain": 0.38
-      }
-    ],
-    "tg2": [
-      {
-        "at": 0.16,
-        "name": "tick",
-        "gain": 0.34
-      },
-      {
-        "at": 0.62,
-        "name": "hit-b",
-        "gain": 0.4
-      }
-    ],
-    "hdl": [
+    "sumback": [
       {
         "at": 0.08,
+        "name": "paper",
+        "gain": 0.36
+      },
+      {
+        "at": 0.52,
+        "name": "tick",
+        "gain": 0.3
+      }
+    ],
+    "tgcell": [
+      {
+        "at": 0.1,
+        "name": "stamp",
+        "gain": 0.5
+      }
+    ],
+    "tgmark": [
+      {
+        "at": 0.12,
         "name": "ding",
-        "gain": 0.42
+        "gain": 0.46
+      }
+    ],
+    "hdlcell": [
+      {
+        "at": 0.1,
+        "name": "stamp",
+        "gain": 0.5
       },
       {
         "at": 0.55,

@@ -16,23 +16,23 @@
   "sections": [
     {
       "beat": 0,
-      "label": "四项里先看第三行"
+      "label": "四项里谁是主角"
     },
     {
-      "beat": 3,
+      "beat": 5,
       "label": "两批颗粒，两个方向"
     },
     {
-      "beat": 7,
+      "beat": 6,
       "label": "低密度高会怎样"
     },
     {
-      "beat": 9,
+      "beat": 8,
       "label": "目标按风险定"
     },
     {
-      "beat": 11,
-      "label": "另外两项"
+      "beat": 10,
+      "label": "回到单子，还有两项"
     },
     {
       "beat": 14,
@@ -42,8 +42,7 @@
   "beats": [
     {
       "cues": [
-        0,
-        1
+        0
       ],
       "scene": "report",
       "note": {
@@ -52,27 +51,18 @@
     },
     {
       "cues": [
-        2,
-        3
+        1,
+        2
       ],
-      "scene": "whyfirst",
+      "scene": "map",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
+        3,
         4
-      ],
-      "scene": "tc",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        5,
-        6
       ],
       "scene": "why",
       "note": {
@@ -81,7 +71,7 @@
     },
     {
       "cues": [
-        7
+        5
       ],
       "scene": "two",
       "note": {
@@ -90,7 +80,7 @@
     },
     {
       "cues": [
-        8
+        6
       ],
       "scene": "two2",
       "note": {
@@ -99,8 +89,8 @@
     },
     {
       "cues": [
-        9,
-        10
+        7,
+        8
       ],
       "scene": "myth",
       "note": {
@@ -109,7 +99,7 @@
     },
     {
       "cues": [
-        11
+        9
       ],
       "scene": "ldl",
       "note": {
@@ -118,8 +108,8 @@
     },
     {
       "cues": [
-        12,
-        13
+        10,
+        11
       ],
       "scene": "plaque",
       "note": {
@@ -128,7 +118,7 @@
     },
     {
       "cues": [
-        14
+        12
       ],
       "scene": "target",
       "note": {
@@ -137,9 +127,9 @@
     },
     {
       "cues": [
-        15,
-        16,
-        17
+        13,
+        14,
+        15
       ],
       "scene": "ladder",
       "note": {
@@ -150,9 +140,19 @@
     },
     {
       "cues": [
+        16,
+        17
+      ],
+      "scene": "sumback",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
         18
       ],
-      "scene": "tg",
+      "scene": "tgcell",
       "note": {
         "kind": "none"
       }
@@ -161,11 +161,9 @@
       "cues": [
         19
       ],
-      "scene": "tg2",
+      "scene": "tgmark",
       "note": {
-        "kind": "number",
-        "title": "1.7",
-        "body": "再高要当心胰腺炎"
+        "kind": "none"
       }
     },
     {
@@ -173,7 +171,7 @@
         20,
         21
       ],
-      "scene": "hdl",
+      "scene": "hdlcell",
       "note": {
         "kind": "none"
       }
@@ -212,5 +210,5 @@
       }
     }
   ],
-  "duration": 103.41
+  "duration": 101.95
 }

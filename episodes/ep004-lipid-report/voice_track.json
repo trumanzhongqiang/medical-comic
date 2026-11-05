@@ -6,122 +6,122 @@
   },
   {
     "file": "voice/v001.wav",
-    "t": 5.545,
+    "t": 5.398,
     "gain": 1.0
   },
   {
     "file": "voice/v002.wav",
-    "t": 9.131,
+    "t": 9.463,
     "gain": 1.0
   },
   {
     "file": "voice/v003.wav",
-    "t": 11.507,
+    "t": 15.052,
     "gain": 1.0
   },
   {
     "file": "voice/v004.wav",
-    "t": 16.048,
+    "t": 17.496,
     "gain": 1.0
   },
   {
     "file": "voice/v005.wav",
-    "t": 19.817,
+    "t": 21.362,
     "gain": 1.0
   },
   {
     "file": "voice/v006.wav",
-    "t": 21.881,
+    "t": 26.24,
     "gain": 1.0
   },
   {
     "file": "voice/v007.wav",
-    "t": 25.482,
+    "t": 30.584,
     "gain": 1.0
   },
   {
     "file": "voice/v008.wav",
-    "t": 30.779,
+    "t": 34.058,
     "gain": 1.0
   },
   {
     "file": "voice/v009.wav",
-    "t": 34.343,
+    "t": 36.085,
     "gain": 1.0
   },
   {
     "file": "voice/v010.wav",
-    "t": 37.977,
+    "t": 39.73,
     "gain": 1.0
   },
   {
     "file": "voice/v011.wav",
-    "t": 40.031,
+    "t": 43.573,
     "gain": 1.0
   },
   {
     "file": "voice/v012.wav",
-    "t": 43.443,
+    "t": 47.233,
     "gain": 1.0
   },
   {
     "file": "voice/v013.wav",
-    "t": 47.81,
+    "t": 52.528,
     "gain": 1.0
   },
   {
     "file": "voice/v014.wav",
-    "t": 51.546,
+    "t": 56.922,
     "gain": 1.0
   },
   {
     "file": "voice/v015.wav",
-    "t": 56.717,
+    "t": 61.152,
     "gain": 1.0
   },
   {
     "file": "voice/v016.wav",
-    "t": 61.033,
+    "t": 64.41,
     "gain": 1.0
   },
   {
     "file": "voice/v017.wav",
-    "t": 65.096,
+    "t": 67.285,
     "gain": 1.0
   },
   {
     "file": "voice/v018.wav",
-    "t": 68.675,
+    "t": 72.088,
     "gain": 1.0
   },
   {
     "file": "voice/v019.wav",
-    "t": 75.251,
+    "t": 76.143,
     "gain": 1.0
   },
   {
     "file": "voice/v020.wav",
-    "t": 79.74,
+    "t": 80.355,
     "gain": 1.0
   },
   {
     "file": "voice/v021.wav",
-    "t": 83.585,
+    "t": 83.242,
     "gain": 1.0
   },
   {
     "file": "voice/v022.wav",
-    "t": 86.41,
+    "t": 86.281,
     "gain": 1.0
   },
   {
     "file": "voice/v023.wav",
-    "t": 90.098,
+    "t": 89.869,
     "gain": 1.0
   },
   {
     "file": "voice/v024.wav",
-    "t": 94.164,
+    "t": 93.24,
     "gain": 1.0
   }
 ]

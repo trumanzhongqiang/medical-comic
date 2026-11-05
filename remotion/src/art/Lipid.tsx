@@ -1,7 +1,7 @@
 import React from "react";
 import {C} from "../theme";
 import {inOut, seg} from "../motion";
-import {Arrow, Bars, Check, Cross, Label, Particle, Ruler, Sheet, Tag} from "../diagrams";
+import {Arrow, Bars, Check, Cross, Label, Particle, Sheet, Tag} from "../diagrams";
 import {PillBox} from "../parts";
 import {Chip, COL, Curve, Panel, ROW, Ticks, X0, X1} from "./kit";
 
@@ -38,77 +38,55 @@ const Vessel: React.FC<{wall?: number; hot?: boolean; plaque?: number; x0?: numb
   </g>
 );
 
+/* 化验单是全片的地图：每一次回到它，只亮一行或两行，观众永远知道在说哪一项。
+ * 单子统一放在左边（90–690），右边 712–1024 放这一行的注解，行与注解之间用虚线连。
+ */
+const SY = 288;
+const RH = 100;
+const ROW_Y = (i: number) => SY + 76 + RH * i + RH / 2; // 行中线 414 / 514 / 614 / 714
+
+const Sheet4: React.FC<{onIdx?: number[]}> = ({onIdx = []}) => (
+  <Sheet
+    x={90}
+    y={SY}
+    w={620}
+    h={506}
+    title="血脂四项"
+    fs={32}
+    rowH={RH}
+    rows={[
+      {name: "总胆固醇", value: "6.1", unit: "mmol/L", on: onIdx.includes(0) ? true : undefined},
+      {name: "甘油三酯", value: "2.4", unit: "mmol/L", on: onIdx.includes(1) ? true : undefined},
+      {name: "低密度脂蛋白", value: "4.2", unit: "mmol/L", on: onIdx.includes(2) ? true : undefined},
+      {name: "高密度脂蛋白", value: "0.9", unit: "mmol/L", on: onIdx.includes(3) ? true : undefined},
+    ]}
+  />
+);
+
+/** 行到右侧注解的一条短虚线，跟着出现节奏淡入。 */
+const Tie: React.FC<{y: number; p: number}> = ({y, p}) => (
+  <line x1={714} y1={y} x2={748} y2={y} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="7 6" opacity={0.55 * p} />
+);
+
 export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number}> = ({t, scene, u}) => {
   const flow = (t * 0.12) % 1;
   const on = (a: number, b: number) => inOut(seg(u, a, b - a));
   const plaque = scene === "plaque" ? on(0.05, 0.7) : 0;
 
   if (scene === "report") {
-    return (
-      <Sheet
-        x={230}
-        y={288}
-        w={620}
-        h={534}
-        title="血脂四项"
-        fs={36}
-        rowH={106}
-        rows={[
-          {name: "总胆固醇", value: "6.1", unit: "mmol/L"},
-          {name: "甘油三酯", value: "2.4", unit: "mmol/L"},
-          {name: "低密度脂蛋白", value: "4.2", unit: "mmol/L"},
-          {name: "高密度脂蛋白", value: "0.9", unit: "mmol/L"},
-        ]}
-      />
-    );
+    return <Sheet4 />;
   }
 
-  /* 单子上排第三，医生却先看它——圈出那一行，理由摆在下面 */
-  if (scene === "whyfirst") {
-    const p = on(0.05, 0.4);
+  /* 第二句给出地图：哪两行是主角，另外两行各是什么 */
+  if (scene === "map") {
+    const p = on(0.5, 0.4);
     return (
       <g>
-        <Sheet
-          x={90}
-          y={288}
-          w={600}
-          h={490}
-          title="血脂四项"
-          fs={32}
-          rowH={100}
-          rows={[
-            {name: "总胆固醇", value: "6.1", on: false},
-            {name: "甘油三酯", value: "2.4", on: false},
-            {name: "低密度脂蛋白", value: "4.2", on: true},
-            {name: "高密度脂蛋白", value: "0.9", on: false},
-          ]}
-        />
-        <rect
-          x={96}
-          y={564}
-          width={588}
-          height={112}
-          rx={16}
-          fill="none"
-          stroke={C.coralDark}
-          strokeWidth={6}
-          opacity={p}
-        />
-        <line
-          x1={690}
-          y1={620}
-          x2={726}
-          y2={620}
-          stroke={C.coralDark}
-          strokeWidth={4}
-          strokeDasharray="10 8"
-          opacity={p}
-        />
-        <Panel x={730} y={380} w={294} h={300} title="为什么先看它" tone={C.coralDark}>
-          <Label x={877} y={512} text="降下来" size={36} weight={800} />
-          <Label x={877} y={594} text="心梗、脑梗" size={32} weight={800} color={C.coralDark} />
-          <Label x={877} y={646} text="会跟着少" size={32} weight={800} color={C.coralDark} />
-        </Panel>
+        <Sheet4 onIdx={[2, 3]} />
+        <Tie y={ROW_Y(0)} p={p} />
+        <Tie y={ROW_Y(1)} p={p} />
+        <Label x={754} y={ROW_Y(0) + 10} text="加起来的总数" size={28} anchor="start" color={C.inkSoft} weight={800} />
+        <Label x={754} y={ROW_Y(1) + 10} text="另一回事" size={28} anchor="start" color={C.inkSoft} weight={800} />
       </g>
     );
   }
@@ -232,74 +210,86 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     );
   }
 
-  if (scene === "tg") {
+  /* 回到单子：第一行是三项加出来的，好坏混在一起 */
+  if (scene === "sumback") {
+    const p = on(0.38, 0.35);
     return (
       <g>
-        <Label x={540} y={366} text="甘油三酯高，跟这几样关系更大" size={30} weight={800} />
-        {[
-          ["喝酒", "常喝就一直高"],
-          ["血糖高", "糖多了转成油"],
-          ["体重超标", "腰围先涨"],
-        ].map(([a, b], i) => (
-          <Panel key={a} x={[56, 384, 712][i]} y={452} w={304} h={252} tone="#9A6B12">
-            <Label x={[208, 536, 864][i]} y={552} text={a} size={34} weight={800} color="#9A6B12" />
-            <Label x={[208, 536, 864][i]} y={612} text={b} size={24} color={C.inkSoft} weight={600} />
-          </Panel>
-        ))}
-      </g>
-    );
-  }
-
-  if (scene === "tg2") {
-    return (
-      <g>
-        <Ticks x={90} y={560} w={900} min={0.5} max={5.5} step={0.5} label="mmol/L" />
-        <Ruler
-          x={90}
-          y={560}
-          w={900}
-          min={0.5}
-          max={5.5}
-          p={on(0.04, 0.5)}
-          band={{a: 1.7, b: 5.5, tone: C.amberLight}}
-          marks={[{v: 1.7, label: "1.7", tone: "#9A6B12", above: true}]}
-        />
-        <Label x={90 + ((1.7 - 0.5) / 5) * 900 + 30} y={656} text="1.7" size={36} anchor="start" color="#9A6B12" weight={800} />
-      </g>
-    );
-  }
-
-  if (scene === "hdl") {
-    return (
-      <g>
-        <Particle x={240} y={ROW[1] - 20} r={70} tone="hdl" label="高密度" glow={0.4} />
-        <Panel x={520} y={360} w={460} h={330} title="高一些，通常是好事" tone={C.tealDark}>
-          <Check x={640} y={520} s={1.8} />
-          <Label x={720} y={530} text="和风险较低相关" size={26} anchor="start" />
-          <Label x={750} y={620} text="但抵消不了低密度高" size={26} color={C.coralDark} weight={800} />
+        <Sheet4 onIdx={[0]} />
+        <Tie y={ROW_Y(0)} p={p} />
+        <Panel x={740} y={360} w={284} h={400} title="加起来" tone={C.coralDark} on={p}>
+          {[
+            ["4.2", "低密度", C.coralDark],
+            ["0.9", "高密度", C.tealDark],
+            ["1.0", "其他", C.inkSoft],
+          ].map(([v, n, c], i) => (
+            <g key={n as string}>
+              <Label x={806} y={470 + i * 62} text={v as string} size={38} anchor="end" weight={800} color={c as string} />
+              <Label x={826} y={466 + i * 62} text={n as string} size={26} anchor="start" color={C.inkSoft} weight={700} />
+            </g>
+          ))}
+          <line x1={766} y1={640} x2={1002} y2={640} stroke={C.paperShadow} strokeWidth={4} />
+          <Label x={806} y={716} text="6.1" size={46} anchor="end" weight={800} color={C.coralDark} />
+          <Label x={826} y={710} text="总胆固醇" size={26} anchor="start" weight={800} />
         </Panel>
       </g>
     );
   }
 
-  /* 总胆固醇是三项加出来的总数：好坏混在一起，分不出来 */
-  if (scene === "tc") {
+  /* 第二行：甘油三酯跟什么走 */
+  if (scene === "tgcell") {
+    const p = on(0.1, 0.35);
     return (
       <g>
-        <Label x={540} y={392} text="总胆固醇 6.1，是这三项加起来" size={30} weight={800} />
-        {[
-          ["低密度", "4.2", C.coralDark],
-          ["高密度", "0.9", C.tealDark],
-          ["其他", "1.0", C.inkSoft],
-        ].map(([a, b, c], i) => (
-          <g key={a as string}>
-            <Panel x={[56, 384, 712][i]} y={440} w={304} h={200} tone={c as string}>
-              <Label x={[208, 536, 864][i]} y={530} text={a as string} size={26} weight={800} />
-              <Label x={[208, 536, 864][i]} y={592} text={b as string} size={52} weight={800} color={c as string} />
-            </Panel>
+        <Sheet4 onIdx={[1]} />
+        <Tie y={ROW_Y(1)} p={p} />
+        <Panel x={740} y={330} w={284} h={440} title="跟这几样走" tone="#9A6B12" on={p}>
+          {[
+            ["喝酒", "常喝就高"],
+            ["血糖高", "糖多了转成油"],
+            ["体重超标", "腰围先涨"],
+          ].map(([a, b], i) => (
+            <g key={a}>
+              <Label x={766} y={470 + i * 88} text={a} size={30} anchor="start" weight={800} color="#9A6B12" />
+              <Label x={766} y={508 + i * 88} text={b} size={22} anchor="start" color={C.inkSoft} weight={600} />
+            </g>
+          ))}
+        </Panel>
+      </g>
+    );
+  }
+
+  /* 第二行：一点七这条线 */
+  if (scene === "tgmark") {
+    const p = on(0.08, 0.5);
+    return (
+      <g>
+        <Sheet4 onIdx={[1]} />
+        <Tie y={ROW_Y(1)} p={p} />
+        <Label x={882} y={520} text="1.7" size={96} weight={800} color="#9A6B12" />
+        <Label x={882} y={562} text="mmol/L" size={22} color={C.inkSoft} weight={600} />
+        <line x1={760} y1={612} x2={1004} y2={612} stroke="#9A6B12" strokeWidth={6} opacity={p} />
+        <Label x={882} y={676} text="超过要留意" size={26} weight={800} />
+        <Label x={882} y={722} text="再高当心胰腺炎" size={26} color={C.coralDark} weight={800} />
+      </g>
+    );
+  }
+
+  /* 第四行：高密度好一点，但管不住低密度 */
+  if (scene === "hdlcell") {
+    const p = on(0.08, 0.3);
+    const q = on(0.52, 0.4);
+    return (
+      <g>
+        <Sheet4 onIdx={[3]} />
+        <Tie y={ROW_Y(3)} p={p} />
+        <Panel x={740} y={400} w={284} h={330} title="高密度" tone={C.tealDark} on={p}>
+          <Check x={792} y={505} s={1.4} />
+          <Label x={826} y={516} text="高一点是好事" size={26} anchor="start" weight={800} />
+          <g opacity={q}>
+            <Label x={882} y={650} text="但抵消不了低密度" size={26} color={C.coralDark} weight={800} />
           </g>
-        ))}
-        <Label x={540} y={714} text="好坏混在一个数里，分不出来" size={28} weight={800} color={C.inkSoft} />
+        </Panel>
       </g>
     );
   }
