@@ -201,18 +201,31 @@ def _pan_gains(p):
     return lt * 1.41, rt * 1.41
 
 
-def _whoosh(dur, f0, f1, tone0, tone1, pan0, pan1, seed=1):
-    """气声扫频 whoosh：带通噪声 + 调内音高，声像从 pan0 移到 pan1。"""
+def _whoosh(dur, f0, f1, tone0, tone1, pan0, pan1, seed=1,
+            q=1.0, lp=None, noise_mix=0.66, tone_mix=0.36):
+    """气声扫频 whoosh：带通噪声 + 调内音高，声像从 pan0 移到 pan1。
+
+    q 越窄越像口哨、越宽越像气流。lp 是一阶低通截止：车、门、纸张这类
+    「物体移动」的气声原本会把能量堆在 3–6 kHz —— 那是人耳最敏感的一段，
+    听起来就是「嘶」。移动类素材把扫频上限压到 3 kHz 以内，再挂一道
+    3 kHz 左右的低通，才是空气被推动，而不是哨子被吹响。
+    """
     n = int(SR * dur)
-    nb = _bandpass(_noise(n, seed), lambda u: f0 * (f1 / f0) ** (u ** 1.25), q=1.0)
+    nb = _bandpass(_noise(n, seed), lambda u: f0 * (f1 / f0) ** (u ** 1.25), q=q)
+    if lp:
+        a = 1.0 - math.exp(-2.0 * math.pi * lp / SR)
+        y = 0.0
+        for i in range(n):
+            y += a * (nb[i] - y)
+            nb[i] = y
     tone = _sweep_tone(lambda t: tone0 * (tone1 / tone0) ** (t / dur), dur,
-                       ((1, 1.0), (2, 0.22)))
+                       ((1, 1.0), (2, 0.18)))
     left = [0.0] * n
     right = [0.0] * n
     for i in range(n):
         u = i / n
         env = math.sin(math.pi * min(1.0, u ** 0.85)) ** 1.3
-        s = nb[i] * 0.66 * env + tone[i] * 0.36 * env
+        s = nb[i] * noise_mix * env + tone[i] * tone_mix * env
         lg, rg = _pan_gains(pan0 + (pan1 - pan0) * u)
         left[i] = s * lg
         right[i] = s * rg
@@ -329,7 +342,7 @@ def _write(path, left, right):
         w.writeframes(bytes(data))
 
 
-def build(force=False):
+def build(force=False, only=None):
     OUT.mkdir(parents=True, exist_ok=True)
     jobs = {}
 
@@ -399,12 +412,17 @@ def build(force=False):
     jobs["sub"] = ([v * g for v in left], [v * g for v in right])
 
     # ── 气声层：移动 / 转场（whoosh）──
-    jobs["move-a"] = _finish(*_whoosh(0.55, 420, 5200, SCALE[4], SCALE[6], -0.65, 0.55, seed=11),
-                             wet=0.46, peak_db=-5.0)
-    jobs["move-b"] = _finish(*_whoosh(0.78, 300, 4200, SCALE[5], SCALE[7], 0.6, -0.5, seed=13),
-                             wet=0.52, peak_db=-5.5)
-    jobs["move-c"] = _finish(*_whoosh(0.40, 600, 6200, SCALE[6], SCALE[8], -0.3, 0.45, seed=17),
-                             wet=0.38, peak_db=-5.0)
+    # 移动类（车、门、管子）压低扫频上限 + 低通，避免 3–6 kHz 的「嘶」；
+    # 揭示类（reveal）允许更亮，那是转场，本来就该亮一下。
+    jobs["move-a"] = _finish(*_whoosh(0.55, 380, 2400, SCALE[3], SCALE[4], -0.55, 0.45, seed=11,
+                                      q=1.15, lp=3100, noise_mix=0.5, tone_mix=0.46),
+                             wet=0.5, peak_db=-5.0)
+    jobs["move-b"] = _finish(*_whoosh(0.78, 300, 1900, SCALE[3], SCALE[5], 0.5, -0.4, seed=13,
+                                      q=1.15, lp=2600, noise_mix=0.5, tone_mix=0.46),
+                             wet=0.55, peak_db=-5.5)
+    jobs["move-c"] = _finish(*_whoosh(0.40, 520, 2800, SCALE[4], SCALE[5], -0.3, 0.4, seed=17,
+                                      q=1.15, lp=3000, noise_mix=0.48, tone_mix=0.46),
+                             wet=0.42, peak_db=-5.0)
 
     # ── 蓄力层：riser（音高连续上行一个八度，先慢后陡）──
     jobs["up-a"] = _finish(*_riser(1.558, 174.61, 349.23, seed=5), wet=0.52, peak_db=-6.5)
@@ -436,6 +454,8 @@ def build(force=False):
 
     written, skipped = [], []
     for name, (left, right) in jobs.items():
+        if only and name not in only:
+            continue
         p = OUT / f"{name}.wav"
         if p.exists() and not force:
             skipped.append(name)
@@ -451,4 +471,7 @@ def build(force=False):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="覆盖已有文件")
-    build(force=ap.parse_args().force)
+    ap.add_argument("--only", default="", help="只重建这几个音效，逗号分隔")
+    a = ap.parse_args()
+    only = {s.strip() for s in a.only.split(",") if s.strip()} or None
+    build(force=a.force, only=only)

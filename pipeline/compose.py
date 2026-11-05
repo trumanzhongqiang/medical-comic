@@ -155,10 +155,13 @@ def main():
         rate = fx.get("rate", 1)
         if not .5 <= rate <= 2:
             sys.exit(f"音效 {fx.get('id', k)} rate 需在 0.5–2.0")
-        # 音效统一做一次带通：60 Hz 以下只有轰鸣，7.5 kHz 以上在手机外放就是「嘶」。
-        # 素材本身多亮都不改，这一层保证听感不刺。
+        # 音效统一做一次带通 + 敏感区下凹：60 Hz 以下只有轰鸣，7.5 kHz 以上在手机
+        # 外放就是「嘶」。一阶低通在 4 kHz 只衰减 1 dB 左右，压不住 2–8 kHz 这段人耳
+        # 最灵的区域，所以在 4.5 kHz 再挂一个宽而浅的 peaking 下凹：基音和低次泛音不动，
+        # 清晰度不受影响，「嘶」的锐度降下来。
         chain = (f"[{idx}:a]atrim=0:{fx.get('duration', dur):.3f},asetpts=PTS-STARTPTS,atempo={rate}"
-                 f",highpass=f=60,lowpass=f=7500")
+                 f",highpass=f=60,lowpass=f=7500"
+                 f",equalizer=f=4500:width_type=o:width=1.4:g=-3")
         ms = round(place * 1000)
         pan = max(-1, min(1, fx.get("pan", 0)))
         left, right = (1 - max(0, pan)) * .9, (1 + min(0, pan)) * .9
