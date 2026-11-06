@@ -1,6 +1,6 @@
 {
   "slug": "ep004-lipid-report",
-  "title": "血脂报告，先看低密度",
+  "title": "血脂报告怎么看？",
   "episode": 4,
   "composition": "Lipid",
   "timing": "cues",
@@ -19,19 +19,27 @@
       "label": "报告上那个箭头"
     },
     {
-      "beat": 4,
-      "label": "它为什么走不动"
+      "beat": 2,
+      "label": "它是身体要用的原料"
     },
     {
-      "beat": 6,
+      "beat": 3,
+      "label": "为什么走不动"
+    },
+    {
+      "beat": 5,
       "label": "只有肝能发车"
     },
     {
-      "beat": 10,
+      "beat": 9,
       "label": "用剩的要回肝"
     },
     {
-      "beat": 13,
+      "beat": 12,
+      "label": "送得太多，留在管壁上"
+    },
+    {
+      "beat": 14,
       "label": "盯到多少，看风险"
     },
     {
@@ -65,15 +73,7 @@
     {
       "cues": [
         2,
-        3
-      ],
-      "scene": "plaque",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
+        3,
         4,
         5
       ],
@@ -168,8 +168,7 @@
     },
     {
       "cues": [
-        18,
-        19
+        18
       ],
       "scene": "toomuch",
       "note": {
@@ -178,21 +177,30 @@
     },
     {
       "cues": [
-        20,
-        21,
-        22
+        19,
+        20
       ],
-      "scene": "ladder",
+      "scene": "plaque",
       "note": {
-        "kind": "term",
-        "title": "三条线",
-        "body": "1.8 · 2.6 · 3.4，按风险定"
+        "kind": "none"
       }
     },
     {
       "cues": [
+        21,
+        22,
         23,
         24
+      ],
+      "scene": "ladder",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        25,
+        26
       ],
       "scene": "sumback",
       "note": {
@@ -201,7 +209,7 @@
     },
     {
       "cues": [
-        25
+        27
       ],
       "scene": "tgcell",
       "note": {
@@ -210,7 +218,7 @@
     },
     {
       "cues": [
-        26
+        28
       ],
       "scene": "tgmark",
       "note": {
@@ -219,7 +227,7 @@
     },
     {
       "cues": [
-        27
+        29
       ],
       "scene": "hdlcell",
       "note": {
@@ -228,7 +236,7 @@
     },
     {
       "cues": [
-        28
+        30
       ],
       "scene": "food",
       "note": {
@@ -239,7 +247,7 @@
     },
     {
       "cues": [
-        29
+        31
       ],
       "scene": "statin",
       "note": {
@@ -249,5 +257,5 @@
       }
     }
   ],
-  "duration": 137.75
+  "duration": 138.62
 }

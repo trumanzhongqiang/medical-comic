@@ -10,13 +10,22 @@ import {COL, Panel, ROW, X0, X1} from "./kit";
  * 每拍只保留一个对比、一个数值、一句结论。
  */
 
-const Vessel: React.FC<{p?: number; hot?: boolean}> = ({p = 0, hot}) => {
+const Vessel: React.FC<{p?: number; hot?: boolean; t?: number}> = ({p = 0, hot, t = 0}) => {
   const bulge = 108 * p;
   const y = 554 + bulge;
+  // 管腔里的颗粒：一直被血流推着往右走，斑块鼓起来以后只能从下面挤过去。
+  const flow = (t * 0.13) % 1;
+  const core = 700 - y;
   return (
     <g>
+      <rect x={90} y={554} width={900} height={146} fill="#FBEFE9" />
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => {
+        const fx = ((flow + i / 7) % 1) * 860 + 110;
+        const fy = y + core * 0.55;
+        return <circle key={i} cx={fx} cy={fy} r={9} fill={C.amber} stroke="#A9771B" strokeWidth={2.5} opacity={0.75} />;
+      })}
       <rect x={90} y={520} width={900} height={34} rx={12} fill="#F6D3C7" stroke={hot ? "#8E3B33" : C.ink} strokeWidth={5} />
-      <rect x={90} y={668} width={900} height={34} rx={12} fill="#F6D3C7" stroke={hot ? "#8E3B33" : C.ink} strokeWidth={5} />
+      <rect x={90} y={700} width={900} height={34} rx={12} fill="#F6D3C7" stroke={hot ? "#8E3B33" : C.ink} strokeWidth={5} />
       <path
         d={`M 356 554 Q 430 ${y} 540 ${y} Q 650 ${y} 724 554 Z`}
         fill="#C0743F"
@@ -24,6 +33,22 @@ const Vessel: React.FC<{p?: number; hot?: boolean}> = ({p = 0, hot}) => {
         strokeWidth={4}
         opacity={p > 0.02 ? 1 : 0}
       />
+      {/* 两道内层弧线：同样的轮廓往里缩，读起来是「一层一层堆上去」，不是一坨。 */}
+      <g opacity={p > 0.25 ? Math.min(1, (p - 0.25) / 0.25) : 0}>
+        {[0.34, 0.64].map((k) => {
+          const yk = 554 + (y - 554) * k;
+          return (
+            <path
+              key={k}
+              d={`M ${356 + 70 * k} 554 Q ${430 + 42 * k} ${yk} 540 ${yk} Q ${650 - 42 * k} ${yk} ${724 - 70 * k} 554`}
+              fill="none"
+              stroke="#8A4A22"
+              strokeWidth={3}
+              opacity={0.4}
+            />
+          );
+        })}
+      </g>
       <g opacity={p > 0.5 ? 1 : 0}>
         <line x1={760} y1={y - 24} x2={806} y2={y - 54} stroke="#8A4A22" strokeWidth={3} strokeDasharray="7 6" />
         <Label x={812} y={y - 60} text="斑块" size={26} anchor="start" color="#8A4A22" weight={800} />
@@ -87,7 +112,9 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
   const plaque = scene === "plaque" ? on(0.05, 0.7) : 0;
 
   if (scene === "report") {
-    return <Sheet4 />;
+    // 开场这一拍就把第三行点亮：观众听到「低密度」时，眼睛已经落在那一行上，
+    // 下一拍再画箭头，是递进，不是重复。
+    return <Sheet4 onIdx={[2]} />;
   }
 
   /* 报告单上那个箭头：全片只讲这一行 */
@@ -107,24 +134,28 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
     );
   }
 
-  /* 它是身体要用的原料：造膜、造激素 */
+  /* 它是身体要用的原料：造膜、造激素 —— 先立「不是垃圾」这个前提 */
   if (scene === "raw") {
-    const p = on(0.14, 0.3);
-    const q = on(0.56, 0.4);
+    const p = on(0.05, 0.16);
+    const q = on(0.46, 0.16);
+    const r = on(0.72, 0.14);
     return (
       <g>
         <g opacity={p}>
-          <circle cx={540} cy={464} r={46} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
-          <Label x={540} y={386} text="胆固醇" size={30} weight={800} color="#A9771B" />
+          <circle cx={540} cy={392} r={44} fill={C.amber} stroke="#A9771B" strokeWidth={5} />
+          <Label x={540} y={314} text="胆固醇" size={30} weight={800} color="#A9771B" />
         </g>
-        <line x1={508} y1={498} x2={330} y2={642} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
-        <line x1={572} y1={498} x2={750} y2={642} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
-        <Panel x={110} y={648} w={380} h={190} title="细胞膜" tone={C.tealDark} on={q}>
-          <Label x={300} y={778} text="包住每一个细胞" size={24} weight={700} />
+        <line x1={510} y1={424} x2={330} y2={524} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
+        <line x1={570} y1={424} x2={750} y2={524} stroke={C.inkSoft} strokeWidth={3} strokeDasharray="8 7" opacity={0.55 * q} />
+        <Panel x={110} y={528} w={380} h={176} title="细胞膜" tone={C.tealDark} on={q}>
+          <Label x={300} y={648} text="包住每一个细胞" size={24} weight={700} />
         </Panel>
-        <Panel x={590} y={648} w={380} h={190} title="激素" tone="#9A6B12" on={q}>
-          <Label x={780} y={778} text="性激素、皮质醇" size={24} weight={700} />
+        <Panel x={590} y={528} w={380} h={176} title="激素" tone="#9A6B12" on={q}>
+          <Label x={780} y={648} text="性激素、皮质醇" size={24} weight={700} />
         </Panel>
+        <g opacity={r}>
+          <Label x={540} y={792} text="不是垃圾，也不是越少越好" size={30} weight={800} />
+        </g>
       </g>
     );
   }
@@ -337,8 +368,8 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
         ))}
         <Label x={620} y={500} text="低密度：送得太多" size={26} weight={800} color={C.coralDark} />
         <g opacity={q}>
-          <Label x={540} y={762} text="所以要盯" size={40} weight={800} />
-          <Label x={540} y={818} text="盯到多少，看风险" size={28} weight={700} color={C.inkSoft} />
+          <Label x={540} y={746} text="细胞用不完" size={38} weight={800} />
+          <Label x={540} y={800} text="多出来的没处去" size={28} weight={700} color={C.inkSoft} />
         </g>
       </g>
     );
@@ -347,7 +378,7 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
   if (scene === "plaque") {
     return (
       <g>
-        <Vessel p={plaque} hot={plaque > 0.6} />
+        <Vessel p={plaque} hot={plaque > 0.6} t={t} />
         <Label x={540} y={452} text="颗粒一层层堆进血管壁" size={28} color={C.coralDark} weight={800} />
         <Label x={540} y={796} text="血管变窄，心梗、脑梗就来了" size={28} weight={800} />
       </g>
@@ -355,18 +386,23 @@ export const LipidArt: React.FC<{t: number; scene: string; u: number; bi: number
   }
 
   if (scene === "ladder") {
+    const top = on(0.04, 0.14);
     return (
       <g>
+        <g opacity={top}>
+          <Label x={540} y={330} text="所以低密度要盯" size={38} weight={800} />
+          <Label x={540} y={380} text="盯到多少，看你的风险有多高" size={28} weight={700} color={C.inkSoft} />
+        </g>
         {[
           ["3.4", "风险低的人", 0.34, C.teal],
           ["2.6", "只有高血压、糖尿病", 0.52, C.tealDark],
           ["1.8", "得过心梗、脑梗", 0.72, C.coralDark],
         ].map(([v, t, f, c], i) => (
-          <g key={v as string} opacity={on(0.05 + i * 0.12, 0.3)}>
-            <rect x={90} y={430 + i * 88} width={900 * (f as number)} height={56} rx={28} fill={c as string} opacity={0.16} />
-            <rect x={90} y={430 + i * 88} width={900 * (f as number)} height={56} rx={28} fill="none" stroke={c as string} strokeWidth={4} />
-            <Label x={120} y={430 + i * 88 + 40} text={v as string} size={34} anchor="start" weight={800} color={c as string} />
-            <Label x={210} y={430 + i * 88 + 38} text={t as string} size={26} anchor="start" color={C.inkSoft} weight={700} />
+          <g key={v as string} opacity={on(0.32 + i * 0.26, 0.1)}>
+            <rect x={90} y={520 + i * 104} width={900 * (f as number)} height={56} rx={28} fill={c as string} opacity={0.16} />
+            <rect x={90} y={520 + i * 104} width={900 * (f as number)} height={56} rx={28} fill="none" stroke={c as string} strokeWidth={4} />
+            <Label x={120} y={520 + i * 104 + 40} text={v as string} size={34} anchor="start" weight={800} color={c as string} />
+            <Label x={210} y={520 + i * 104 + 38} text={t as string} size={26} anchor="start" color={C.inkSoft} weight={700} />
           </g>
         ))}
       </g>
