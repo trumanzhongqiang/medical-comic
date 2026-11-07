@@ -25,7 +25,9 @@ from build_sfx import apply as apply_plan  # noqa: E402
 LEAD = 0.2  # 画面比人声早一点进场
 
 PUNC = "，。；：！？、——"
-SUB_MAX = 15  # 一条字幕最多几个字：46 号字一行正好放得下十几个字
+SUB_MAX = 24  # 一条字幕按整句/分句给（最长 24 字）：46 号字在字幕框里自动折成两行，
+              # 每行约 12–15 字；比 12 字切碎少一半切换，读起来不赶。超出两行的极端句仍由
+              # shell.tsx 的 Subtitle 缩字号兜底。
 
 
 def split_sub(text, t0, t1, ci):
@@ -159,6 +161,10 @@ def main():
     # 音效基准：−13 dB 比人声低一档，动作音只是「点一下」，不能盖住旁白
     music = script.setdefault("music", {})
     music["sfx_normalize"] = {"target_peak_db": -13.0, "intensity_curve": 0.55}
+    # build_beats 时代把小节标签写进了 hard_cues，那些字符串从来不是音效 id，
+    # qacheck 的「硬卡点引用不存在的音效」从第 2 期起一直误报。import_cues 流程里
+    # 拍起点按人声算、不在小节网格上，硬卡点语义不成立，清空而不是留假引用。
+    music["hard_cues"] = []
     sfx = apply_plan(script, ep)
     if sfx is None:
         sfx = apply_sfx(script)

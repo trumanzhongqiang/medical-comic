@@ -99,6 +99,7 @@ export const Sheet: React.FC<{
   fs?: number;
 }> = ({x, y, w, h, title, rows, rowH = 84, fs = 32}) => (
   <g transform={`translate(${x} ${y})`}>
+    <rect x={7} y={9} width={w} height={h} rx={22} fill={C.paperShadow} opacity={0.5} />
     <rect width={w} height={h} rx={22} fill={C.paperLight} stroke={C.ink} strokeWidth={6} />
     <path d={`M 0 64 L ${w} 64`} stroke={C.paperShadow} strokeWidth={4} />
     {title ? <Label x={28} y={44} text={title} size={30} weight={800} anchor="start" /> : null}
@@ -113,6 +114,7 @@ export const Sheet: React.FC<{
           <Label x={30} y={ry + rowH / 2 + fs * 0.36} text={r.name} size={fs} anchor="start" weight={r.on ? 800 : 600} color={r.on ? C.ink : C.inkSoft} />
           <Label x={w - 30} y={ry + rowH / 2 + fs * 0.38} text={r.value} size={fs + 2} anchor="end" weight={800} color={r.on ? C.coralDark : C.inkSoft} />
           {r.unit ? <Label x={w - 30} y={ry + rowH / 2 + fs * 0.36 + 34} text={r.unit} size={20} anchor="end" color={C.inkSoft} weight={600} /> : null}
+          {i < rows.length - 1 ? <line x1={26} y1={ry + rowH - 6} x2={w - 26} y2={ry + rowH - 6} stroke={C.paperShadow} strokeWidth={3} /> : null}
         </g>
       );
     })}

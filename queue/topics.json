@@ -27,8 +27,8 @@
       "slug": "ep004-lipid-report",
       "title": "血脂报告：胆固醇也分不同「运输队」？",
       "hook": "LDL/HDL/甘油三酯用车队讲，胆固醇不全坏",
-      "status": "done",
-      "note": "2026-10-29 v2 图文对应：F.captionLink 串起「字幕→名词卡→物体」，目标点脉冲圈；名牌窗口对齐节拍，覆盖率 40%→约 98%；qacheck 通过（-13.5 LUFS、-2.5 dBTP）"
+      "status": "rendering",
+      "note": "2026-11-06 按新旁白稿整期重做：68 句新配音、26 拍重排（新增 cargo/alarm/checkup 场景）、qacheck 通过（-14.7 LUFS、-3.1 dBTP、黑场/冻帧 0）；14 张事实核查卡待用户签字（review/factcheck-signoff.html），签字后才能回 done"
     },
     {
       "slug": "ep005-fatty-liver",

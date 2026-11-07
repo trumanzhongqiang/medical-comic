@@ -1,10 +1,12 @@
 import React from "react";
 import {AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {Lottie} from "@remotion/lottie";
 import {C, SANS} from "./theme";
 import {DATA} from "./data";
 import {EpData, Shell, useBeat} from "./shell";
 import {EpisodeTag, FootNote, PaperBackdrop, Rule} from "./layout";
 import {clamp, inOut, seg} from "./motion";
+import pulseLine from "../../assets/visual/lottie/pulse-line.json";
 import {BloodSugarArt} from "./art/BloodSugar";
 import {HypertensionArt} from "./art/Hypertension";
 import {LipidArt} from "./art/Lipid";
@@ -131,6 +133,22 @@ export const Episode: React.FC<{id: string}> = ({id}) => {
   return (
     <Shell data={data} t={t} ending={<Ending data={data} t={t} />}>
       {Art ? <Art t={t} scene={beat.scene} u={u} bi={i} stage={stage} su={su} sk={sk} lines={subs.length} /> : null}
+      {/* Lottie 装饰层（assets/visual/lottie，许可见 assets/visual/source/README.md）：
+          体检拍挂一条心电图脉冲线，挂在体检卡片上，跟着拍淡入淡出 */}
+      {beat.scene === "checkup" ? (
+        <div
+          style={{
+            position: "absolute",
+            left: 770,
+            top: 470,
+            width: 224,
+            height: 67,
+            opacity: inOut(seg(t, beat.start + 0.4, 0.5)),
+          }}
+        >
+          <Lottie animationData={pulseLine} loop style={{width: "100%", height: "100%"}} />
+        </div>
+      ) : null}
     </Shell>
   );
 };

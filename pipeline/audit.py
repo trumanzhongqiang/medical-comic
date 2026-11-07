@@ -126,7 +126,11 @@ ABSOLUTE = re.compile(
 )
 # 把术语压成单字动词：纤维化「也能退」读着顺，但看不出"什么东西在变"。
 SHRUNK = re.compile(r"(?:能|会|就|也|都|才)+(退|没了|消了|好了|轻了|硬了|堵了|断了)$")
-UNIT = re.compile(r"\d+(?:\.\d+)?\s*(?:%|％|mmol/L|mmol|mmHg|mg|克|公斤|分钟|小时|天|个月|年|步|公里)")
+# 数字：阿拉伯和中文都要认——文案里写的是「一点八」，不是「1.8」
+NUM = r"(?:\d+(?:\.\d+)?|[零一二三四五六七八九十百千]+(?:点[零一二三四五六七八九]+)?)"
+UNIT = re.compile(NUM + r"\s*(?:%|％|mmol/L|mmol|mmHg|mg|克|公斤|分钟|小时|天|个月|年|步|公里)")
+# 句尾标点：正则按裸句匹配时先剥掉
+PUNCT_TAIL = "。，！？；：、…"
 HEDGE = re.compile(r"以上|以下|约|左右|至少|最多|超过|不超过|一部分|部分|多数|大多数|有些|可能|可以|可|往往|通常")
 EFFECT = re.compile(r"改善|逆转|缓解|降低|减少|下降|恢复|消失|变好|胖|瘦|安全")
 SUFFICIENT = re.compile(r"[就也都]")
@@ -138,6 +142,29 @@ def _percents(text):
     return set(re.findall(r"\d+(?:\.\d+)?\s*[%％]", RANGE.sub("区间", text)))
 
 
+def _iter_copy_texts(script):
+    """从当期实际的 beat 格式里抽文案。
+
+    同一批文案有三种切面：v1 分镜的 lines、build_beats 的 clauses、
+    import_cues 的字幕 subs。每期只取第一种存在的——叠加会把同一句话
+    查两遍，噪音翻倍而精度不变。
+    """
+    for beat in script.get("beats") or []:
+        bid = beat.get("id", "?")
+        if beat.get("lines"):
+            for line in beat["lines"]:
+                if isinstance(line, dict) and line.get("text") and not line.get("copy_ok"):
+                    yield bid, line["text"]
+        elif beat.get("subs"):
+            for sub in beat["subs"]:
+                if isinstance(sub, dict) and sub.get("text"):
+                    yield bid, sub["text"]
+        else:
+            for c in beat.get("clauses") or []:
+                if isinstance(c, dict) and c.get("text"):
+                    yield bid, c["text"]
+
+
 def lint_copy(script):
     """文案精度检查。返回 (硬伤, 提示)。
 
@@ -146,25 +173,21 @@ def lint_copy(script):
           这些都能读得更顺，但读顺的代价是观众对不回去，需要人看一眼。
     """
     hard, soft = [], []
-    for beat in script.get("beats") or []:
-        bid = beat.get("id", "?")
-        for line in beat.get("lines") or []:
-            if not isinstance(line, dict):
-                continue
-            text = line.get("text", "")
-            if not text or line.get("copy_ok"):
-                continue
-            hit = ABSOLUTE.search(text)
-            if hit:
-                hard.append(f"节拍 {bid} 文案给了绝对承诺（{hit.group()}）: {text}")
-            hit = SHRUNK.search(text)
-            if hit:
-                soft.append(f"节拍 {bid} 术语被压成单字（{hit.group()}）: {text} → 换成完整动词，如「逆转」")
-            if UNIT.search(text) and EFFECT.search(text) and SUFFICIENT.search(text) and not HEDGE.search(text):
-                soft.append(f"节拍 {bid} 定量结果说成了必然（缺 以上/约/部分）: {text}")
-            percents = _percents(text)
-            if len(percents) >= 2:
-                soft.append(f"节拍 {bid} 一句里有两个阈值（{'/'.join(sorted(percents))}）: {text}")
+    for bid, text in _iter_copy_texts(script):
+        # ABSOLUTE/SHRUNK 按裸句匹配：字幕句尾都带标点，带着标点
+        # SHRUNK 的 $ 锚点永远落空，整组检查会形同虚设。
+        bare = text.rstrip(PUNCT_TAIL)
+        hit = ABSOLUTE.search(bare)
+        if hit:
+            hard.append(f"节拍 {bid} 文案给了绝对承诺（{hit.group()}）: {text}")
+        hit = SHRUNK.search(bare)
+        if hit:
+            soft.append(f"节拍 {bid} 术语被压成单字（{hit.group()}）: {text} → 换成完整动词，如「逆转」")
+        if UNIT.search(text) and EFFECT.search(text) and SUFFICIENT.search(text) and not HEDGE.search(text):
+            soft.append(f"节拍 {bid} 定量结果说成了必然（缺 以上/约/部分）: {text}")
+        percents = _percents(text)
+        if len(percents) >= 2:
+            soft.append(f"节拍 {bid} 一句里有两个阈值（{'/'.join(sorted(percents))}）: {text}")
     return hard, soft
 
 
@@ -176,6 +199,11 @@ def validate_script(script):
     music = script.get("music") or {}
     beat_seconds = 60 / music["bpm"] if music.get("bpm", 0) > 0 else None
     tolerance = music.get("sync_tolerance", 1 / script.get("fps", 60) + .005)
+    # 两种时间轴：build_beats 的拍长在 77 BPM 网格上，音效钉拍点天经地义；
+    # import_cues 的拍起点跟着真人声走（script 里带 voice 轨），不在网格上，
+    # 音效对齐的是「动作发生的那一拍」，对网格检查只会整片误报。
+    # 这种期的动作同步用 pipeline/check_sfx_sync.py 量（偏差 ≤0.1s），人耳复核。
+    grid_mode = beat_seconds is not None and not script.get("voice")
     cue_ids = set()
     cues = {}
     for cue in script.get("sfx", []):
@@ -186,7 +214,7 @@ def validate_script(script):
         cues[cid] = cue
         if not 0 <= cue.get("t", -1) < script["duration"]:
             problems.append(f"音效时间越界: {cid}")
-        if beat_seconds:
+        if beat_seconds and grid_mode:
             nearest = round((cue.get("t", -1) - music.get("offset", 0)) / beat_seconds)
             grid_t = music.get("offset", 0) + nearest * beat_seconds
             if nearest < 0 or abs(cue.get("t", -1) - grid_t) > tolerance:
@@ -202,6 +230,11 @@ def validate_script(script):
     previous_end = 0
     ids = set()
     action_beats = []
+    # v1 分镜格式（purpose/lines/visuals/actions）才走逐句阅读窗口、对象名牌
+    # 和动作音效检查；import_cues 的字幕 beats 没有这些字段、时间轴来自真人声，
+    # 按 v1 标准查只会整片误报。文案精度（lint_copy）两种格式都查。
+    v1 = any("lines" in b for b in beats)
+    BEAT_FIELDS = ("purpose", "lines", "visuals", "actions", "transition")
     for beat in beats:
         bid = beat.get("id")
         if not bid or bid in ids:
@@ -214,10 +247,10 @@ def validate_script(script):
         if start + .01 < previous_end:
             problems.append(f"节拍时间重叠: {bid}")
         previous_end = end
-        for key in ("purpose", "lines", "visuals", "actions", "transition"):
+        for key in (BEAT_FIELDS if v1 else ()):
             if key not in beat:
                 problems.append(f"节拍 {bid} 缺字段 {key}")
-        lines = beat.get("lines", [])
+        lines = beat.get("lines", []) if v1 else []
         if any(isinstance(line, dict) for line in lines):
             for line in lines:
                 if not isinstance(line, dict) or not line.get("text"):
@@ -230,11 +263,11 @@ def validate_script(script):
                 needed = reading_seconds(line["text"])
                 if line_end - line_start + .01 < needed:
                     problems.append(f"节拍 {bid} 单句阅读时间不足: {line['text']} {line_end-line_start:.1f}s < {needed:.1f}s")
-        else:
+        elif v1:
             needed = reading_seconds(" ".join(lines))
             if end - start + .01 < needed:
                 problems.append(f"节拍 {bid} 阅读时间不足: {end-start:.1f}s < {needed:.1f}s")
-        for visual in beat.get("visuals", []):
+        for visual in (beat.get("visuals") if v1 else []):
             if not visual.get("name") or not visual.get("role") or not visual.get("label"):
                 problems.append(f"节拍 {bid} 首次对象缺少名称/作用/名牌")
             if beat_seconds:
@@ -243,7 +276,7 @@ def validate_script(script):
                     problems.append(f"节拍 {bid} 对象名牌缺少合法 start/end: {visual.get('name')}")
                 elif not 2 * beat_seconds - tolerance <= visual_end - visual_start <= 4 * beat_seconds + tolerance:
                     problems.append(f"节拍 {bid} 对象名牌应为 2–4 拍: {visual.get('name')} {visual_end-visual_start:.2f}s")
-        for action in beat.get("actions", []):
+        for action in (beat.get("actions") if v1 else []):
             if not action.get("description"):
                 problems.append(f"节拍 {bid} 有动作缺描述")
             sfx = action.get("sfx")
@@ -260,7 +293,7 @@ def validate_script(script):
                     action_beats.append((sfx, round((cues[sfx]["t"] - music.get("offset", 0)) / beat_seconds)))
     if abs(previous_end - script["duration"]) > .02:
         problems.append(f"节拍未覆盖完整时长: 结束 {previous_end} / 总时长 {script['duration']}")
-    if beat_seconds:
+    if grid_mode:
         seen = {}
         for cid, index in sorted(action_beats, key=lambda item: item[1]):
             if index in seen:

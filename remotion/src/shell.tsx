@@ -67,10 +67,10 @@ const tint = (text: string) =>
 export const Subtitle: React.FC<{text: string; opacity?: number}> = ({text, opacity = 1}) => {
   // 最多两行：放不下就整句缩一号字，宁可小一点，也不让它掉到第三行
   let fs = SUB.fs;
-  let rows = wrapRows(text, SUB.w / fs - 0.3);
+  let rows = wrapRows(text, SUB.w / fs - 0.5);
   while (rows.length > 2 && fs > 36) {
     fs -= 2;
-    rows = wrapRows(text, SUB.w / fs - 0.3);
+    rows = wrapRows(text, SUB.w / fs - 0.5);
   }
   return (
     <div

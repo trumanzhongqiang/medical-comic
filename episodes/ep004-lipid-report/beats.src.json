@@ -5,56 +5,61 @@
   "composition": "Lipid",
   "timing": "cues",
   "ending": {
-    "big": "先看低密度，目标按风险定",
-    "sub": "有人要压到一点八，有人三点四就够",
+    "big": "先看低密度，三项跟着对",
+    "sub": "它是送货的车：送得太多，就堆在血管壁上",
     "chips": [
       "少肥肉、少油炸",
-      "他汀别自己停"
+      "降脂药别自己停"
     ],
     "next": "下期：肝里的油是从哪来的"
   },
   "sections": [
     {
       "beat": 0,
-      "label": "报告上那个箭头"
-    },
-    {
-      "beat": 2,
-      "label": "它是身体要用的原料"
+      "label": "单子上主要看四项"
     },
     {
       "beat": 3,
-      "label": "为什么走不动"
+      "label": "它是身体要用的原料"
+    },
+    {
+      "beat": 4,
+      "label": "肝造，血来运，装车"
     },
     {
       "beat": 5,
-      "label": "只有肝能发车"
+      "label": "车上两种货"
+    },
+    {
+      "beat": 6,
+      "label": "密度怎么来的"
     },
     {
       "beat": 9,
-      "label": "用剩的要回肝"
+      "label": "回收：回肝排掉"
     },
     {
       "beat": 12,
-      "label": "送得太多，留在管壁上"
+      "label": "送太多，留在管壁上"
     },
     {
       "beat": 14,
-      "label": "盯到多少，看风险"
+      "label": "回到那张单子"
     },
     {
-      "beat": 15,
-      "label": "剩下三项"
+      "beat": 17,
+      "label": "总数是警报"
     },
     {
-      "beat": 19,
+      "beat": 20,
       "label": "接下来怎么做"
     }
   ],
   "beats": [
     {
       "cues": [
-        0
+        0,
+        1
       ],
       "scene": "report",
       "note": {
@@ -63,19 +68,31 @@
     },
     {
       "cues": [
-        1
+        2,
+        3,
+        4
       ],
-      "scene": "arrow",
+      "scene": "report",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        2,
-        3,
-        4,
-        5
+        5,
+        6
+      ],
+      "scene": "report0",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        7,
+        8,
+        9,
+        10
       ],
       "scene": "raw",
       "note": {
@@ -84,44 +101,39 @@
     },
     {
       "cues": [
-        6,
-        7
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
       ],
-      "scene": "oil",
+      "scene": "ship",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        8
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
       ],
-      "scene": "car",
+      "scene": "cargo",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        9
-      ],
-      "scene": "liver",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        10
-      ],
-      "scene": "send",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        11
+        25,
+        26,
+        27
       ],
       "scene": "light",
       "note": {
@@ -130,26 +142,17 @@
     },
     {
       "cues": [
-        12
+        28
       ],
-      "scene": "use",
+      "scene": "send",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        13,
-        14
-      ],
-      "scene": "waste",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        15
+        29,
+        30
       ],
       "scene": "back",
       "note": {
@@ -158,8 +161,22 @@
     },
     {
       "cues": [
-        16,
-        17
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "scene": "waste",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        36,
+        37,
+        38
       ],
       "scene": "both",
       "note": {
@@ -168,7 +185,19 @@
     },
     {
       "cues": [
-        18
+        39,
+        40
+      ],
+      "scene": "both",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        41,
+        42,
+        43
       ],
       "scene": "toomuch",
       "note": {
@@ -177,8 +206,9 @@
     },
     {
       "cues": [
-        19,
-        20
+        44,
+        45,
+        46
       ],
       "scene": "plaque",
       "note": {
@@ -187,47 +217,29 @@
     },
     {
       "cues": [
-        21,
-        22,
-        23,
-        24
+        47,
+        48
       ],
-      "scene": "ladder",
+      "scene": "report",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        25,
-        26
+        49,
+        50
       ],
-      "scene": "sumback",
+      "scene": "arrow",
       "note": {
         "kind": "none"
       }
     },
     {
       "cues": [
-        27
-      ],
-      "scene": "tgcell",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        28
-      ],
-      "scene": "tgmark",
-      "note": {
-        "kind": "none"
-      }
-    },
-    {
-      "cues": [
-        29
+        51,
+        52,
+        53
       ],
       "scene": "hdlcell",
       "note": {
@@ -236,7 +248,39 @@
     },
     {
       "cues": [
-        30
+        54,
+        55,
+        56
+      ],
+      "scene": "sumback",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        57,
+        58,
+        59
+      ],
+      "scene": "alarm",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        60,
+        61
+      ],
+      "scene": "arrow",
+      "note": {
+        "kind": "none"
+      }
+    },
+    {
+      "cues": [
+        62
       ],
       "scene": "food",
       "note": {
@@ -247,15 +291,37 @@
     },
     {
       "cues": [
-        31
+        63
       ],
       "scene": "statin",
       "note": {
         "kind": "term",
-        "title": "他汀",
+        "title": "降脂药",
         "body": "别自己停"
+      }
+    },
+    {
+      "cues": [
+        64
+      ],
+      "scene": "report",
+      "note": {
+        "kind": "term",
+        "title": "拿不准",
+        "body": "带单子，问医生"
+      }
+    },
+    {
+      "cues": [
+        65,
+        66,
+        67
+      ],
+      "scene": "checkup",
+      "note": {
+        "kind": "none"
       }
     }
   ],
-  "duration": 138.62
+  "duration": 238.51
 }

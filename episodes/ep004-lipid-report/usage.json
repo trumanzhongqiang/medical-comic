@@ -1,15 +1,15 @@
 {
   "slug": "ep004-lipid-report",
-  "title": "血脂报告：胆固醇也分不同「运输队」？",
-  "model": "kimi-code/k3.1-pro",
-  "session": "session_4f7890d3-bc3c-4b3f-989f-16f4a0d7e3bf",
-  "measured_at": "2026-10-26",
-  "turns": 39,
+  "title": "血脂报告怎么看？",
+  "model": "kimi-code/kimi-for-coding",
+  "session": "session_2cc83d4c-39fc-4363-a78a-05b6499a7447",
+  "measured_at": "2026-11-06",
+  "turns": 169,
   "tokens": {
-    "input_uncached": 112277,
-    "input_cache_read": 2541083,
-    "output": 16082,
-    "total": 2669442
+    "input_uncached": 806378,
+    "input_cache_read": 27914319,
+    "output": 160658,
+    "total": 28881355
   },
   "note": "来自本会话 wire.jsonl 的逐轮 usage 合计。缓存读取是重复送入的上下文，按缓存计费，不是新生成内容。"
 }
